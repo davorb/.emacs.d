@@ -1,17 +1,7 @@
-
-* Initialization
-#+begin_src emacs-lisp
-(require 'helm-config)
-(helm-mode 1)
-(helm-adaptive-mode 1)
-(helm-autoresize-mode 1)
-(helm-push-mark-mode 1)
-
-(require 'color-theme)
-(color-theme-initialize)
-#+end_src
-
 * Packages
+This part needs to be first. If there are any files missing, then
+this will make sure that they are installed.
+
 #+begin_src emacs-lisp
 ;;; automatically install packages
 (require 'package)
@@ -36,6 +26,16 @@
           (progn (package-refresh-contents)
                  (dolist (package not-installed)
                    (package-install package))))))
+#+end_src
+* Initialization
+#+begin_src emacs-lisp
+(require 'helm-config)
+(helm-mode 1)
+(helm-adaptive-mode 1)
+(helm-autoresize-mode 1)
+
+(require 'color-theme)
+(color-theme-initialize)
 #+end_src
 
 * Programming modes  
