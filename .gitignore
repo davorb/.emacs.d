@@ -56,3 +56,7 @@ agent/*
 !literate-starter-kit-pkg.el
 literate-starter-kit/
 literate-starter-kit.tar
+
+bookmarks
+helm-adaptive-history
+ido.last
