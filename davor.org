@@ -1,0 +1,129 @@
+
+* Initialization
+#+begin_src emacs-lisp
+(require 'helm-config)
+(helm-mode 1)
+(helm-adaptive-mode 1)
+(helm-autoresize-mode 1)
+(helm-push-mark-mode 1)
+
+(require 'color-theme)
+(color-theme-initialize)
+#+end_src
+
+* Packages
+#+begin_src emacs-lisp
+;;; automatically install packages
+(require 'package)
+(setq davorb-packages
+      '(js2-mode
+        ace-jump-mode
+        ack
+        dockerfile-mode
+        markdown-mode
+        expand-region
+        yaml-mode
+        helm
+        helm-ack
+        color-theme
+        leuven-theme))
+(package-initialize)
+
+(let ((not-installed (remove-if 'package-installed-p davorb-packages)))
+  (if not-installed
+      (if (y-or-n-p (format "there are %d packages to be installed. install them? "
+                            (length not-installed)))
+          (progn (package-refresh-contents)
+                 (dolist (package not-installed)
+                   (package-install package))))))
+#+end_src
+
+* Programming modes  
+
+** JavaScript
+#+begin_src emacs-lisp
+;;;; js2-mode
+(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+(eval-after-load "js2-mode"
+  '(progn
+     (setq js2-missing-semi-one-line-override t)
+     (setq-default js2-basic-offset 2)))
+#+end_src
+
+** Sass
+#+begin_src emacs-lisp
+(setq-default scss-compile-at-save nil)
+#+end_src
+
+* Custom functions
+#+begin_src emacs-lisp
+(defun insert-current-date () (interactive)
+       (insert (shell-command-to-string "echo -n $(date +%Y-%m-%d)")))
+#+end_src
+
+* Look 'n feel
+#+begin_src emacs-lisp
+(menu-bar-mode 1)
+(tool-bar-mode 0)
+
+(load-theme 'leuven t)
+
+;; Fontify the whole line for headings (with a background color).
+(setq org-fontify-whole-heading-line t)
+#+end_src
+
+* Settings
+** Backups
+#+begin_src emacs-lisp
+(setq backup-directory-alist `(("." . "~/.saves")))
+(setq delete-old-versions t
+      kept-new-versions 6
+      kept-old-versions 2
+      version-control t)
+(setq backup-by-copying t) ; safest, but slowest
+#+end_src
+* Keybindings
+#+begin_src emacs-lisp
+;; bind F9 to compile
+(global-set-key [f9] 'compile)
+
+;;;; ace-jump-mode
+;; "C-c SPC" ==> ace-jump-word-mode
+;; "C-u C-c SPC" ==> ace-jump-char-mode
+;; "C-u C-u C-c SPC" ==> ace-jump-line-mode
+(autoload
+  'ace-jump-mode
+  "ace-jump-mode"
+  "Emacs quickmove minor mode"
+  t)
+(define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
+
+;;;; expand-region
+;; C-=
+(require 'expand-region)
+(global-set-key (kbd "C-=") 'er/expand-region)
+
+;;;; magit
+(global-set-key (kbd "C-x g") 'magit-status)
+
+;;;; electic-buffer-list
+(global-set-key [f12] 'buffer-menu)
+
+;;;; interactive highlighting
+;; C-x w . --- highlight word
+;; M-s h .
+;; C-w w r --- unhighlight regexp
+;; M-s h u
+(global-hi-lock-mode 1)
+
+;; keybindings
+(global-set-key (kbd "M-x") 'undefined)
+(global-set-key (kbd "M-x") 'helm-M-x)
+(global-set-key (kbd "C-x f") 'helm-find-files)
+(global-set-key (kbd "C-x b") 'helm-buffers-list)
+
+;(global-set-key (kbd "C-c <SPC>") 'helm-all-mark-rings)
+(global-set-key (kbd "C-x r b") 'helm-filtered-bookmarks)
+(global-set-key (kbd "M-y") 'helm-show-kill-ring)
+(global-set-key (kbd "C-,") 'helm-calcul-expression)
+#+end_src
