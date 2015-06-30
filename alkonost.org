@@ -1,0 +1,21 @@
+* Default directory
+#+begin_src emacs-lisp
+(setq default-directory "~/Development/")
+(cd "~/Development/")
+#+end_src
+* Toggle fullscreen
+#+begin_src emacs-lisp
+(defun toggle-fullscreen ()
+  "Toggle full screen"
+  (interactive)
+  (set-frame-parameter
+     nil 'fullscreen
+     (when (not (frame-parameter nil 'fullscreen)) 'fullboth)))
+#+end_src
+
+* Look 'n feel
+#+begin_src emacs-lisp
+(set-face-attribute 'default nil
+                    :font "Source Code Pro"
+                    :height 150)
+#+end_src
