@@ -45,12 +45,13 @@
 #+end_src
 ** JavaScript
 #+begin_src emacs-lisp
-;;;; js2-mode
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
 (eval-after-load "js2-mode"
   '(progn
      (setq js2-missing-semi-one-line-override t)
      (setq-default js2-basic-offset 2)))
+
+(setq js2-highlight-level 3)
 #+end_src
 
 ** Sass
