@@ -39,7 +39,10 @@
 #+end_src
 
 * Programming modes  
-
+** Git
+#+begin_src emacs-lisp
+(setq magit-last-seen-setup-instructions "1.4.0")
+#+end_src
 ** JavaScript
 #+begin_src emacs-lisp
 ;;;; js2-mode
