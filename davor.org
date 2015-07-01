@@ -16,7 +16,9 @@ this will make sure that they are installed.
         helm
         helm-ack
         color-theme
-        leuven-theme))
+        leuven-theme
+        sass-mode))
+
 (package-initialize)
 
 (let ((not-installed (remove-if 'package-installed-p davorb-packages)))
@@ -36,9 +38,17 @@ this will make sure that they are installed.
 
 (require 'color-theme)
 (color-theme-initialize)
+
+(autoload
+  'ace-jump-mode
+  "ace-jump-mode"
+  "Emacs quickmove minor mode"
+  t)
+
+(require 'expand-region)
 #+end_src
 
-* Programming modes  
+* Programming modes
 ** Git
 #+begin_src emacs-lisp
 (setq magit-last-seen-setup-instructions "1.4.0")
@@ -54,17 +64,28 @@ this will make sure that they are installed.
 (setq js2-highlight-level 3)
 #+end_src
 
-** Sass
+** SASS
 #+begin_src emacs-lisp
 (setq-default scss-compile-at-save nil)
+(add-to-list 'auto-mode-alist '("\\.scss\\'" . sass-mode))
 #+end_src
 
 * Custom functions
+** insert-current-date
 #+begin_src emacs-lisp
 (defun insert-current-date () (interactive)
        (insert (shell-command-to-string "echo -n $(date +%Y-%m-%d)")))
 #+end_src
-
+** increment-number-at-point
+#+begin_src emacs-lisp
+(defun increment-number-at-point ()
+  (interactive)
+  (skip-chars-backward "0123456789")
+  (or (looking-at "[0123456789]+")
+      (error "No number at point"))
+  (replace-match (number-to-string (1+ (string-to-number
+                                               (match-string 0))))))
+#+end_src
 * Look 'n feel
 #+begin_src emacs-lisp
 (menu-bar-mode 1)
@@ -79,48 +100,57 @@ this will make sure that they are installed.
 * Settings
 ** Backups
 #+begin_src emacs-lisp
-(setq backup-directory-alist `(("." . "~/.saves")))
+(let ((temporary-file-directory "~/.saves"))
+  (setq backup-directory-alist
+        `((".*" . ,temporary-file-directory)))
+  (setq auto-save-file-name-transforms
+        `((".*" ,temporary-file-directory t))))
 (setq delete-old-versions t
       kept-new-versions 6
       kept-old-versions 2
       version-control t)
 (setq backup-by-copying t) ; safest, but slowest
 #+end_src
-* Keybindings
+** Remove trailing whitespace
 #+begin_src emacs-lisp
-;; bind F9 to compile
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
+#+end_src
+* Keybindings
+** Compile
+#+begin_src emacs-lisp
 (global-set-key [f9] 'compile)
-
-;;;; ace-jump-mode
-;; "C-c SPC" ==> ace-jump-word-mode
-;; "C-u C-c SPC" ==> ace-jump-char-mode
-;; "C-u C-u C-c SPC" ==> ace-jump-line-mode
-(autoload
-  'ace-jump-mode
-  "ace-jump-mode"
-  "Emacs quickmove minor mode"
-  t)
+#+end_src
+** ace-jump-mode
+"C-c SPC" ==> ace-jump-word-mode
+"C-u C-c SPC" ==> ace-jump-char-mode
+"C-u C-u C-c SPC" ==> ace-jump-line-mode
+#+begin_src emacs-lisp
 (define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
-
-;;;; expand-region
-;; C-=
-(require 'expand-region)
+#+end_src
+** expand-region
+Binding: C-=
+#+begin_src emacs-lisp
 (global-set-key (kbd "C-=") 'er/expand-region)
-
-;;;; magit
+#+end_src
+** magit
+#+begin_src emacs-lisp
 (global-set-key (kbd "C-x g") 'magit-status)
-
-;;;; electic-buffer-list
+#+end_src
+** electic-buffer-list
+#+begin_src emacs-lisp
 (global-set-key [f12] 'buffer-menu)
-
-;;;; interactive highlighting
-;; C-x w . --- highlight word
-;; M-s h .
-;; C-w w r --- unhighlight regexp
-;; M-s h u
+#+end_src
+** interactive highlighting
+C-x w . --- highlight word
+M-s h .
+C-w w r --- unhighlight regexp
+M-s h u
+#+begin_src emacs-lisp
 (global-hi-lock-mode 1)
+#+end_src
 
-;; keybindings
+** helm
+#+begin_src emacs-lisp
 (global-set-key (kbd "M-x") 'undefined)
 (global-set-key (kbd "M-x") 'helm-M-x)
 (global-set-key (kbd "C-x f") 'helm-find-files)
@@ -130,4 +160,8 @@ this will make sure that they are installed.
 (global-set-key (kbd "C-x r b") 'helm-filtered-bookmarks)
 (global-set-key (kbd "M-y") 'helm-show-kill-ring)
 (global-set-key (kbd "C-,") 'helm-calcul-expression)
+#+end_src
+** increment number
+#+begin_src emacs-lisp
+(global-set-key (kbd "C-c i") 'increment-number-at-point)
 #+end_src
