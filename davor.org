@@ -165,3 +165,31 @@ M-s h u
 #+begin_src emacs-lisp
 (global-set-key (kbd "C-c i") 'increment-number-at-point)
 #+end_src
+* Skeletons
+** LaTeX
+#+begin_src emacs-lisp
+  (define-skeleton latex-skeleton
+    "Inserts a begin_src-skeleton into the current buffer.
+  This only makes sense for empty buffers."
+    "\\documentclass[a4paper]{article}\n\n"
+    "\\documentclass[a4paper]{article}\n"
+    "\\usepackage[utf8]{inputenc}\n"
+    "\\usepackage[swedish]{babel} % for Swedish characters\n\n"
+    "\\usepackage{fancyvrb}       % for code listings\n"
+    "\\fvset{tabsize=4}\n"
+    "\\fvset{fontsize=\small}\n\n"
+    "\\title{Document title}\n"
+    "\\author{Davor Babi\'{c}}\n\n"
+    "\\begin{document}\n"
+    "\\maketitle\n\n"
+    "\\end{document}\n")
+#+end_src
+** org-mode
+#+begin_src emacs-lisp
+    (define-skeleton org-mode-begin-src-skeleton
+      "Inserts a skeleton containing begin and end_src, for code
+  blocks in org-mode"
+      "Language: "
+      "\#+begin_src " str "\n"
+      "\#+end_src \n")
+#+end_src
