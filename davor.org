@@ -3,50 +3,53 @@ This part needs to be first. If there are any files missing, then
 this will make sure that they are installed.
 
 #+begin_src emacs-lisp
-  ;;; automatically install packages
-  (require 'package)
-  (setq davorb-packages
-        '(js2-mode
-          ace-jump-mode
-          ack
-          dockerfile-mode
-          markdown-mode
-          expand-region
-          yaml-mode
-          helm
-          helm-ack
-          color-theme
-          leuven-theme
-          sass-mode
-          highlight-sexp))
+    ;;; automatically install packages
+    (require 'package)
+    (setq davorb-packages
+          '(js2-mode
+            ace-jump-mode
+            ack
+            dockerfile-mode
+            markdown-mode
+            expand-region
+            yaml-mode
+            helm
+            helm-ack
+            color-theme
+            leuven-theme
+            sass-mode
+            highlight-sexp
+            highlight-symbol))
 
-  (package-initialize)
+    (package-initialize)
 
-  (let ((not-installed (remove-if 'package-installed-p davorb-packages)))
-    (if not-installed
-        (if (y-or-n-p (format "there are %d packages to be installed. install them? "
-                              (length not-installed)))
-            (progn (package-refresh-contents)
-                   (dolist (package not-installed)
-                     (package-install package))))))
+    (let ((not-installed (remove-if 'package-installed-p davorb-packages)))
+      (if not-installed
+          (if (y-or-n-p (format "there are %d packages to be installed. install them? "
+                                (length not-installed)))
+              (progn (package-refresh-contents)
+                     (dolist (package not-installed)
+                       (package-install package))))))
 #+end_src
 * Initialization
 #+begin_src emacs-lisp
-(require 'helm-config)
-(helm-mode 1)
-(helm-adaptive-mode 1)
-(helm-autoresize-mode 1)
+  (require 'helm-config)
+  (helm-mode 1)
+  (helm-adaptive-mode 1)
+  (helm-autoresize-mode 1)
 
-(require 'color-theme)
-(color-theme-initialize)
+  (require 'color-theme)
+  (color-theme-initialize)
 
-(autoload
-  'ace-jump-mode
-  "ace-jump-mode"
-  "Emacs quickmove minor mode"
-  t)
+  (autoload
+    'ace-jump-mode
+    "ace-jump-mode"
+    "Emacs quickmove minor mode"
+    t)
 
-(require 'expand-region)
+  (require 'expand-region)
+
+  (require 'highlight-symbol)
 #+end_src
 
 * Programming modes
