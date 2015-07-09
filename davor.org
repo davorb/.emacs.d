@@ -3,52 +3,84 @@ This part needs to be first. If there are any files missing, then
 this will make sure that they are installed.
 
 #+begin_src emacs-lisp
-;;; automatically install packages
-(require 'package)
-(setq davorb-packages
-      '(js2-mode
-        ace-jump-mode
-        ack
-        dockerfile-mode
-        markdown-mode
-        expand-region
-        yaml-mode
-        helm
-        helm-ack
-        color-theme
-        leuven-theme
-        sass-mode))
+    ;;; automatically install packages
+    (require 'package)
+    (setq davorb-packages
+          '(js2-mode
+            ace-jump-mode
+            ack
+            dockerfile-mode
+            markdown-mode
+            expand-region
+            yaml-mode
+            helm
+            helm-ack
+            color-theme
+            leuven-theme
+            sass-mode
+            highlight-sexp
+            highlight-symbol))
 
-(package-initialize)
+    (package-initialize)
 
-(let ((not-installed (remove-if 'package-installed-p davorb-packages)))
-  (if not-installed
-      (if (y-or-n-p (format "there are %d packages to be installed. install them? "
-                            (length not-installed)))
-          (progn (package-refresh-contents)
-                 (dolist (package not-installed)
-                   (package-install package))))))
+    (let ((not-installed (remove-if 'package-installed-p davorb-packages)))
+      (if not-installed
+          (if (y-or-n-p (format "there are %d packages to be installed. install them? "
+                                (length not-installed)))
+              (progn (package-refresh-contents)
+                     (dolist (package not-installed)
+                       (package-install package))))))
 #+end_src
 * Initialization
 #+begin_src emacs-lisp
-(require 'helm-config)
-(helm-mode 1)
-(helm-adaptive-mode 1)
-(helm-autoresize-mode 1)
+  (require 'helm-config)
+  (helm-mode 1)
+  (helm-adaptive-mode 1)
+  (helm-autoresize-mode 1)
 
-(require 'color-theme)
-(color-theme-initialize)
+  (require 'color-theme)
+  (color-theme-initialize)
 
-(autoload
-  'ace-jump-mode
-  "ace-jump-mode"
-  "Emacs quickmove minor mode"
-  t)
+  (autoload
+    'ace-jump-mode
+    "ace-jump-mode"
+    "Emacs quickmove minor mode"
+    t)
 
-(require 'expand-region)
+  (require 'expand-region)
+
+  (require 'highlight-symbol)
 #+end_src
 
 * Programming modes
+
+** List of lisp modes
+#+begin_src emacs-lisp
+(defvar *lisp-hooks*
+  '(emacs-lisp-mode-hook
+    common-lisp-mode-hook
+    lisp-mode-hook
+    slime-mode-hook
+    clojure-mode-hook
+    scheme-mode-hook
+    lisp-interaction-mode-hook
+    ielm-mode-hook))
+#+end_src
+** List of programming modes
+#+begin_src emacs-lisp
+(defvar *programming-hooks*
+  (append
+   *lisp-hooks*
+   '(ruby-mode-hook
+     js2-mode-hook
+     js-mode-hook
+     c-mode-hook
+     shell-script-mode-hook
+     c++-mode-hook
+     html-mode-hook
+     css-mode-hook
+     java-mode-hook)))
+#+end_src
 ** Git
 #+begin_src emacs-lisp
 (setq magit-last-seen-setup-instructions "1.4.0")
@@ -86,6 +118,13 @@ this will make sure that they are installed.
   (replace-match (number-to-string (1+ (string-to-number
                                                (match-string 0))))))
 #+end_src
+** add-to-multiple-hooks
+Take a mode and add it to multiple hooks.
+#+begin_src emacs-lisp
+(defun add-to-multiple-hooks (function hooks)
+  (mapc (lambda (hook)
+    (add-hook hook function)) hooks))
+#+end_src
 * Look 'n feel
 #+begin_src emacs-lisp
 (menu-bar-mode 1)
@@ -114,6 +153,17 @@ this will make sure that they are installed.
 ** Remove trailing whitespace
 #+begin_src emacs-lisp
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
+#+end_src
+** Highlight
+*** Highlight sexp
+#+begin_src emacs-lisp
+(setf hl-sexp-background-color "#fff")
+(add-to-multiple-hooks 'highlight-sexp-mode *lisp-hooks*)
+#+end_src
+*** Highlight symbols
+#+begin_src emacs-lisp
+(add-to-multiple-hooks 'highlight-symbol-mode
+                       *programming-hooks*)
 #+end_src
 * Keybindings
 ** Compile
