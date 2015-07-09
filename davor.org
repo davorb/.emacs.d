@@ -100,16 +100,16 @@ this will make sure that they are installed.
 * Settings
 ** Backups
 #+begin_src emacs-lisp
-(let ((temporary-file-directory "~/.saves"))
+  ;(let ((temporary-file-directory "~/.saves"))
   (setq backup-directory-alist
-        `((".*" . ,temporary-file-directory)))
-  (setq auto-save-file-name-transforms
-        `((".*" ,temporary-file-directory t))))
-(setq delete-old-versions t
-      kept-new-versions 6
-      kept-old-versions 2
-      version-control t)
-(setq backup-by-copying t) ; safest, but slowest
+        '(("." . "~/.saves")))
+  ;  (setq auto-save-file-name-transforms
+  ;        `((".*" ,temporary-file-directory t))))
+  (setq delete-old-versions t
+        kept-new-versions 6
+        kept-old-versions 2
+        version-control t)
+  (setq backup-by-copying t) ; safest, but slowest
 #+end_src
 ** Remove trailing whitespace
 #+begin_src emacs-lisp
