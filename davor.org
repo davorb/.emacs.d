@@ -81,19 +81,22 @@ this will make sure that they are installed.
      css-mode-hook
      java-mode-hook)))
 #+end_src
+** Programming in general
+#+begin_src emacs-lisp
+  (require 'highlight-symbol)
+#+end_src
 ** Git
 #+begin_src emacs-lisp
 (setq magit-last-seen-setup-instructions "1.4.0")
 #+end_src
 ** JavaScript
 #+begin_src emacs-lisp
-(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
-(eval-after-load "js2-mode"
-  '(progn
-     (setq js2-missing-semi-one-line-override t)
-     (setq-default js2-basic-offset 2)))
-
-(setq js2-highlight-level 3)
+  (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+  (eval-after-load "js2-mode"
+    '(progn
+       (setq js2-missing-semi-one-line-override t)
+       (setq-default js2-basic-offset 2)))
+  (setq js2-highlight-level 3)
 #+end_src
 
 ** SASS
