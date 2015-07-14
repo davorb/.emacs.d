@@ -20,6 +20,7 @@ this will make sure that they are installed.
           sass-mode
           highlight-sexp
           highlight-symbol
+          geiser
           js2-refactor))
 
   (package-initialize)
@@ -56,18 +57,18 @@ this will make sure that they are installed.
 #+end_src
 
 * Programming modes
-
 ** List of lisp modes
 #+begin_src emacs-lisp
-(defvar *lisp-hooks*
-  '(emacs-lisp-mode-hook
-    common-lisp-mode-hook
-    lisp-mode-hook
-    slime-mode-hook
-    clojure-mode-hook
-    scheme-mode-hook
-    lisp-interaction-mode-hook
-    ielm-mode-hook))
+  (defvar *lisp-hooks*
+    '(emacs-lisp-mode-hook
+      common-lisp-mode-hook
+      lisp-mode-hook
+      slime-mode-hook
+      clojure-mode-hook
+      scheme-mode-hook
+      lisp-interaction-mode-hook
+      ielm-mode-hook
+      geiser-mode))
 #+end_src
 ** List of programming modes
 #+begin_src emacs-lisp
@@ -92,6 +93,7 @@ this will make sure that they are installed.
 #+begin_src emacs-lisp
 (setq magit-last-seen-setup-instructions "1.4.0")
 #+end_src
+
 ** JavaScript
 #+begin_src emacs-lisp
   (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
@@ -109,7 +111,6 @@ this will make sure that they are installed.
 (setq-default scss-compile-at-save nil)
 (add-to-list 'auto-mode-alist '("\\.scss\\'" . sass-mode))
 #+end_src
-
 * Custom functions
 ** insert-current-date
 #+begin_src emacs-lisp
