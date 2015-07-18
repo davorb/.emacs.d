@@ -21,7 +21,8 @@ this will make sure that they are installed.
           highlight-sexp
           highlight-symbol
           geiser
-          js2-refactor))
+          js2-refactor
+          nodejs-repl))
 
   (package-initialize)
 
@@ -50,10 +51,32 @@ this will make sure that they are installed.
     t)
 
   (require 'expand-region)
-
   (require 'highlight-symbol)
-
   (require 'js2-refactor)
+  (require 'nodejs-repl)
+#+end_src
+
+* Starter-kit
+** Yasnippet
+#+begin_src emacs-lisp
+  (starter-kit-load "yasnippet")
+#+end_src
+
+** eshell
+#+begin_src emacs-lisp
+  (starter-kit-load "eshell")
+#+end_src
+** LaTeX
+#+begin_src emacs-lisp
+  (starter-kit-load "latex")
+#+end_src
+
+** bindings
+#+begin_src emacs-lisp
+  (global-set-key (kbd "C-M-h") 'backward-kill-word)
+
+  ;; align code in pretty way
+  (global-set-key (kbd "C-x \\") 'align-regexp)
 #+end_src
 
 * Programming modes
@@ -106,6 +129,24 @@ this will make sure that they are installed.
   (add-hook 'js2-mode-hook #'js2-refactor-mode)
   (add-hook 'js2-mode-hook #'electric-indent-mode)
   (add-hook 'js2-mode-hook #'electric-pair-mode)
+#+end_src
+
+#+begin_src emacs-lisp
+(font-lock-add-keywords 'espresso-mode
+                        '(("\\<\\(FIX\\|TODO\\|FIXME\\|HACK\\|REFACTOR\\):"
+                           1 font-lock-warning-face t)))
+#+end_src
+
+#+begin_src emacs-lisp
+(defun starter-kit-pp-json ()
+  "Pretty-print the json object following point."
+  (interactive)
+  (require 'json)
+  (let ((json-object (save-excursion (json-read))))
+    (switch-to-buffer "*json*")
+    (delete-region (point-min) (point-max))
+    (insert (pp json-object))
+    (goto-char (point-min))))
 #+end_src
 
 ** SASS
