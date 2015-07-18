@@ -62,10 +62,6 @@ this will make sure that they are installed.
   (starter-kit-load "yasnippet")
 #+end_src
 
-** eshell
-#+begin_src emacs-lisp
-  (starter-kit-load "eshell")
-#+end_src
 ** LaTeX
 #+begin_src emacs-lisp
   (starter-kit-load "latex")
@@ -176,6 +172,13 @@ Take a mode and add it to multiple hooks.
 (defun add-to-multiple-hooks (function hooks)
   (mapc (lambda (hook)
     (add-hook hook function)) hooks))
+#+end_src
+** find-user-init-file
+#+begin_src emacs-lisp
+  (defun find-user-init-file ()
+    "Edit your .emacs file instantly."
+    (interactive)
+    (find-file user-init-file))
 #+end_src
 * Look 'n feel
 #+begin_src emacs-lisp
