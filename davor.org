@@ -86,7 +86,6 @@ this will make sure that they are installed.
   (add-hook 'scheme-mode-hook (lambda () (slime-mode t)))
 #+END_SRC
 
-
 * Starter-kit
 ** Yasnippet
 #+begin_src emacs-lisp
@@ -251,6 +250,14 @@ Take a mode and add it to multiple hooks.
 (add-to-multiple-hooks 'highlight-symbol-mode
                        *programming-hooks*)
 #+end_src
+** Dired
+   Hide hidden files. You can toggle =dired-omit-mode= with M-o.
+#+BEGIN_SRC emacs-lisp
+  (require 'dired-x)
+  (setq dired-omit-files "^\\...+$")
+  (add-hook 'dired-mode-hook (lambda () (dired-omit-mode 1)))
+#+END_SRC
+
 * Keybindings
 ** General
 *** Compile
