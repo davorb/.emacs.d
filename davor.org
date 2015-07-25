@@ -20,9 +20,10 @@ this will make sure that they are installed.
           sass-mode
           highlight-sexp
           highlight-symbol
-          geiser
           js2-refactor
-          nodejs-repl))
+          nodejs-repl
+          slime
+          paredit))
 
   (package-initialize)
 
@@ -54,7 +55,37 @@ this will make sure that they are installed.
   (require 'highlight-symbol)
   (require 'js2-refactor)
   (require 'nodejs-repl)
+
 #+end_src
+** Lisp
+#+BEGIN_SRC emacs-lisp
+  (require 'paredit)
+  (autoload 'enable-paredit-mode "paredit" "Turn on pseudo-structural editing of Lisp code." t)
+  (add-hook 'emacs-lisp-mode-hook #'enable-paredit-mode)
+  (add-hook 'eval-expression-minibuffer-setup-hook #'enable-paredit-mode)
+  (add-hook 'ielm-mode-hook #'enable-paredit-mode)
+  (add-hook 'lisp-mode-hook #'enable-paredit-mode)
+  (add-hook 'lisp-interaction-mode-hook #'enable-paredit-mode)
+  (add-hook 'scheme-mode-hook #'enable-paredit-mode)
+
+  (add-hook 'slime-repl-mode-hook (lambda () (paredit-mode +1)))
+
+  (require 'eldoc)
+  (eldoc-add-command
+   'paredit-backward-delete
+   'paredit-close-round)
+#+END_SRC
+
+*** SLIME
+#+BEGIN_SRC emacs-lisp
+  (require 'slime)
+  (slime-setup '(slime-fancy slime-banner))
+  (add-to-list 'load-path "/var/lib/chicken/7/")
+  (autoload 'chicken-slime "chicken-slime" "SWANK backend for Chicken" t)
+  (setq slime-csi-path "/usr/bin/csi")
+  (add-hook 'scheme-mode-hook (lambda () (slime-mode t)))
+#+END_SRC
+
 
 * Starter-kit
 ** Yasnippet
@@ -325,13 +356,4 @@ M-s h u
     "\\begin{document}\n"
     "\\maketitle\n\n"
     "\\end{document}\n")
-#+end_src
-** org-mode
-#+begin_src emacs-lisp
-    (define-skeleton org-mode-begin-src-skeleton
-      "Inserts a skeleton containing begin and end_src, for code
-  blocks in org-mode"
-      "Language: "
-      "\#+begin_src " str "\n"
-      "\#+end_src \n")
 #+end_src
