@@ -364,3 +364,8 @@ M-s h u
     "\\maketitle\n\n"
     "\\end{document}\n")
 #+end_src
+* yasnippet
+#+BEGIN_SRC emacs-lisp
+  (setf yas-snippet-dirs "~/.emacs.d/snippets")
+  (yas-reload-all)
+#+END_SRC
