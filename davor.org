@@ -251,7 +251,7 @@ Take a mode and add it to multiple hooks.
                        *programming-hooks*)
 #+end_src
 ** Dired
-   Hide hidden files. You can toggle =dired-omit-mode= with M-o.
+   Hide hidden files. You can toggle =dired-omit-mode= with C-x M-o.
 #+BEGIN_SRC emacs-lisp
   (require 'dired-x)
   (setq dired-omit-files "^\\...+$")
