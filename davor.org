@@ -3,37 +3,38 @@ This part needs to be first. If there are any files missing, then
 this will make sure that they are installed.
 
 #+begin_src emacs-lisp
-  ;;; automatically install packages
-  (require 'package)
-  (setq davorb-packages
-        '(js2-mode
-          ace-jump-mode
-          ack
-          dockerfile-mode
-          markdown-mode
-          expand-region
-          yaml-mode
-          helm
-          helm-ack
-          color-theme
-          leuven-theme
-          sass-mode
-          highlight-sexp
-          highlight-symbol
-          js2-refactor
-          nodejs-repl
-          slime
-          paredit))
+    ;;; automatically install packages
+    (require 'package)
+    (setq davorb-packages
+          '(js2-mode
+            ace-jump-mode
+            ack
+            dockerfile-mode
+            markdown-mode
+            expand-region
+            yaml-mode
+            helm
+            helm-ack
+            color-theme
+            leuven-theme
+            sass-mode
+            highlight-sexp
+            highlight-symbol
+            js2-refactor
+            nodejs-repl
+            slime
+            paredit
+            rainbow-delimiters))
 
-  (package-initialize)
+    (package-initialize)
 
-  (let ((not-installed (remove-if 'package-installed-p davorb-packages)))
-    (if not-installed
-        (if (y-or-n-p (format "there are %d packages to be installed. install them? "
-                              (length not-installed)))
-            (progn (package-refresh-contents)
-                   (dolist (package not-installed)
-                     (package-install package))))))
+    (let ((not-installed (remove-if 'package-installed-p davorb-packages)))
+      (if not-installed
+          (if (y-or-n-p (format "there are %d packages to be installed. install them? "
+                                (length not-installed)))
+              (progn (package-refresh-contents)
+                     (dolist (package not-installed)
+                       (package-install package))))))
 #+end_src
 * Initialization
 #+begin_src emacs-lisp
@@ -180,6 +181,26 @@ this will make sure that they are installed.
 (setq-default scss-compile-at-save nil)
 (add-to-list 'auto-mode-alist '("\\.scss\\'" . sass-mode))
 #+end_src
+
+** Lisp
+#+BEGIN_SRC emacs-lisp
+  (add-to-multiple-hooks #'rainbow-delimiters-mode *lisp-hooks*)
+#+END_SRC
+
+*** Highlight sexp
+#+begin_src emacs-lisp
+(setf hl-sexp-background-color "#fff")
+(add-to-multiple-hooks 'highlight-sexp-mode *lisp-hooks*)
+#+end_src
+
+** Clojure
+#+BEGIN_SRC emacs-lisp
+  (add-hook 'cider-mode-hook #'eldoc-mode)
+
+  ;; C-z for repl
+  (setq cider-repl-display-in-current-window t)
+#+END_SRC
+
 * Custom functions
 ** insert-current-date
 #+begin_src emacs-lisp
@@ -240,11 +261,6 @@ Take a mode and add it to multiple hooks.
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 #+end_src
 ** Highlight
-*** Highlight sexp
-#+begin_src emacs-lisp
-(setf hl-sexp-background-color "#fff")
-(add-to-multiple-hooks 'highlight-sexp-mode *lisp-hooks*)
-#+end_src
 *** Highlight symbols
 #+begin_src emacs-lisp
 (add-to-multiple-hooks 'highlight-symbol-mode
