@@ -77,6 +77,37 @@ this will make sure that they are installed.
    'paredit-close-round)
 #+END_SRC
 
+* Custom functions
+** insert-current-date
+#+begin_src emacs-lisp
+(defun insert-current-date () (interactive)
+       (insert (shell-command-to-string "echo -n $(date +%Y-%m-%d)")))
+#+end_src
+** increment-number-at-point
+#+begin_src emacs-lisp
+(defun increment-number-at-point ()
+  (interactive)
+  (skip-chars-backward "0123456789")
+  (or (looking-at "[0123456789]+")
+      (error "No number at point"))
+  (replace-match (number-to-string (1+ (string-to-number
+                                               (match-string 0))))))
+#+end_src
+** add-to-multiple-hooks
+Take a mode and add it to multiple hooks.
+#+begin_src emacs-lisp
+(defun add-to-multiple-hooks (function hooks)
+  (mapc (lambda (hook)
+    (add-hook hook function)) hooks))
+#+end_src
+** find-user-init-file
+#+begin_src emacs-lisp
+  (defun find-user-init-file ()
+    "Edit your .emacs file instantly."
+    (interactive)
+    (find-file user-init-file))
+#+end_src
+
 * Starter-kit
 ** Yasnippet
 #+begin_src emacs-lisp
@@ -190,37 +221,6 @@ this will make sure that they are installed.
   ;; C-z for repl
   (setq cider-repl-display-in-current-window t)
 #+END_SRC
-
-* Custom functions
-** insert-current-date
-#+begin_src emacs-lisp
-(defun insert-current-date () (interactive)
-       (insert (shell-command-to-string "echo -n $(date +%Y-%m-%d)")))
-#+end_src
-** increment-number-at-point
-#+begin_src emacs-lisp
-(defun increment-number-at-point ()
-  (interactive)
-  (skip-chars-backward "0123456789")
-  (or (looking-at "[0123456789]+")
-      (error "No number at point"))
-  (replace-match (number-to-string (1+ (string-to-number
-                                               (match-string 0))))))
-#+end_src
-** add-to-multiple-hooks
-Take a mode and add it to multiple hooks.
-#+begin_src emacs-lisp
-(defun add-to-multiple-hooks (function hooks)
-  (mapc (lambda (hook)
-    (add-hook hook function)) hooks))
-#+end_src
-** find-user-init-file
-#+begin_src emacs-lisp
-  (defun find-user-init-file ()
-    "Edit your .emacs file instantly."
-    (interactive)
-    (find-file user-init-file))
-#+end_src
 * Look 'n feel
 #+begin_src emacs-lisp
 (menu-bar-mode 1)
