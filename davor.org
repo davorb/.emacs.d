@@ -3,38 +3,38 @@ This part needs to be first. If there are any files missing, then
 this will make sure that they are installed.
 
 #+begin_src emacs-lisp
-    ;;; automatically install packages
-    (require 'package)
-    (setq davorb-packages
-          '(js2-mode
-            ace-jump-mode
-            ack
-            dockerfile-mode
-            markdown-mode
-            expand-region
-            yaml-mode
-            helm
-            helm-ack
-            color-theme
-            leuven-theme
-            sass-mode
-            highlight-sexp
-            highlight-symbol
-            js2-refactor
-            nodejs-repl
-            slime
-            paredit
-            rainbow-delimiters))
+  ;;; automatically install packages
+  (require 'package)
+  (setq davorb-packages
+        '(js2-mode
+          ace-jump-mode
+          ack
+          dockerfile-mode
+          markdown-mode
+          expand-region
+          yaml-mode
+          helm
+          helm-ack
+          color-theme
+          leuven-theme
+          sass-mode
+          highlight-sexp
+          highlight-symbol
+          js2-refactor
+          nodejs-repl
+          geiser
+          paredit
+          rainbow-delimiters))
 
-    (package-initialize)
+  (package-initialize)
 
-    (let ((not-installed (remove-if 'package-installed-p davorb-packages)))
-      (if not-installed
-          (if (y-or-n-p (format "there are %d packages to be installed. install them? "
-                                (length not-installed)))
-              (progn (package-refresh-contents)
-                     (dolist (package not-installed)
-                       (package-install package))))))
+  (let ((not-installed (remove-if 'package-installed-p davorb-packages)))
+    (if not-installed
+        (if (y-or-n-p (format "there are %d packages to be installed. install them? "
+                              (length not-installed)))
+            (progn (package-refresh-contents)
+                   (dolist (package not-installed)
+                     (package-install package))))))
 #+end_src
 * Initialization
 #+begin_src emacs-lisp
@@ -69,22 +69,12 @@ this will make sure that they are installed.
   (add-hook 'lisp-interaction-mode-hook #'enable-paredit-mode)
   (add-hook 'scheme-mode-hook #'enable-paredit-mode)
 
-  (add-hook 'slime-repl-mode-hook (lambda () (paredit-mode +1)))
+  ;(add-hook 'slime-repl-mode-hook (lambda () (paredit-mode +1)))
 
   (require 'eldoc)
   (eldoc-add-command
    'paredit-backward-delete
    'paredit-close-round)
-#+END_SRC
-
-*** SLIME
-#+BEGIN_SRC emacs-lisp
-  (require 'slime)
-  (slime-setup '(slime-fancy slime-banner))
-  (add-to-list 'load-path "/var/lib/chicken/7/")
-  (autoload 'chicken-slime "chicken-slime" "SWANK backend for Chicken" t)
-  (setq slime-csi-path "/usr/bin/csi")
-  (add-hook 'scheme-mode-hook (lambda () (slime-mode t)))
 #+END_SRC
 
 * Starter-kit
