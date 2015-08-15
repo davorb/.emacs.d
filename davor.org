@@ -139,7 +139,8 @@ Take a mode and add it to multiple hooks.
       scheme-mode-hook
       lisp-interaction-mode-hook
       ielm-mode-hook
-      geiser-mode))
+      geiser-mode
+      geiser-repl-mode))
 #+end_src
 ** List of programming modes
 #+begin_src emacs-lisp
@@ -223,14 +224,18 @@ Take a mode and add it to multiple hooks.
 #+END_SRC
 * Look 'n feel
 #+begin_src emacs-lisp
-(menu-bar-mode 1)
-(tool-bar-mode 0)
+  (menu-bar-mode 1)
+  (tool-bar-mode 0)
 
-(load-theme 'leuven t)
-
-;; Fontify the whole line for headings (with a background color).
-(setq org-fontify-whole-heading-line t)
+  ;; Fontify the whole line for headings (with a background color).
+  (setq org-fontify-whole-heading-line t)
 #+end_src
+** Themes
+   Good ones are =leuven=, =solarized=.
+
+#+BEGIN_SRC emacs-lisp
+  (load-theme 'leuven t)
+#+END_SRC
 
 * Settings
 ** Backups
