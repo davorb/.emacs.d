@@ -6,3 +6,9 @@
 
   (setq exec-path (append exec-path '("~/bin/bin")))
 #+END_SRC
+
+* Font
+#+BEGIN_SRC emacs-lisp
+  (add-to-list 'default-frame-alist '(font . "Source Code Pro" ))
+  (set-face-attribute 'default t :font "Source Code Pro" )
+#+END_SRC
