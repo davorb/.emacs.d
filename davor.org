@@ -213,8 +213,8 @@ Take a mode and add it to multiple hooks.
 
 *** Highlight sexp
 #+begin_src emacs-lisp
-(setf hl-sexp-background-color "#fff")
-(add-to-multiple-hooks 'highlight-sexp-mode *lisp-hooks*)
+  (setf hl-sexp-background-color "#a7adba")
+  (add-to-multiple-hooks 'highlight-sexp-mode *lisp-hooks*)
 #+end_src
 
 ** Clojure
@@ -258,6 +258,17 @@ Take a mode and add it to multiple hooks.
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 #+end_src
 ** Highlight
+*** interactive highlighting
+    C-x w . --- highlight word
+
+    M-s h .
+
+    C-w w r --- unhighlight regexp
+
+    M-s h u
+#+begin_src emacs-lisp
+  (global-hi-lock-mode 1)
+#+end_src
 *** Highlight symbols
 #+begin_src emacs-lisp
 (add-to-multiple-hooks 'highlight-symbol-mode
@@ -297,15 +308,6 @@ Binding: C-=
 #+begin_src emacs-lisp
 (global-set-key [f12] 'buffer-menu)
 #+end_src
-*** interactive highlighting
-C-x w . --- highlight word
-M-s h .
-C-w w r --- unhighlight regexp
-M-s h u
-#+begin_src emacs-lisp
-(global-hi-lock-mode 1)
-#+end_src
-
 *** helm
 #+begin_src emacs-lisp
 (global-set-key (kbd "M-x") 'undefined)
