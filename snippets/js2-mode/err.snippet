@@ -2,7 +2,7 @@
 # name: err
 # key: err
 # --
-if(${1:error}){
+if(${1:error}) {
   callback($1);
   return;
 }
