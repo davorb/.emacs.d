@@ -108,6 +108,13 @@ Take a mode and add it to multiple hooks.
     (interactive)
     (find-file user-init-file))
 #+end_src
+** indent-buffer
+#+BEGIN_SRC emacs-lisp
+  (defun indent-buffer ()
+    (interactive)
+    (save-excursion
+      (indent-region (point-min) (point-max) nil)))
+#+END_SRC
 
 * Starter-kit
 ** Yasnippet
@@ -325,6 +332,11 @@ Binding: C-=
 (global-set-key (kbd "C-c i") 'increment-number-at-point)
 #+end_src
 ** Programming
+** indent-buffer
+#+BEGIN_SRC emacs-lisp
+  (global-set-key (kbd "C-x M-/") 'indent-buffer)
+#+END_SRC
+
 *** JavaScript
 **** js2-refactor-mode
      extract function with *C-c C-x ef*
