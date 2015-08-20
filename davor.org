@@ -334,7 +334,7 @@ Binding: C-=
 ** Programming
 ** indent-buffer
 #+BEGIN_SRC emacs-lisp
-  (global-set-key (kbd "C-x M-/") 'indent-buffer)
+  (global-set-key (kbd "C-c M-/") 'indent-buffer)
 #+END_SRC
 
 *** JavaScript
