@@ -220,7 +220,7 @@ Take a mode and add it to multiple hooks.
 
 *** Highlight sexp
 #+begin_src emacs-lisp
-  (setf hl-sexp-background-color "#a7adba")
+  ;(setf hl-sexp-background-color "#a7adba")
   (add-to-multiple-hooks 'highlight-sexp-mode *lisp-hooks*)
 #+end_src
 
@@ -231,6 +231,13 @@ Take a mode and add it to multiple hooks.
   ;; C-z for repl
   (setq cider-repl-display-in-current-window t)
 #+END_SRC
+
+** C
+#+BEGIN_SRC emacs-lisp
+  (add-hook 'c-mode-hook #'electric-indent-mode)
+  (add-hook 'c-mode-hook #'electric-pair-mode)
+#+END_SRC
+
 * Look 'n feel
 #+begin_src emacs-lisp
   (menu-bar-mode 1)
@@ -278,8 +285,7 @@ Take a mode and add it to multiple hooks.
 #+end_src
 *** Highlight symbols
 #+begin_src emacs-lisp
-(add-to-multiple-hooks 'highlight-symbol-mode
-                       *programming-hooks*)
+  (add-hook 'highlight-symbol-mode js2-mode-hook)
 #+end_src
 ** Dired
    Hide hidden files. You can toggle =dired-omit-mode= with C-x M-o.
