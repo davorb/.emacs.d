@@ -9,6 +9,8 @@
 
 * Font
 #+BEGIN_SRC emacs-lisp
-  (add-to-list 'default-frame-alist '(font . "Source Code Pro" ))
-  (set-face-attribute 'default t :font "Source Code Pro" )
+  (let
+      ((my-font "Hack"))
+    (add-to-list 'default-frame-alist '(font . my-font ))
+    (set-face-attribute 'default t :font my-font ))
 #+END_SRC
