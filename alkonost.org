@@ -15,7 +15,7 @@
 
 * Look 'n feel
 #+begin_src emacs-lisp
-(set-face-attribute 'default nil
-                    :font "Source Code Pro"
-                    :height 150)
+  (set-face-attribute 'default nil
+                      :font "Hack"
+                      :height 150)
 #+end_src
