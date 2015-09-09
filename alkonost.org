@@ -19,3 +19,7 @@
                       :font "Hack"
                       :height 150)
 #+end_src
+* Scheme
+#+BEGIN_SRC emacs-lisp
+  (setq geiser-active-implementations '(racket))
+#+END_SRC
