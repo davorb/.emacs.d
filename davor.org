@@ -224,6 +224,11 @@ Take a mode and add it to multiple hooks.
   (add-to-multiple-hooks 'highlight-sexp-mode *lisp-hooks*)
 #+end_src
 
+*** Scheme
+#+BEGIN_SRC emacs-lisp
+  (add-hook 'geiser-repl-mode #'paredit-mode)
+#+END_SRC
+
 ** Clojure
 #+BEGIN_SRC emacs-lisp
   (add-hook 'cider-mode-hook #'eldoc-mode)
