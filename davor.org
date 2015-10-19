@@ -412,3 +412,7 @@ Binding: C-=
   (setf yas-snippet-dirs "~/.emacs.d/snippets")
   (yas-reload-all)
 #+END_SRC
+* org-mode
+#+BEGIN_SRC emacs-lisp
+  (add-hook 'org-mode-hook #'flyspell-mode)
+#+END_SRC
