@@ -26,7 +26,8 @@ this will make sure that they are installed.
           nodejs-repl
           geiser
           paredit
-          rainbow-delimiters))
+          rainbow-delimiters
+          github-browse-file))
 
   (package-initialize)
 
