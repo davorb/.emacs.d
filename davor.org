@@ -11,6 +11,7 @@ this will make sure that they are installed.
           ack
           dockerfile-mode
           markdown-mode
+          writeroom-mode
           expand-region
           yaml-mode
           helm
