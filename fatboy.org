@@ -6,6 +6,10 @@
 
   (setq exec-path (append exec-path '("~/bin/bin")))
 #+END_SRC
+** Journal
+#+BEGIN_SRC emacs-lisp
+  (setf org-journal-dir "~/Documents/text/journal/")
+#+END_SRC
 
 * Font
 #+BEGIN_SRC emacs-lisp

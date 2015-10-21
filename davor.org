@@ -27,6 +27,7 @@ this will make sure that they are installed.
           geiser
           paredit
           rainbow-delimiters
+          org-journal
           github-browse-file))
 
   (package-initialize)
@@ -59,7 +60,7 @@ this will make sure that they are installed.
   (require 'highlight-symbol)
   (require 'js2-refactor)
   (require 'nodejs-repl)
-
+  (require 'org-journal)
 #+end_src
 ** Lisp
 #+BEGIN_SRC emacs-lisp
