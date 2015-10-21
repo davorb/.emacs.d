@@ -27,7 +27,6 @@ this will make sure that they are installed.
           geiser
           paredit
           rainbow-delimiters
-          org-bullets
           github-browse-file))
 
   (package-initialize)
@@ -60,10 +59,6 @@ this will make sure that they are installed.
   (require 'highlight-symbol)
   (require 'js2-refactor)
   (require 'nodejs-repl)
-
-  ;;; org-bullets
-  (require 'org-bullets)
-  (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
 
 #+end_src
 ** Lisp
