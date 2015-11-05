@@ -14,6 +14,7 @@ this will make sure that they are installed.
           writeroom-mode
           expand-region
           yaml-mode
+          glsl-mode
           helm
           helm-ack
           color-theme
