@@ -10,6 +10,13 @@
 #+BEGIN_SRC emacs-lisp
   (setf org-journal-dir "~/Documents/text/journal/")
 #+END_SRC
+* Enviroment variables
+  Use the libraries in my home directory
+#+BEGIN_SRC emacs-lisp
+  (setenv "LD_LIBRARY_PATH"
+          (concat "/home/davor/bin/lib"
+                  (getenv "LD_LIBRARY_PATH")))
+#+END_SRC
 
 * Font
 #+BEGIN_SRC emacs-lisp
