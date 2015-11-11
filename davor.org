@@ -20,6 +20,7 @@ this will make sure that they are installed.
           color-theme
           leuven-theme
           material-theme
+          afternoon-theme
           sass-mode
           highlight-sexp
           highlight-symbol
@@ -262,7 +263,7 @@ Take a mode and add it to multiple hooks.
    Good ones are =leuven=, =material=, =material-light=.
 
 #+BEGIN_SRC emacs-lisp
-  (load-theme 'material-light t)
+  (load-theme 'afternoon t)
 #+END_SRC
 
 * Settings
