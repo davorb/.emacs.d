@@ -11,7 +11,7 @@ this will make sure that they are installed.
           ack
           dockerfile-mode
           markdown-mode
-          writeroom-mode
+          darkroom
           expand-region
           yaml-mode
           glsl-mode
