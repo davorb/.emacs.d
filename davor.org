@@ -63,6 +63,7 @@ this will make sure that they are installed.
   (require 'js2-refactor)
   (require 'nodejs-repl)
   (require 'org-journal)
+  (require 'darkroom)
 #+end_src
 ** Lisp
 #+BEGIN_SRC emacs-lisp
