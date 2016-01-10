@@ -65,6 +65,9 @@ this will make sure that they are installed.
   (require 'nodejs-repl)
   (require 'org-journal)
   (require 'darkroom)
+
+  (require 'undo-tree)
+  (global-undo-tree-mode 1)
 #+end_src
 ** Lisp
 #+BEGIN_SRC emacs-lisp
@@ -365,6 +368,15 @@ Binding: C-=
 #+begin_src emacs-lisp
 (global-set-key (kbd "C-c i") 'increment-number-at-point)
 #+end_src
+*** undo-tree
+#+BEGIN_SRC emacs-lisp
+  (defalias 'redo 'undo-tree-redo)
+
+  (global-set-key (kbd "C-z") 'undo)
+  (global-set-key (kbd "C-M-z")'undo-tree-visualize)
+  (global-set-key (kbd "C-S-z") 'redo) ; mac style redo
+#+END_SRC
+
 ** Programming
 ** indent-buffer
 #+BEGIN_SRC emacs-lisp
