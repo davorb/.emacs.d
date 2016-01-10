@@ -20,9 +20,9 @@
 
 * Font
 #+BEGIN_SRC emacs-lisp
-  (set-face-attribute 'default nil
-                      :font "Hack"
-                      :height 110)
+  ;; (set-face-attribute 'default nil
+  ;;                     :font "Hack"
+  ;;                     :height 110)
 
 #+END_SRC
 * Lisp

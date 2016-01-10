@@ -7,6 +7,7 @@ this will make sure that they are installed.
   (require 'package)
   (setq davorb-packages
         '(js2-mode
+          undo-tree
           ace-jump-mode
           ack
           dockerfile-mode
@@ -267,7 +268,7 @@ Take a mode and add it to multiple hooks.
    Good ones are =leuven=, =material=, =material-light=.
 
 #+BEGIN_SRC emacs-lisp
-  (load-theme 'afternoon t)
+  (load-theme 'material-light t)
 #+END_SRC
 
 * Settings
