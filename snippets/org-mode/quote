@@ -1,0 +1,7 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: Quote Block
+# contributor: Davor Babic <davor@davor.se>
+# --
+#+BEGIN_QUOTE
+$0$>
+#+END_QUOTE
