@@ -271,7 +271,9 @@ Take a mode and add it to multiple hooks.
    Good ones are =leuven=, =material=, =material-light=.
 
 #+BEGIN_SRC emacs-lisp
-  (load-theme 'material-light t)
+  (if window-system
+      (load-theme 'material-light t)
+    (color-theme-standard))
 #+END_SRC
 
 * Settings
