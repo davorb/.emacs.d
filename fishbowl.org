@@ -1,7 +1,7 @@
 * Default directory
 #+begin_src emacs-lisp
-(setq default-directory "~/Development/")
-(cd "~/Development/")
+  (setq default-directory "~/dev/")
+  (cd "~/dev/")
 #+end_src
 * Toggle fullscreen
 #+begin_src emacs-lisp
@@ -22,4 +22,9 @@
 * Scheme
 #+BEGIN_SRC emacs-lisp
   (setq geiser-active-implementations '(racket))
+#+END_SRC
+* Haskell
+#+BEGIN_SRC emacs-lisp
+  (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
+  (add-to-list 'exec-path "~/.local/bin/")
 #+END_SRC
