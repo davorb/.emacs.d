@@ -23,9 +23,4 @@
   ;; (set-face-attribute 'default nil
   ;;                     :font "Hack"
   ;;                     :height 110)
-
-#+END_SRC
-* Lisp
-#+BEGIN_SRC emacs-lisp
-
 #+END_SRC
