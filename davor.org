@@ -8,6 +8,7 @@ this will make sure that they are installed.
   (setq davorb-packages
         '(js2-mode
           undo-tree
+          wc-mode
           ace-jump-mode
           ack
           dockerfile-mode
