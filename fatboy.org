@@ -24,3 +24,13 @@
   ;;                     :font "Hack"
   ;;                     :height 110)
 #+END_SRC
+* Custom functions
+** open-notes-folder
+   Direds to the folder that I keep notes in.
+
+#+BEGIN_SRC emacs-lisp
+  (defun open-notes-folder ()
+    "Direds to the folder that I keep notes in"
+    (interactive)
+    (dired "~/Documents/text/notes/"))
+#+END_SRC
