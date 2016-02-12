@@ -66,6 +66,7 @@ this will make sure that they are installed.
   (require 'nodejs-repl)
   (require 'org-journal)
   (require 'darkroom)
+  (require 'wc-mode)
 
   (require 'undo-tree)
   (global-undo-tree-mode 1)
