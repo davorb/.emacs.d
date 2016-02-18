@@ -6,33 +6,36 @@ this will make sure that they are installed.
   ;;; automatically install packages
   (require 'package)
   (setq davorb-packages
-        '(js2-mode
-          undo-tree
-          wc-mode
+        '(
+          helm-hoogle
+          js2-mode
           ace-jump-mode
           ack
-          dockerfile-mode
-          markdown-mode
+          afternoon-theme
+          color-theme
           darkroom
+          dockerfile-mode
           expand-region
-          yaml-mode
+          geiser
+          github-browse-file
           glsl-mode
           helm
           helm-ack
-          color-theme
-          leuven-theme
-          material-theme
-          afternoon-theme
-          sass-mode
           highlight-sexp
           highlight-symbol
           js2-refactor
+          leuven-theme
+          markdown-mode
+          material-theme
           nodejs-repl
-          geiser
+          org-journal
           paredit
           rainbow-delimiters
-          org-journal
-          github-browse-file))
+          sass-mode
+          undo-tree
+          wc-mode
+          yaml-mode
+          ))
 
   (package-initialize)
 
