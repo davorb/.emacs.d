@@ -7,8 +7,6 @@ this will make sure that they are installed.
   (require 'package)
   (setq davorb-packages
         '(
-          helm-hoogle
-          js2-mode
           ace-jump-mode
           ack
           afternoon-theme
@@ -23,6 +21,7 @@ this will make sure that they are installed.
           helm-ack
           highlight-sexp
           highlight-symbol
+          js2-mode
           js2-refactor
           leuven-theme
           markdown-mode
