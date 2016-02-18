@@ -263,6 +263,14 @@ Take a mode and add it to multiple hooks.
   (setq-default tab-width 4 indent-tabs-mode t)
   (define-key c-mode-base-map (kbd "RET") 'newline-and-indent)
 #+END_SRC
+** Haskell
+   =C-c h= will Hoogle the identifier at point.
+
+#+BEGIN_SRC emacs-lisp
+  (require 'haskell-mode)
+  (define-key haskell-mode-map "\C-ch" 'haskell-hoogle)
+#+END_SRC
+
 * Look 'n feel
 #+begin_src emacs-lisp
   (menu-bar-mode 1)
