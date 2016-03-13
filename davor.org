@@ -284,7 +284,9 @@ Take a mode and add it to multiple hooks.
 
 #+BEGIN_SRC emacs-lisp
   (if window-system
-      (load-theme 'leuven t)
+      (progn
+        (load-theme 'leuven t)
+        (setf hl-sexp-background-color "#efebe9"))
     (color-theme-standard))
 #+END_SRC
 
