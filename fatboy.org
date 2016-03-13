@@ -17,13 +17,6 @@
           (concat "/home/davor/bin/lib"
                   (getenv "LD_LIBRARY_PATH")))
 #+END_SRC
-
-* Font
-#+BEGIN_SRC emacs-lisp
-  (set-face-attribute 'default nil
-                      :font "Hack"
-                      :height 110)
-#+END_SRC
 * Custom functions
 ** open-notes-folder
    Direds to the folder that I keep notes in.
@@ -33,4 +26,11 @@
     "Direds to the folder that I keep notes in"
     (interactive)
     (dired "~/Documents/text/notes/"))
+#+END_SRC
+* Fonts
+#+BEGIN_SRC emacs-lisp
+  (if window-system
+      (set-face-attribute 'default nil
+                          :font "Hack"
+                          :height 110))
 #+END_SRC
