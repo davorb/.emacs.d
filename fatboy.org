@@ -34,3 +34,8 @@
                           :font "Hack"
                           :height 110))
 #+END_SRC
+* poetry-mode
+#+BEGIN_SRC emacs-lisp
+  (load-library "~/.emacs.d/poetry.el")
+  (require 'poetry)
+#+END_SRC
