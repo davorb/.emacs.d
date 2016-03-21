@@ -392,6 +392,14 @@ Binding: C-=
   (global-set-key (kbd "C-S-z") 'redo) ; mac style redo
 #+END_SRC
 
+*** window resize
+#+BEGIN_SRC emacs-lisp
+  (global-set-key (kbd "S-C-<left>") 'shrink-window-horizontally)
+  (global-set-key (kbd "S-C-<right>") 'enlarge-window-horizontally)
+  (global-set-key (kbd "S-C-<down>") 'shrink-window)
+  (global-set-key (kbd "S-C-<up>") 'enlarge-window)
+#+END_SRC
+
 ** Programming
 ** indent-buffer
 #+BEGIN_SRC emacs-lisp
