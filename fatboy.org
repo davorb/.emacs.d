@@ -39,3 +39,10 @@
   (load-library "~/.emacs.d/poetry.el")
   (require 'poetry)
 #+END_SRC
+* Look & Feel
+** Themes
+   Good ones are =leuven=, =material=, =material-light=.
+
+#+BEGIN_SRC emacs-lisp
+  (load-theme 'leuven t)
+#+END_SRC

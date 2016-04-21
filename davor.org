@@ -34,6 +34,7 @@ this will make sure that they are installed.
           undo-tree
           wc-mode
           yaml-mode
+          column-marker
           ))
 
   (package-initialize)
@@ -46,6 +47,7 @@ this will make sure that they are installed.
                    (dolist (package not-installed)
                      (package-install package))))))
 #+end_src
+
 * Initialization
 #+begin_src emacs-lisp
   (require 'helm-config)
@@ -72,6 +74,8 @@ this will make sure that they are installed.
 
   (require 'undo-tree)
   (global-undo-tree-mode 1)
+
+  (require 'column-marker)
 #+end_src
 ** Lisp
 #+BEGIN_SRC emacs-lisp
@@ -150,6 +154,22 @@ Take a mode and add it to multiple hooks.
 #+end_src
 
 * Programming modes
+** List of programming modes
+#+begin_src emacs-lisp
+  (defvar *programming-hooks*
+    (append
+     ,*lisp-hooks*
+     '(ruby-mode-hook
+       js2-mode-hook
+       js-mode-hook
+       c-mode-hook
+       shell-script-mode-hook
+       c++-mode-hook
+       html-mode-hook
+       css-mode-hook
+       haskell-mode-hook
+       java-mode-hook)))
+#+end_src
 ** List of lisp modes
 #+begin_src emacs-lisp
   (defvar *lisp-hooks*
@@ -162,24 +182,14 @@ Take a mode and add it to multiple hooks.
       lisp-interaction-mode-hook
       ielm-mode-hook))
 #+end_src
-** List of programming modes
-#+begin_src emacs-lisp
-(defvar *programming-hooks*
-  (append
-   *lisp-hooks*
-   '(ruby-mode-hook
-     js2-mode-hook
-     js-mode-hook
-     c-mode-hook
-     shell-script-mode-hook
-     c++-mode-hook
-     html-mode-hook
-     css-mode-hook
-     java-mode-hook)))
-#+end_src
 ** Programming in general
 #+begin_src emacs-lisp
   (require 'highlight-symbol)
+
+  (add-to-multiple-hooks #'(lambda ()
+                             (interactive)
+                             (column-marker-1 80))
+                         ,*programming-hooks*)
 #+end_src
 ** Git
 #+begin_src emacs-lisp
@@ -279,16 +289,6 @@ Take a mode and add it to multiple hooks.
   ;; Fontify the whole line for headings (with a background color).
   (setq org-fontify-whole-heading-line t)
 #+end_src
-** Themes
-   Good ones are =leuven=, =material=, =material-light=.
-
-#+BEGIN_SRC emacs-lisp
-  (if window-system
-      (progn
-        (load-theme 'leuven t))
-    (color-theme-standard))
-#+END_SRC
-
 * Settings
 ** Backups
 #+begin_src emacs-lisp

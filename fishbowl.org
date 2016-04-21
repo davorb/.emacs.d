@@ -19,6 +19,14 @@
                       :font "Hack"
                       :height 150)
 #+end_src
+** Theme
+#+BEGIN_SRC emacs-lisp
+  (if window-system
+      (progn
+        (load-theme 'leuven t))
+    (color-theme-standard))
+#+END_SRC
+
 * Scheme
 #+BEGIN_SRC emacs-lisp
   (setq geiser-active-implementations '(racket))
