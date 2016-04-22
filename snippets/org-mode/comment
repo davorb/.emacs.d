@@ -1,0 +1,7 @@
+#name : comment
+#key : comment
+#contributor : Davor Babic <davor@davor.se>
+# --
+#+BEGIN_COMMENT
+$0
+#+END_COMMENT
