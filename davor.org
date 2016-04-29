@@ -35,17 +35,22 @@ this will make sure that they are installed.
           wc-mode
           yaml-mode
           column-marker
+          circe
           ))
 
   (package-initialize)
 
-  (let ((not-installed (remove-if 'package-installed-p davorb-packages)))
-    (if not-installed
-        (if (y-or-n-p (format "there are %d packages to be installed. install them? "
-                              (length not-installed)))
-            (progn (package-refresh-contents)
-                   (dolist (package not-installed)
-                     (package-install package))))))
+  (defun install-packages (packages)
+    (let ((not-installed (remove-if 'package-installed-p packages)))
+      (if not-installed
+          (if (y-or-n-p (format "there are %d packages to be installed. install them? "
+                                (length not-installed)))
+              (progn (package-refresh-contents)
+                     (dolist (package not-installed)
+                       (package-install package)))))))
+
+  (install-packages davorb-packages)
+
 #+end_src
 
 * Initialization
@@ -464,4 +469,32 @@ Binding: C-=
 #+BEGIN_SRC emacs-lisp
   (setf yas-snippet-dirs "~/.emacs.d/snippets")
   (yas-reload-all)
+#+END_SRC
+* irc
+#+BEGIN_SRC emacs-lisp
+  (require 'circe)
+
+  (let ((private-file "~/.private.el"))
+    (when (file-exists-p private-file)
+      (load-file private-file)))
+
+  (setq circe-default-realname "davorb"
+        circe-ignore-list nil
+        circe-server-coding-system '(utf-8 . undecided)
+        circe-server-auto-join-channels '(("^freenode$" "#djvi"))
+        ;; password is defined in ~/.private.el
+        circe-nickserv-passwords `(("Freenode" ,freenode-passwd))
+        circe-network-options '(("Freenode"
+                                 :tls t
+                                 :nick "davorb"))
+
+        lui-max-buffer-size 30000
+        lui-flyspell-p t
+        lui-flyspell-alist '(("#djvi" "swedish")
+                             ("." "american")))
+
+  (eval-after-load "circe"
+    '(progn
+       (require 'lui-irc-colors)
+       (add-to-list 'lui-pre-output-hook 'lui-irc-colors)))
 #+END_SRC
