@@ -139,6 +139,16 @@ Take a mode and add it to multiple hooks.
       (indent-region (point-min) (point-max) nil)))
 #+END_SRC
 
+** unfill-paragraph
+#+BEGIN_SRC emacs-lisp
+  ;;; Stefan Monnier <foo at acm.org>. It is the opposite of fill-paragraph
+  ;;; Takes a multi-line paragraph and makes it into a single line of text.
+  (defun unfill-paragraph ()
+    (interactive)
+    (let ((fill-column (point-max)))
+      (fill-paragraph nil)))
+#+END_SRC
+
 * Starter-kit
 ** Yasnippet
 #+begin_src emacs-lisp
