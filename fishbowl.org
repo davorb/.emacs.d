@@ -23,8 +23,20 @@
 #+BEGIN_SRC emacs-lisp
   (if window-system
       (progn
-        (load-theme 'leuven t))
+        ;(load-theme 'leuven t)
+        (load-theme 'solarized t))
     (color-theme-standard))
+
+  (setq dark-or-light 'light)
+  (defun solarized-toggle ()
+    (interactive)
+    (if (eq dark-or-light 'light)
+        (progn
+          (setq dark-or-light 'dark)
+          (color-theme-solarized-dark))
+      (progn
+        (setq dark-or-light 'light)
+        (color-theme-solarized-light))))
 #+END_SRC
 
 * Scheme
