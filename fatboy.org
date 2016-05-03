@@ -1,3 +1,8 @@
+* Packages
+#+BEGIN_SRC emacs-lisp
+  (install-packages '(circe))
+#+END_SRC
+
 * Paths
 #+BEGIN_SRC emacs-lisp
   (setenv "PATH"
@@ -45,4 +50,32 @@
 
 #+BEGIN_SRC emacs-lisp
   (load-theme 'leuven t)
+#+END_SRC
+* irc
+#+BEGIN_SRC emacs-lisp
+  (require 'circe)
+
+  (let ((private-file "~/.private.el"))
+    (when (file-exists-p private-file)
+      (load-file private-file)))
+
+  (setq circe-default-realname "davorb"
+        circe-ignore-list nil
+        circe-server-coding-system '(utf-8 . undecided)
+        circe-server-auto-join-channels '(("^freenode$" "#djvi"))
+        ;; password is defined in ~/.private.el
+        circe-nickserv-passwords `(("Freenode" ,freenode-passwd))
+        circe-network-options '(("Freenode"
+                                 :tls t
+                                 :nick "davorb"))
+
+        lui-max-buffer-size 30000
+        lui-flyspell-p t
+        lui-flyspell-alist '(("#djvi" "swedish")
+                             ("." "american")))
+
+  (eval-after-load "circe"
+    '(progn
+       (require 'lui-irc-colors)
+       (add-to-list 'lui-pre-output-hook 'lui-irc-colors)))
 #+END_SRC

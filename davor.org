@@ -35,7 +35,7 @@ this will make sure that they are installed.
           wc-mode
           yaml-mode
           column-marker
-          circe
+          color-theme-solarized
           ))
 
   (package-initialize)
@@ -169,6 +169,18 @@ Take a mode and add it to multiple hooks.
 #+end_src
 
 * Programming modes
+** List of lisp modes
+#+begin_src emacs-lisp
+  (defvar *lisp-hooks*
+    '(emacs-lisp-mode-hook
+      common-lisp-mode-hook
+      lisp-mode-hook
+      slime-mode-hook
+      clojure-mode-hook
+      scheme-mode-hook
+      lisp-interaction-mode-hook
+      ielm-mode-hook))
+#+end_src
 ** List of programming modes
 #+begin_src emacs-lisp
   (defvar *programming-hooks*
@@ -184,18 +196,6 @@ Take a mode and add it to multiple hooks.
        css-mode-hook
        haskell-mode-hook
        java-mode-hook)))
-#+end_src
-** List of lisp modes
-#+begin_src emacs-lisp
-  (defvar *lisp-hooks*
-    '(emacs-lisp-mode-hook
-      common-lisp-mode-hook
-      lisp-mode-hook
-      slime-mode-hook
-      clojure-mode-hook
-      scheme-mode-hook
-      lisp-interaction-mode-hook
-      ielm-mode-hook))
 #+end_src
 ** Programming in general
 #+begin_src emacs-lisp
@@ -479,32 +479,4 @@ Binding: C-=
 #+BEGIN_SRC emacs-lisp
   (setf yas-snippet-dirs "~/.emacs.d/snippets")
   (yas-reload-all)
-#+END_SRC
-* irc
-#+BEGIN_SRC emacs-lisp
-  (require 'circe)
-
-  (let ((private-file "~/.private.el"))
-    (when (file-exists-p private-file)
-      (load-file private-file)))
-
-  (setq circe-default-realname "davorb"
-        circe-ignore-list nil
-        circe-server-coding-system '(utf-8 . undecided)
-        circe-server-auto-join-channels '(("^freenode$" "#djvi"))
-        ;; password is defined in ~/.private.el
-        circe-nickserv-passwords `(("Freenode" ,freenode-passwd))
-        circe-network-options '(("Freenode"
-                                 :tls t
-                                 :nick "davorb"))
-
-        lui-max-buffer-size 30000
-        lui-flyspell-p t
-        lui-flyspell-alist '(("#djvi" "swedish")
-                             ("." "american")))
-
-  (eval-after-load "circe"
-    '(progn
-       (require 'lui-irc-colors)
-       (add-to-list 'lui-pre-output-hook 'lui-irc-colors)))
 #+END_SRC
