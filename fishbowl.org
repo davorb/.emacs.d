@@ -23,20 +23,19 @@
 #+BEGIN_SRC emacs-lisp
   (if window-system
       (progn
-        ;(load-theme 'leuven t)
         (load-theme 'solarized t))
     (color-theme-standard))
 
-  (setq dark-or-light 'light)
   (defun solarized-toggle ()
+    "Switch between dark and light modes for the solarized theme"
     (interactive)
-    (if (eq dark-or-light 'light)
-        (progn
-          (setq dark-or-light 'dark)
-          (color-theme-solarized-dark))
-      (progn
-        (setq dark-or-light 'light)
-        (color-theme-solarized-light))))
+    (let ((current (frame-parameter nil 'background-mode)))
+      (cl-flet ((change-to (x)
+                           (disable-theme 'solarized)
+                           (set-frame-parameter nil 'background-mode x)
+                           (load-theme 'solarized t)))
+        (cond ((eq current 'light) (change-to 'dark))
+              ((eq current 'dark) (change-to 'light))))))
 #+END_SRC
 
 * Scheme
