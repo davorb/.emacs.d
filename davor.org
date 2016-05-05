@@ -149,6 +149,23 @@ Take a mode and add it to multiple hooks.
       (fill-paragraph nil)))
 #+END_SRC
 
+** solarized-toggle
+   Switch between dark and light modes when using the ~solarized~
+   theme.
+
+#+BEGIN_SRC emacs-lisp
+  (defun solarized-toggle ()
+    "Switch between dark and light modes for the solarized theme"
+    (interactive)
+    (let ((current (frame-parameter nil 'background-mode)))
+      (cl-flet ((change-to (x)
+                           (disable-theme 'solarized)
+                           (set-frame-parameter nil 'background-mode x)
+                           (load-theme 'solarized t)))
+        (cond ((eq current 'light) (change-to 'dark))
+              ((eq current 'dark) (change-to 'light))))))
+#+END_SRC
+
 * Starter-kit
 ** Yasnippet
 #+begin_src emacs-lisp

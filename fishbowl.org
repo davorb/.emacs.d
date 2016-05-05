@@ -25,19 +25,7 @@
       (progn
         (load-theme 'solarized t))
     (color-theme-standard))
-
-  (defun solarized-toggle ()
-    "Switch between dark and light modes for the solarized theme"
-    (interactive)
-    (let ((current (frame-parameter nil 'background-mode)))
-      (cl-flet ((change-to (x)
-                           (disable-theme 'solarized)
-                           (set-frame-parameter nil 'background-mode x)
-                           (load-theme 'solarized t)))
-        (cond ((eq current 'light) (change-to 'dark))
-              ((eq current 'dark) (change-to 'light))))))
 #+END_SRC
-
 * Scheme
 #+BEGIN_SRC emacs-lisp
   (setq geiser-active-implementations '(racket))
