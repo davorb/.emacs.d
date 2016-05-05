@@ -79,3 +79,8 @@
        (require 'lui-irc-colors)
        (add-to-list 'lui-pre-output-hook 'lui-irc-colors)))
 #+END_SRC
+
+  And hide the join/part spam
+#+BEGIN_SRC emacs-lisp
+  (setq circe-reduce-lurker-spam t)
+#+END_SRC
