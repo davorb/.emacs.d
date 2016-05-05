@@ -79,8 +79,14 @@
        (require 'lui-irc-colors)
        (add-to-list 'lui-pre-output-hook 'lui-irc-colors)))
 #+END_SRC
-
-  And hide the join/part spam
+** Hide the join/part spam
 #+BEGIN_SRC emacs-lisp
   (setq circe-reduce-lurker-spam t)
+#+END_SRC
+** Enable =lui= logging
+#+BEGIN_SRC emacs-lisp
+  (load "lui-logging" nil t)
+  (setq lui-logging-directory "~/logs")
+  (setq lui-logging-flush-delay 30)
+  (enable-lui-logging-globally)
 #+END_SRC
