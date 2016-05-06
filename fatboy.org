@@ -90,3 +90,18 @@
   (setq lui-logging-flush-delay 30)
   (enable-lui-logging-globally)
 #+END_SRC
+* sup
+  Enable =message-mode= when composing emails for =sup=.
+
+#+BEGIN_SRC emacs-lisp
+  (add-to-list 'auto-mode-alist '("/sup.*eml$" . message-mode))
+  (add-hook 'message-mode-hook (lambda ()
+                                 (auto-fill-mode 1)
+                                 (flyspell-mode 1)))
+
+  ;;; move the cursor down to the first empty line
+  (add-hook 'message-mode-hook (lambda ()
+    (auto-fill-mode 1)
+    (flyspell-mode 1)
+    (search-forward-regexp "^$")))
+#+END_SRC
