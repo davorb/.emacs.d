@@ -49,7 +49,7 @@
 #+BEGIN_SRC emacs-lisp
   (if window-system
       (set-face-attribute 'default nil
-                          :font "Hack"
+                          :font "Source Code Pro"
                           :height 110))
 #+END_SRC
 * irc
