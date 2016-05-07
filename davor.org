@@ -190,15 +190,20 @@ Take a mode and add it to multiple hooks.
 ** List of lisp modes
 #+begin_src emacs-lisp
   (defvar *lisp-hooks*
-    '(emacs-lisp-mode-hook
-      common-lisp-mode-hook
-      lisp-mode-hook
-      slime-mode-hook
+    '(
+      eval-expression-minibuffer-setup-hook
+      racket-mode-hook
       clojure-mode-hook
-      scheme-mode-hook
+      common-lisp-mode-hook
+      geiser-mode-hook
+      geiser-repl-mode-hook
+      ielm-mode-hook
       lisp-interaction-mode-hook
-      geiser-repl-mode
-      ielm-mode-hook))
+      lisp-mode-hook
+      scheme-mode-hook
+      slime-mode-hook
+  emacs-lisp-mode-hook
+      ))
 #+end_src
 ** List of programming modes
 #+begin_src emacs-lisp
@@ -270,9 +275,12 @@ Take a mode and add it to multiple hooks.
 
 ** Lisp
 #+BEGIN_SRC emacs-lisp
-  (add-to-multiple-hooks #'rainbow-delimiters-mode *lisp-hooks*)
-  (add-to-multiple-hooks #'paredit-mode *lisp-hooks*)
+  (add-to-multiple-hooks 'rainbow-delimiters-mode *lisp-hooks*)
+  (add-to-multiple-hooks 'enable-paredit-mode *lisp-hooks*)
   (add-to-multiple-hooks 'highlight-sexp-mode *lisp-hooks*)
+
+  (setf geiser-repl-mode-hook '(enable-paredit-mode))
+  (setf geiser-mode-hook '(enable-paredit-mode))
 #+END_SRC
 *** Scheme
 #+BEGIN_SRC emacs-lisp
