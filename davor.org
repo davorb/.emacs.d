@@ -197,6 +197,7 @@ Take a mode and add it to multiple hooks.
       clojure-mode-hook
       scheme-mode-hook
       lisp-interaction-mode-hook
+      geiser-repl-mode
       ielm-mode-hook))
 #+end_src
 ** List of programming modes
@@ -270,25 +271,13 @@ Take a mode and add it to multiple hooks.
 ** Lisp
 #+BEGIN_SRC emacs-lisp
   (add-to-multiple-hooks #'rainbow-delimiters-mode *lisp-hooks*)
+  (add-to-multiple-hooks #'paredit-mode *lisp-hooks*)
+  (add-to-multiple-hooks 'highlight-sexp-mode *lisp-hooks*)
 #+END_SRC
-
 *** Scheme
 #+BEGIN_SRC emacs-lisp
   (add-hook 'scheme-mode-hook #'geiser-mode)
-
 #+END_SRC
-
-*** Highlight sexp
-#+begin_src emacs-lisp
-  ;(setf hl-sexp-background-color "#a7adba")
-  (add-to-multiple-hooks 'highlight-sexp-mode *lisp-hooks*)
-#+end_src
-
-*** Scheme
-#+BEGIN_SRC emacs-lisp
-  (add-hook 'geiser-repl-mode #'paredit-mode)
-#+END_SRC
-
 ** Clojure
 #+BEGIN_SRC emacs-lisp
   (add-hook 'cider-mode-hook #'eldoc-mode)
