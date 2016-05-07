@@ -49,7 +49,8 @@
    Good ones are =leuven=, =material=, =material-light=.
 
 #+BEGIN_SRC emacs-lisp
-  (load-theme 'leuven t)
+  (install-packages '(dracula-theme))
+  (load-theme 'dracula t)
 #+END_SRC
 * irc
 #+BEGIN_SRC emacs-lisp

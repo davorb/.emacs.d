@@ -36,7 +36,6 @@ this will make sure that they are installed.
           wc-mode
           yaml-mode
           column-marker
-          color-theme-solarized
           ))
 
   (package-initialize)

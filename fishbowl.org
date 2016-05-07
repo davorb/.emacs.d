@@ -21,6 +21,7 @@
 #+end_src
 ** Theme
 #+BEGIN_SRC emacs-lisp
+  (install-packages '(color-theme-solarized))
   (if window-system
       (progn
         (load-theme 'solarized t))
