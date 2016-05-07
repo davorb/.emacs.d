@@ -32,13 +32,6 @@
     (interactive)
     (dired "~/Documents/text/notes/"))
 #+END_SRC
-* Fonts
-#+BEGIN_SRC emacs-lisp
-  (if window-system
-      (set-face-attribute 'default nil
-                          :font "Hack"
-                          :height 110))
-#+END_SRC
 * poetry-mode
 #+BEGIN_SRC emacs-lisp
   (load-library "~/.emacs.d/poetry.el")
@@ -51,6 +44,13 @@
 #+BEGIN_SRC emacs-lisp
   (install-packages '(dracula-theme))
   (load-theme 'dracula t)
+#+END_SRC
+** Fonts
+#+BEGIN_SRC emacs-lisp
+  (if window-system
+      (set-face-attribute 'default nil
+                          :font "Hack"
+                          :height 110))
 #+END_SRC
 * irc
 #+BEGIN_SRC emacs-lisp
