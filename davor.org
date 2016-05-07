@@ -167,6 +167,17 @@ Take a mode and add it to multiple hooks.
               ((eq current 'dark) (change-to 'light))))))
 #+END_SRC
 
+** open-in-browser
+#+BEGIN_SRC emacs-lisp
+  (defun open-in-browser ()
+    "Opens the current file with the default browser"
+    (interactive)
+    (if (buffer-file-name)
+        (shell-command (concat "xdg-open \"file://"
+                               (buffer-file-name)
+                               "\""))))
+#+END_SRC
+
 * Starter-kit
 ** Yasnippet
 #+begin_src emacs-lisp
