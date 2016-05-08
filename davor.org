@@ -177,7 +177,6 @@ Take a mode and add it to multiple hooks.
                                (buffer-file-name)
                                "\""))))
 #+END_SRC
-
 * Starter-kit
 ** Yasnippet
 #+begin_src emacs-lisp
@@ -249,6 +248,7 @@ Take a mode and add it to multiple hooks.
 ** JavaScript
 #+begin_src emacs-lisp
   (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+  (add-to-list 'auto-mode-alist '("\\.jsx\\'" . js2-jsx-mode))
   (eval-after-load "js2-mode"
     '(progn
        (setq js2-missing-semi-one-line-override t)
