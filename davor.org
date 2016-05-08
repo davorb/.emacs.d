@@ -258,24 +258,19 @@ Take a mode and add it to multiple hooks.
   (add-hook 'js2-mode-hook #'js2-refactor-mode)
   (add-hook 'js2-mode-hook #'electric-indent-mode)
   (add-hook 'js2-mode-hook #'electric-pair-mode)
-#+end_src
 
-#+begin_src emacs-lisp
-(font-lock-add-keywords 'espresso-mode
-                        '(("\\<\\(FIX\\|TODO\\|FIXME\\|HACK\\|REFACTOR\\):"
-                           1 font-lock-warning-face t)))
-#+end_src
-
-#+begin_src emacs-lisp
-(defun starter-kit-pp-json ()
-  "Pretty-print the json object following point."
-  (interactive)
-  (require 'json)
-  (let ((json-object (save-excursion (json-read))))
-    (switch-to-buffer "*json*")
-    (delete-region (point-min) (point-max))
-    (insert (pp json-object))
-    (goto-char (point-min))))
+  (font-lock-add-keywords 'espresso-mode
+                          '(("\\<\\(FIX\\|TODO\\|FIXME\\|HACK\\|REFACTOR\\):"
+                             1 font-lock-warning-face t)))
+  (defun pretty-print-json ()
+    "Pretty-print the json object following point."
+    (interactive)
+    (require 'json)
+    (let ((json-object (save-excursion (json-read))))
+      (switch-to-buffer "*json*")
+      (delete-region (point-min) (point-max))
+      (insert (pp json-object))
+      (goto-char (point-min))))
 #+end_src
 
 ** SASS
@@ -384,10 +379,6 @@ Take a mode and add it to multiple hooks.
 
 * Keybindings
 ** General
-*** Compile
-#+begin_src emacs-lisp
-(global-set-key [f9] 'compile)
-#+end_src
 *** ace-jump-mode
 "C-c SPC" ==> ace-jump-word-mode
 "C-u C-c SPC" ==> ace-jump-char-mode
@@ -399,10 +390,6 @@ Take a mode and add it to multiple hooks.
 Binding: C-=
 #+begin_src emacs-lisp
 (global-set-key (kbd "C-=") 'er/expand-region)
-#+end_src
-*** magit
-#+begin_src emacs-lisp
-(global-set-key (kbd "C-x g") 'magit-status)
 #+end_src
 *** electic-buffer-list
 #+begin_src emacs-lisp
@@ -440,14 +427,21 @@ Binding: C-=
   (global-set-key (kbd "S-C-<down>") 'shrink-window)
   (global-set-key (kbd "S-C-<up>") 'enlarge-window)
 #+END_SRC
-
 ** Programming
-** indent-buffer
+*** indent-buffer
 #+BEGIN_SRC emacs-lisp
   (global-set-key (kbd "C-c M-/") 'indent-buffer)
 #+END_SRC
 
 *** JavaScript
+**** close-sgml-tag
+	 Close an open SGML-tag with =C-c C-e=.
+#+BEGIN_SRC emacs-lisp
+  (add-hook 'js2-mode-hook
+            (lambda ()
+              (local-set-key (kbd "C-c M-e") 'sgml-close-tag)))
+#+END_SRC
+
 **** js2-refactor-mode
      extract function with *C-c C-x ef*
 
@@ -480,6 +474,14 @@ Binding: C-=
      27) `k` is `kill`: Kills to the end of the line, but does not cross semantic boundaries.
     #+begin_src emacs-lisp
   (js2r-add-keybindings-with-prefix "C-c C-x")
+#+end_src
+*** Compile
+#+begin_src emacs-lisp
+(global-set-key [f9] 'compile)
+#+end_src
+*** magit
+#+begin_src emacs-lisp
+(global-set-key (kbd "C-x g") 'magit-status)
 #+end_src
 
 * Skeletons
