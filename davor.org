@@ -372,11 +372,6 @@ Take a mode and add it to multiple hooks.
 #+BEGIN_SRC emacs-lisp
   (add-hook 'org-mode-hook #'flyspell-mode)
 #+END_SRC
-*** default dictionary
-#+BEGIN_SRC emacs-lisp
-  (setq ispell-dictionary "svenska")
-#+END_SRC
-
 * Keybindings
 ** General
 *** ace-jump-mode
