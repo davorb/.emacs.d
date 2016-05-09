@@ -434,14 +434,6 @@ Binding: C-=
 #+END_SRC
 
 *** JavaScript
-**** close-sgml-tag
-	 Close an open SGML-tag with =C-c C-e=.
-#+BEGIN_SRC emacs-lisp
-  (add-hook 'js2-mode-hook
-            (lambda ()
-              (local-set-key (kbd "C-c M-e") 'sgml-close-tag)))
-#+END_SRC
-
 **** js2-refactor-mode
      extract function with *C-c C-x ef*
 
