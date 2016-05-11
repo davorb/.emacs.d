@@ -283,7 +283,7 @@ Take a mode and add it to multiple hooks.
 #+BEGIN_SRC emacs-lisp
   (add-to-multiple-hooks 'rainbow-delimiters-mode *lisp-hooks*)
   (add-to-multiple-hooks 'enable-paredit-mode *lisp-hooks*)
-  (add-to-multiple-hooks 'highlight-sexp-mode *lisp-hooks*)
+  ;(add-to-multiple-hooks 'highlight-sexp-mode *lisp-hooks*)
 
   (setf geiser-repl-mode-hook '(enable-paredit-mode))
   (setf geiser-mode-hook '(enable-paredit-mode))
