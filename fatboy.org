@@ -56,6 +56,7 @@
 #+BEGIN_SRC emacs-lisp
   (require 'circe)
 
+  ;; password is defined in ~/.private.el
   (let ((private-file "~/.private.el"))
     (when (file-exists-p private-file)
       (load-file private-file)))
@@ -63,13 +64,12 @@
   (setq circe-default-realname "davorb"
         circe-ignore-list nil
         circe-server-coding-system '(utf-8 . undecided)
-        circe-server-auto-join-channels '(("^freenode$" "#djvi"))
-        ;; password is defined in ~/.private.el
-        circe-nickserv-passwords `(("Freenode" ,freenode-passwd))
         circe-network-options '(("Freenode"
                                  :tls t
-                                 :nick "davorb"))
-
+                                 :nick "davorb"
+                                 :channels ("#djvi")
+                                 :nickserv-password freenode-passwd))
+        circe-use-cycle-completion t      ; tab completion
         lui-max-buffer-size 30000
         lui-flyspell-p t
         lui-flyspell-alist '(("#djvi" "swedish")
@@ -87,9 +87,23 @@
 ** Enable =lui= logging
 #+BEGIN_SRC emacs-lisp
   (load "lui-logging" nil t)
-  (setq lui-logging-directory "~/logs")
+  (setq lui-logging-directory "~/.logs")
   (setq lui-logging-flush-delay 30)
   (enable-lui-logging-globally)
+#+END_SRC
+** Automatic Pasting
+   Intercept long pastes and ask if I want to use a paste service.
+
+#+BEGIN_SRC emacs-lisp
+  (require 'lui-autopaste)
+  (add-hook 'circe-channel-mode-hook 'enable-lui-autopaste)
+#+END_SRC
+** Track Bar
+   Track last reading position in buffer.
+
+#+BEGIN_SRC emacs-lisp
+  (setq lui-track-bar-behavior 'before-switch-to-buffer)
+  (enable-lui-track-bar)
 #+END_SRC
 * sup
   Enable =message-mode= when composing emails for =sup=.
