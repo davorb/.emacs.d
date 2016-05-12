@@ -52,6 +52,11 @@
                           :font "Source Code Pro"
                           :height 110))
 #+END_SRC
+** Smooth scrolling
+#+BEGIN_SRC emacs-lisp
+
+#+END_SRC
+
 * irc
 #+BEGIN_SRC emacs-lisp
   (require 'circe)
@@ -90,13 +95,6 @@
   (setq lui-logging-directory "~/.logs")
   (setq lui-logging-flush-delay 30)
   (enable-lui-logging-globally)
-#+END_SRC
-** Automatic Pasting
-   Intercept long pastes and ask if I want to use a paste service.
-
-#+BEGIN_SRC emacs-lisp
-  (require 'lui-autopaste)
-  (add-hook 'circe-channel-mode-hook 'enable-lui-autopaste)
 #+END_SRC
 ** Track Bar
    Track last reading position in buffer.
