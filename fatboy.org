@@ -69,11 +69,11 @@
   (setq circe-default-realname "davorb"
         circe-ignore-list nil
         circe-server-coding-system '(utf-8 . undecided)
-        circe-network-options '(("Freenode"
+        circe-network-options `(("Freenode"
                                  :tls t
                                  :nick "davorb"
                                  :channels ("#djvi")
-                                 :nickserv-password freenode-passwd))
+                                 :nickserv-password ,freenode-passwd))
         circe-use-cycle-completion t      ; tab completion
         lui-max-buffer-size 30000
         lui-flyspell-p t
