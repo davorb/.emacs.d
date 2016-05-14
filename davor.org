@@ -11,6 +11,7 @@ this will make sure that they are installed.
           ack
           afternoon-theme
           color-theme
+          column-marker
           darkroom
           dockerfile-mode
           expand-region
@@ -26,16 +27,16 @@ this will make sure that they are installed.
           leuven-theme
           markdown-mode
           material-theme
+          multiple-cursors
           nodejs-repl
+          notify
           org-journal
           paredit
           rainbow-delimiters
           sass-mode
-          notify
           undo-tree
           wc-mode
           yaml-mode
-          column-marker
           ))
 
   (package-initialize)
@@ -50,7 +51,6 @@ this will make sure that they are installed.
                        (package-install package)))))))
 
   (install-packages davorb-packages)
-
 #+end_src
 
 * Initialization
@@ -422,6 +422,20 @@ Binding: C-=
   (global-set-key (kbd "S-C-<down>") 'shrink-window)
   (global-set-key (kbd "S-C-<up>") 'enlarge-window)
 #+END_SRC
+*** multiple-cursors
+	The keybindings for this are:
+
+	- =C->= marks next like this
+	- =C-<= marks previous like this
+	- =C-c C-<= marks ~all~ like this.
+
+#+BEGIN_SRC emacs-lisp
+  (require 'multiple-cursors)
+  (global-set-key (kbd "C->") 'mc/mark-next-like-this)
+  (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+  (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
+#+END_SRC
+
 ** Programming
 *** indent-buffer
 #+BEGIN_SRC emacs-lisp
