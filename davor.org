@@ -273,12 +273,15 @@ Take a mode and add it to multiple hooks.
       (goto-char (point-min))))
 #+end_src
 
+** CSS
+#+BEGIN_SRC emacs-lisp
+  (setq css-indent-offset 2)
+#+END_SRC
 ** SASS
 #+begin_src emacs-lisp
 (setq-default scss-compile-at-save nil)
 (add-to-list 'auto-mode-alist '("\\.scss\\'" . sass-mode))
 #+end_src
-
 ** Lisp
 #+BEGIN_SRC emacs-lisp
   (add-to-multiple-hooks 'rainbow-delimiters-mode *lisp-hooks*)
