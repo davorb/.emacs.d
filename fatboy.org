@@ -143,7 +143,6 @@
   ;; allow for updating mail using 'U' in the main view:
   (setq mu4e-get-mail-command "offlineimap")
 
-
   ;; something about ourselves
   (setq
      user-mail-address "davor@davor.se"
@@ -151,4 +150,11 @@
      mu4e-compose-signature (concat
                              "Davor Babic\n"
                              "davor@davor.se\n"))
+
+  ;;; don't keep message buffers around
+  (setq message-kill-buffer-on-exit t)
+
+  ;;; display rich text and html messages properly
+  (setq mu4e-view-prefer-html t
+        mu4e-html2text-command "html2text -utf8 -width 72")
 #+END_SRC
