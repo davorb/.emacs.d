@@ -1,8 +1,8 @@
 * Packages
 #+BEGIN_SRC emacs-lisp
-  (install-packages '(circe))
+  (install-packages '(circe
+                      circe-notifications))
 #+END_SRC
-
 * Paths
 #+BEGIN_SRC emacs-lisp
   (setenv "PATH"
@@ -101,6 +101,17 @@
   (setq lui-track-bar-behavior 'before-switch-to-buffer)
   (enable-lui-track-bar)
 #+END_SRC
+** Notifications
+#+BEGIN_SRC emacs-lisp
+  (autoload 'enable-circe-notifications "circe-notifications"nil t)
+
+  (eval-after-load "circe-notifications"
+    '(setq setq circe-notifications-watch-strings
+           '("davor")))
+
+  (add-hook 'circe-server-connected-hook 'enable-circe-notifications)
+#+END_SRC
+
 * sup
   Enable =message-mode= when composing emails for =sup=.
 
