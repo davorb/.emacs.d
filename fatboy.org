@@ -169,3 +169,16 @@
   (setq mu4e-view-prefer-html t
         mu4e-html2text-command "html2text -utf8 -width 72")
 #+END_SRC
+
+  Configure the sending of email.
+
+#+BEGIN_SRC emacs-lisp
+  (setq message-send-mail-function 'smtpmail-send-it
+        starttls-use-gnutls t
+        smtpmail-starttls-credentials '(("smtp.gmail.com" 587 nil nil))
+        smtpmail-auth-credentials (expand-file-name "~/.authinfo")
+        smtpmail-default-smtp-server "smtp.gmail.com"
+        smtpmail-smtp-server "smtp.gmail.com"
+        smtpmail-smtp-service 587
+        smtpmail-debug-info t)
+#+END_SRC
