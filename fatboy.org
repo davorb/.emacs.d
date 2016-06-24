@@ -188,3 +188,12 @@
 #+BEGIN_SRC emacs-lisp
   (setq mu4e-update-interval 300)
 #+END_SRC
+
+  Hide the mailing-list field in the headers view.
+
+#+BEGIN_SRC emacs-lisp
+  (setq mu4e-headers-fields '((:human-date . 10)
+                              (:flags . 4)
+                              (:from . 20)
+                              (:subject)))
+#+END_SRC
