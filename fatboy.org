@@ -182,3 +182,9 @@
         smtpmail-smtp-service 587
         smtpmail-debug-info t)
 #+END_SRC
+
+  Check for new mail every five minutes.
+
+#+BEGIN_SRC emacs-lisp
+  (setq mu4e-update-interval 300)
+#+END_SRC
