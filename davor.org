@@ -6,7 +6,7 @@ this will make sure that they are installed.
   ;;; automatically install packages
   (require 'package)
   (setq davorb-packages
-        '(
+        '(gnu-apl-mode
           ace-jump-mode
           ack
           afternoon-theme
@@ -36,8 +36,7 @@ this will make sure that they are installed.
           sass-mode
           undo-tree
           wc-mode
-          yaml-mode
-          ))
+          yaml-mode))
 
   (package-initialize)
 
@@ -319,7 +318,6 @@ Take a mode and add it to multiple hooks.
   (require 'haskell-mode)
   (define-key haskell-mode-map "\C-ch" 'haskell-hoogle)
 #+END_SRC
-
 * Look 'n feel
 #+begin_src emacs-lisp
   (menu-bar-mode 1)
