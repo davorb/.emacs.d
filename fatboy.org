@@ -167,7 +167,7 @@
 
   ;;; display rich text and html messages properly
   (setq mu4e-view-prefer-html t
-        mu4e-html2text-command "html2text -utf8 -width 72")
+        mu4e-html2text-command "html2markdown | grep -v '&nbsp_place_holder;'")
 #+END_SRC
 
   Configure the sending of email.
