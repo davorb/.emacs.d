@@ -332,6 +332,20 @@ Take a mode and add it to multiple hooks.
   (require 'haskell-mode)
   (define-key haskell-mode-map "\C-ch" 'haskell-hoogle)
 #+END_SRC
+** APL
+*** gnu-apl-mode
+	Change the default input method.
+
+#+BEGIN_SRC emacs-lisp
+  (add-hook
+   'gnu-apl-interactive-mode-hook
+   (lambda () (set-input-method "APL-Z")))
+#+END_SRC
+
+	Hide the keyboard on startup.
+#+BEGIN_SRC emacs-lisp
+  (setf gnu-apl-show-keymap-on-startup nil)
+#+END_SRC
 * Look 'n feel
 #+begin_src emacs-lisp
   (menu-bar-mode 1)
