@@ -176,6 +176,17 @@ Take a mode and add it to multiple hooks.
                                (buffer-file-name)
                                "\""))))
 #+END_SRC
+** name-current-mode
+   Returns the name of the major mode in the current buffer.
+
+#+BEGIN_SRC emacs-lisp
+  (defun current-mode-name (&optional buffer-or-string)
+    "Returns the major mode associated with a buffer"
+    (buffer-local-value 'major-mode
+                        (if buffer-or-string (get-buffer buffer-or-string)
+                          (current-buffer))))
+#+END_SRC
+
 * Starter-kit
 ** Yasnippet
 #+begin_src emacs-lisp
