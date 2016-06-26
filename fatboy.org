@@ -32,6 +32,21 @@
     (interactive)
     (dired "~/Documents/text/notes/"))
 #+END_SRC
+* Programming
+** gnu-apl-mode
+   Change the font for APL buffers.
+
+#+BEGIN_SRC emacs-lisp
+  (add-to-multiple-hooks
+   (lambda ()
+     (setq buffer-face-mode-face '(:family
+                                   "APL385 Unicode"
+                                   :height 140
+                                   :width semi-condensed))
+     (buffer-face-mode))
+   '(gnu-apl-interactive-mode-hook
+     gnu-apl-mode-hook))
+#+END_SRC
 * poetry-mode
 #+BEGIN_SRC emacs-lisp
   (load-library "~/.emacs.d/poetry.el")
