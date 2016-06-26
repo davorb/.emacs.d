@@ -182,9 +182,12 @@ Take a mode and add it to multiple hooks.
 #+BEGIN_SRC emacs-lisp
   (defun current-mode-name (&optional buffer-or-string)
     "Returns the major mode associated with a buffer"
-    (buffer-local-value 'major-mode
-                        (if buffer-or-string (get-buffer buffer-or-string)
-                          (current-buffer))))
+    (interactive)
+    (message (symbol-name (buffer-local-value
+                           'major-mode
+                           (if buffer-or-string
+                               (get-buffer buffer-or-string)
+                             (current-buffer))))))
 #+END_SRC
 
 * Starter-kit
