@@ -346,6 +346,12 @@ Take a mode and add it to multiple hooks.
 #+BEGIN_SRC emacs-lisp
   (setf gnu-apl-show-keymap-on-startup nil)
 #+END_SRC
+
+	Dont' show tips on start.
+#+BEGIN_SRC emacs-lisp
+  (setq gnu-apl-show-tips-on-start nil)
+#+END_SRC
+
 * Look 'n feel
 #+begin_src emacs-lisp
   (menu-bar-mode 1)

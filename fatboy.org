@@ -46,6 +46,14 @@
      (buffer-face-mode))
    '(gnu-apl-interactive-mode-hook
      gnu-apl-mode-hook))
+
+  (add-hook 'gnu-apl-keymap-mode-hook
+            (lambda ()
+              (setq buffer-face-mode-face '(:family
+                                            "APL385 Unicode"
+                                            :height 120
+                                            :width semi-condensed))
+              (buffer-face-mode)))
 #+END_SRC
 * poetry-mode
 #+BEGIN_SRC emacs-lisp
