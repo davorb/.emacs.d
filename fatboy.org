@@ -65,8 +65,7 @@
    Good ones are =leuven=, =material=, =material-light=.
 
 #+BEGIN_SRC emacs-lisp
-  (install-packages '(dracula-theme))
-  (load-theme 'dracula t)
+  (load-theme 'material t)
 #+END_SRC
 ** Fonts
 #+BEGIN_SRC emacs-lisp
