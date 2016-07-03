@@ -337,9 +337,10 @@ Take a mode and add it to multiple hooks.
 	Change the default input method.
 
 #+BEGIN_SRC emacs-lisp
-  (add-hook
-   'gnu-apl-interactive-mode-hook
-   (lambda () (set-input-method "APL-Z")))
+  (add-to-multiple-hooks
+   (lambda () (set-input-method "APL-Z"))
+   '(gnu-apl-interactive-mode-hook
+     gnu-apl-mode-hook))
 #+END_SRC
 
 	Hide the keyboard on startup.
