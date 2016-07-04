@@ -258,6 +258,11 @@ Take a mode and add it to multiple hooks.
 (setq magit-last-seen-setup-instructions "1.4.0")
 #+end_src
 
+   Disable emacs' built in =vc= package for performance reasons,
+   because I don't use it anyway.
+#+BEGIN_SRC emacs-lisp
+  (setq vc-handled-backends nil)
+#+END_SRC
 ** JavaScript
 #+begin_src emacs-lisp
   (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
