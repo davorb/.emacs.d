@@ -72,11 +72,6 @@
   (if window-system
       (set-default-font "Terminus-12"))
 #+END_SRC
-** Smooth scrolling
-#+BEGIN_SRC emacs-lisp
-
-#+END_SRC
-
 * irc
 #+BEGIN_SRC emacs-lisp
   (require 'circe)
