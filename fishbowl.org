@@ -3,29 +3,16 @@
   (setq default-directory "~/dev/")
   (cd "~/dev/")
 #+end_src
-* Toggle fullscreen
-#+begin_src emacs-lisp
-(defun toggle-fullscreen ()
-  "Toggle full screen"
-  (interactive)
-  (set-frame-parameter
-     nil 'fullscreen
-     (when (not (frame-parameter nil 'fullscreen)) 'fullboth)))
-#+end_src
-
 * Look 'n feel
+** Font
 #+begin_src emacs-lisp
   (set-face-attribute 'default nil
-                      :font "Hack"
-                      :height 150)
+                      :font "Source Code Pro"
+                      :height 100)
 #+end_src
 ** Theme
 #+BEGIN_SRC emacs-lisp
-  (install-packages '(color-theme-solarized))
-  (if window-system
-      (progn
-        (load-theme 'solarized t))
-    (color-theme-standard))
+  (load-theme 'material t)
 #+END_SRC
 * Scheme
 #+BEGIN_SRC emacs-lisp

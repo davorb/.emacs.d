@@ -6,7 +6,9 @@ this will make sure that they are installed.
   ;;; automatically install packages
   (require 'package)
   (setq davorb-packages
-        '(gnu-apl-mode
+        '(
+          gnu-apl-mode
+          haskell-mode
           ace-jump-mode
           ack
           afternoon-theme
@@ -36,7 +38,8 @@ this will make sure that they are installed.
           sass-mode
           undo-tree
           wc-mode
-          yaml-mode))
+          yaml-mode
+          ))
 
   (package-initialize)
 
@@ -51,7 +54,6 @@ this will make sure that they are installed.
 
   (install-packages davorb-packages)
 #+end_src
-
 * Initialization
 #+begin_src emacs-lisp
   (require 'helm-config)
