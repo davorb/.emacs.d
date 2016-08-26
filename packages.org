@@ -19,7 +19,7 @@
   (install-packages '(
                       ace-jump-mode
                       ack
-                      column-marker
+                      column-markeres
                       darkroom
                       expand-region
                       highlight-sexp
