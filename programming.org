@@ -1,7 +1,83 @@
 #+TITLE: Programming
 
+* General programming settings
+** Notify me of long lines
+   Show a marker if a line is longer than 80 characters.
+#+BEGIN_SRC emacs-lisp
+  (add-to-multiple-hooks #'(lambda ()
+                             (interactive)
+                             (column-marker-1 80))
+                         ,*programming-hooks*)
+#+END_SRC
+
 * Keybindings
 ** Indent buffer
 #+BEGIN_SRC emacs-lisp
   (global-set-key (kbd "C-c M-/") 'indent-buffer)
+#+END_SRC
+* Languages
+** Lists of language hooks
+*** Generalized list of programming hooks
+#+BEGIN_SRC emacs-lisp
+  (defvar *programming-hooks*
+    (append
+     ,*lisp-hooks*
+     '(ruby-mode-hook
+       js2-mode-hook
+       js-mode-hook
+       c-mode-hook
+       shell-script-mode-hook
+       c++-mode-hook
+       html-mode-hook
+       css-mode-hook
+       haskell-mode-hook
+       java-mode-hook)))
+#+END_SRC
+
+*** List of LISP hooks
+#+BEGIN_SRC emacs-lisp
+  (defvar *lisp-hooks*
+    '(
+      eval-expression-minibuffer-setup-hook
+      racket-mode-hook
+      clojure-mode-hook
+      common-lisp-mode-hook
+      geiser-mode-hook
+      geiser-repl-mode-hook
+      ielm-mode-hook
+      lisp-interaction-mode-hook
+      lisp-mode-hook
+      scheme-mode-hook
+      slime-mode-hook
+      emacs-lisp-mode-hook
+      ))
+#+END_SRC
+
+** LISP
+   Enable paredit and eldoc.
+#+BEGIN_SRC emacs-lisp
+  (require 'paredit)
+  ;(autoload 'enable-paredit-mode "paredit" "Turn on pseudo-structural editing of Lisp code." t)
+  (add-hook 'emacs-lisp-mode-hook #'enable-paredit-mode)
+  (add-hook 'eval-expression-minibuffer-setup-hook #'enable-paredit-mode)
+  (add-hook 'ielm-mode-hook #'enable-paredit-mode)
+  (add-hook 'lisp-mode-hook #'enable-paredit-mode)
+  (add-hook 'lisp-interaction-mode-hook #'enable-paredit-mode)
+  (add-hook 'scheme-mode-hook #'enable-paredit-mod'e)
+  (setf geiser-repl-mode-hook '(enable-paredit-mode))
+  (setf geiser-mode-hook '(enable-paredit-mode))
+  ;; consider changing a few of these to a
+  ;(add-to-multiple-hooks 'highlight-sexp-mode *lisp-hooks*)
+
+  (require 'eldoc)
+  (eldoc-add-command 'paredit-backward-delete
+                     'paredit-close-round)
+#+END_SRC
+
+
+*** Scheme
+    Enable geiser-mode for Scheme.
+
+#+BEGIN_SRC emacs-lisp
+  (add-hook 'scheme-mode-hook #'geiser-mode)
 #+END_SRC

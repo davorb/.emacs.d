@@ -1,0 +1,43 @@
+#+TITLE: Custom functions
+
+* insert-current-date
+#+BEGIN_SRC emacs-lisp
+  (defun insert-current-date () (interactive)
+         (insert (shell-command-to-string "echo -n $(date +%Y-%m-%d)")))
+#+END_SRC
+
+* add-to-multiple-hooks
+#+BEGIN_SRC emacs-lisp
+  (defun add-to-multiple-hooks (function hooks)
+    "Take a mode and add it to multiple hooks"
+    (mapc (lambda (hook)
+      (add-hook hook function)) hooks))'
+#+END_SRC
+
+* find-user-init-file
+#+BEGIN_SRC emacs-lisp
+  (defun find-user-init-file ()
+    "Edit your .emacs file instantly."
+    (interactive)
+    (find-file user-init-file))
+#+END_SRC
+
+* indent-buffer
+#+BEGIN_SRC emacs-lisp
+  (defun indent-buffer ()
+    (interactive)
+    (save-excursion
+      (indent-region (point-min) (point-max) nil)))
+#+END_SRC
+
+* name-current-mode
+#+BEGIN_SRC emacs-lisp
+  (defun current-mode-name (&optional buffer-or-string)
+    "Returns the major mode associated with a buffer"
+    (interactive)
+    (message (symbol-name (buffer-local-value
+                           'major-mode
+                           (if buffer-or-string
+                               (get-buffer buffer-or-string)
+                             (current-buffer))))))
+#+END_SRC
