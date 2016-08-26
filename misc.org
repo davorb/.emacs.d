@@ -1,0 +1,27 @@
+#+TITLE: Misc
+
+* Transparently open compressed files
+#+BEGIN_SRC emacs-lisp
+  (auto-compression-mode t)
+#+END_SRC
+
+* Highlight matching parentheses when the point is on them.
+#+BEGIN_SRC emacs-lisp
+  (show-paren-mode t)
+#+END_SRC
+
+* Make diffs prettier
+  Default to unified diffs.
+
+#+BEGIN_SRC emacs-lisp
+  (setq diff-switches "-u")
+#+END_SRC
+
+  And add some color to jazz things up.
+
+#+BEGIN_SRC emacs-lisp
+  (eval-after-load 'diff-mode
+    '(progn
+       (set-face-foreground 'diff-added "green4")
+       (set-face-foreground 'diff-removed "red3")))
+#+END_SRC

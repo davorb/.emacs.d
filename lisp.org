@@ -1,0 +1,31 @@
+#+TITLE: Lisp Programming
+
+* Define keys
+#+BEGIN_SRC emacs-lisp
+  (define-key read-expression-map (kbd "TAB") 'lisp-complete-symbol)
+  (define-key lisp-mode-shared-map (kbd "RET") 'reindent-then-newline-and-indent)
+  (define-key lisp-mode-shared-map (kbd "C-\\") 'lisp-complete-symbol)
+  (define-key lisp-mode-shared-map (kbd "C-c v") 'eval-buffer)
+#+END_SRC
+
+* Paredit
+#+BEGIN_SRC emacs-lisp
+  (package-install 'paredit)
+  (require 'paredit)
+  (defun turn-on-paredit () (paredit-mode +1))
+#+END_SRC
+
+* Emacs Lisp
+#+BEGIN_SRC emacs-lisp
+  (add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)
+  (add-hook 'emacs-lisp-mode-hook 'starter-kit-remove-elc-on-save)
+  (add-hook 'emacs-lisp-mode-hook 'turn-on-paredit)
+
+  (defun starter-kit-remove-elc-on-save ()
+    "If you're saving an elisp file, likely the .elc is no longer valid."
+    (make-local-variable 'after-save-hook)
+    (add-hook 'after-save-hook
+              (lambda ()
+                (if (file-exists-p (concat buffer-file-name "c"))
+                    (delete-file (concat buffer-file-name "c"))))))
+#+END_SRC

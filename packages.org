@@ -1,0 +1,47 @@
+#+TITLE Packages
+
+* Installing packages
+  Simplify the installation of lists of packages.
+#+begin_src emacs-lisp
+  (require 'cl)
+  (defun install-packages (packages)
+    (let ((not-installed (remove-if 'package-installed-p packages)))
+      (if not-installed
+          (if (y-or-n-p (format "there are %d packages to be installed. install them? "
+                                (length not-installed)))
+              (progn (package-refresh-contents)
+                     (dolist (package not-installed)
+                       (package-install package)))))))
+#+end_src
+
+** General purpose packages
+#+begin_src emacs-lisp
+  (install-packages '(
+                      ace-jump-mode
+                      ack
+                      darkroom
+                      expand-region
+                      highlight-sexp
+                      highlight-symbol
+                      markdown-mode
+                      undo-tree
+                      wc-mode
+                      yaml-mode
+                      yasnippet
+                      ))
+#+end_src
+* Initialization
+** General purpose
+#+begin_src emacs-lisp
+  (require 'ace-jump-mode)
+  (require 'expand-region)
+  (require 'highlight-symbol)
+  (require 'wc-mode)
+
+  (require 'undo-tree)
+  (global-undo-tree-mode t)
+
+  (require 'yasnippet)
+  (yas-global-mode t)
+#+end_src
+

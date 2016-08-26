@@ -1,0 +1,7 @@
+#+TITLE: Programming
+
+* Keybindings
+** Indent buffer
+#+BEGIN_SRC emacs-lisp
+  (global-set-key (kbd "C-c M-/") 'indent-buffer)
+#+END_SRC

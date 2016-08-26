@@ -1,0 +1,31 @@
+#+TITLE Dawn Emacs Config
+
+* Package archives
+#+begin_src emacs-lisp
+  (setq package-archives
+        '(("gnu"         . "http://elpa.gnu.org/packages/")
+          ("org"         . "http://orgmode.org/elpa/")
+          ("melpa"       . "http://melpa.org/packages/")
+          ("marmalade"   . "http://marmalade-repo.org/packages/")))
+  (package-initialize)
+#+end_src
+
+* Backups
+#+BEGIN_SRC emacs-lisp
+  (setq backup-directory-alist
+        '(("." . "~/.saves")))
+  (setq delete-old-versions t
+        kept-new-versions 6
+        kept-old-versions 2
+        version-control t)
+  (setq backup-by-copying t) ; safest, but slowest
+#+END_SRC
+
+* Remove trailing whitespace
+#+BEGIN_SRC emacs-lisp
+  (add-hook 'before-save-hook 'delete-trailing-whitespace)
+#+END_SRC
+* org-mode
+#+BEGIN_SRC emacs-lisp
+  (setq org-src-fontify-natively t)
+#+END_SRC

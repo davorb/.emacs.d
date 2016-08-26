@@ -1,0 +1,19 @@
+#+TITLE: Look & Feel
+
+* Font
+#+BEGIN_SRC emacs-lisp
+  (set-face-attribute 'default nil
+                      :font "Source Code Pro"
+                      :height 130)
+#+END_SRC
+
+* Theme
+#+BEGIN_SRC emacs-lisp
+  (package-install 'dracula-theme)
+  (load-theme 'dracula t)
+#+END_SRC
+
+* Hide the toolbar
+#+BEGIN_SRC emacs-lisp
+  (tool-bar-mode -1)
+#+END_SRC
