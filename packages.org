@@ -19,6 +19,7 @@
   (install-packages '(
                       ace-jump-mode
                       ack
+                      column-marker
                       darkroom
                       expand-region
                       highlight-sexp
@@ -44,4 +45,3 @@
   (require 'yasnippet)
   (yas-global-mode t)
 #+end_src
-
