@@ -1,0 +1,6 @@
+#+TITLE: System specific conf for Fatboy
+
+* Font size
+#+BEGIN_SRC emacs-lisp
+  (set-face-attribute 'default nil :height 110)
+#+END_SRC

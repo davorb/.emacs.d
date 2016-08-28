@@ -3,8 +3,7 @@
 * Font
 #+BEGIN_SRC emacs-lisp
   (set-face-attribute 'default nil
-                      :font "Source Code Pro"
-                      :height 130)
+                      :font "Source Code Pro")
 #+END_SRC
 
 * Theme
