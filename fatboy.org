@@ -4,3 +4,99 @@
 #+BEGIN_SRC emacs-lisp
   (set-face-attribute 'default nil :height 110)
 #+END_SRC
+* Paths
+#+BEGIN_SRC emacs-lisp
+  (setenv "PATH"
+          (concat "/home/davor/bin/bin:"
+                  (getenv "PATH")))
+
+  (setq exec-path (append exec-path '("~/bin/bin")))
+#+END_SRC
+
+  Use the libraries in my home directory
+#+BEGIN_SRC emacs-lisp
+  (setenv "LD_LIBRARY_PATH"
+          (concat "/home/davor/bin/lib"
+                  (getenv "LD_LIBRARY_PATH")))
+#+END_SRC
+
+* irc
+#+BEGIN_SRC emacs-lisp
+  (package-install 'circe)
+
+
+  ;; password is defined in ~/.private.el
+  (let ((private-file "~/.private.el"))
+    (when (file-exists-p private-file)
+      (load-file private-file)))
+
+  (setq circe-default-realname "davorb"
+        circe-ignore-list nil
+        circe-server-coding-system '(utf-8 . undecided)
+        circe-network-options `(("Freenode"
+                                 :tls t
+                                 :nick "davorb"
+                                 :channels ("#djvi")
+                                 :nickserv-password ,freenode-passwd))
+        circe-use-cycle-completion t      ; tab completion
+        lui-max-buffer-size 30000
+        lui-flyspell-p t
+        lui-flyspell-alist '(("#djvi" "swedish")
+                             ("." "american")))
+
+  (eval-after-load "circe"
+    '(progn
+       (require 'lui-irc-colors)
+       (add-to-list 'lui-pre-output-hook 'lui-irc-colors)))
+#+END_SRC
+
+  Hide the join/part spam.
+#+BEGIN_SRC emacs-lisp
+  (setq circe-reduce-lurker-spam t)
+#+END_SRC
+
+  Enable =lui= logging.
+#+BEGIN_SRC emacs-lisp
+  (load "lui-logging" nil t)
+  (setq lui-logging-directory "~/.logs")
+  (setq lui-logging-flush-delay 30)
+  (enable-lui-logging-globally)
+#+END_SRC
+
+  Track last reading position in buffer.
+#+BEGIN_SRC emacs-lisp
+  (setq lui-track-bar-behavior 'before-switch-to-buffer)
+  (enable-lui-track-bar)
+#+END_SRC
+
+
+* Custom functions
+** open-notes-folder
+#+BEGIN_SRC emacs-lisp
+  (defun open-notes-folder ()
+    "Direds to the folder that I keep notes in"
+    (interactive)
+    (dired "~/Documents/text/notes/"))
+#+END_SRC
+* Programming
+** gnu-apl-mode
+   Change the font for APL buffers.
+#+BEGIN_SRC emacs-lisp
+  (add-to-multiple-hooks
+   (lambda ()
+     (setq buffer-face-mode-face '(:family
+                                   "APL385 Unicode"
+                                   :height 140
+                                   :width semi-condensed))
+     (buffer-face-mode))
+   '(gnu-apl-interactive-mode-hook
+     gnu-apl-mode-hook))
+
+  (add-hook 'gnu-apl-keymap-mode-hook
+            (lambda ()
+              (setq buffer-face-mode-face '(:family
+                                            "APL385 Unicode"
+                                            :height 120
+                                            :width semi-condensed))
+              (buffer-face-mode)))
+#+END_SRC
