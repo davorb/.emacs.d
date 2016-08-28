@@ -1,0 +1,17 @@
+#+TITLE: Helm
+
+#+BEGIN_SRC emacs-lisp
+  (require 'helm-config)
+
+  (use-package helm-mode
+               :config (helm-mode 1))
+  (use-package helm-adaptive
+               :config (helm-adaptive-mode 1))
+  (use-package helm-ring
+               :config (helm-push-mark-mode 1))
+  (use-package helm-utils
+               ;; Popup buffer-name or filename in grep/moccur/imenu-all etc...
+               :config (helm-popup-tip-mode 1))
+  (use-package helm-sys
+               :config (helm-top-poll-mode 1))
+#+END_SRC

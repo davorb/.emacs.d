@@ -1,6 +1,17 @@
 #+TITLE Packages
 
+* Package archives
+#+begin_src emacs-lisp
+  (setq package-archives
+        '(("gnu"         . "http://elpa.gnu.org/packages/")
+          ("org"         . "http://orgmode.org/elpa/")
+          ("melpa"       . "http://melpa.org/packages/")
+          ("marmalade"   . "http://marmalade-repo.org/packages/")))
+  (package-initialize)
+#+end_src
+
 * Installing packages
+** Define function =install-packages=
   Simplify the installation of lists of packages.
 #+begin_src emacs-lisp
   (require 'cl)
@@ -22,10 +33,12 @@
                       column-marker
                       darkroom
                       expand-region
+                      helm
                       highlight-sexp
                       highlight-symbol
                       markdown-mode
                       undo-tree
+                      use-package
                       wc-mode
                       yaml-mode
                       yasnippet
