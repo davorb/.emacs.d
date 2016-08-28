@@ -1,0 +1,44 @@
+#+TITLE: Ruby
+
+* Enhanced ruby mode
+#+BEGIN_SRC emacs-lisp
+  (package-install 'enh-ruby-mode)
+  (add-to-list 'auto-mode-alist
+               '("\\(?:\\.rb\\|ru\\|rake\\|thor\\|jbuilder\\|gemspec\\|podspec\\|/\\(?:Gem\\|Rake\\|Cap\\|Thor\\|Vagrant\\|Guard\\|Pod\\)file\\)\\'" . enh-ruby-mode))
+#+END_SRC
+
+* Keybindings
+#+BEGIN_SRC emacs-lisp
+  (eval-after-load 'ruby-mode
+    '(progn
+       (define-key ruby-mode-map (kbd "RET") 'reindent-then-newline-and-indent)
+       (define-key ruby-mode-map (kbd "C-M-h") 'backward-kill-word)))
+#+END_SRC
+
+* yaml-mode
+#+BEGIN_SRC emacs-lisp
+  (require 'yaml-mode)
+  (add-to-list 'auto-mode-alist '("\\.ya?ml$" . yaml-mode))
+#+END_SRC
+
+* We never want to edit rubinius byte code
+#+BEGIN_SRC emacs-lisp
+  (add-to-list 'completion-ignored-extensions ".rbc")
+#+END_SRC
+
+* Compilation
+  Clear the compilation buffer between test runs.
+#+BEGIN_SRC emacs-lisp
+  (eval-after-load 'ruby-compilation
+    '(progn
+       (defadvice ruby-do-run-w/compilation (before kill-buffer (name cmdlist))
+         (let ((comp-buffer-name (format "*%s*" name)))
+           (when (get-buffer comp-buffer-name)
+             (with-current-buffer comp-buffer-name
+               (delete-region (point-min) (point-max))))))
+       (ad-activate 'ruby-do-run-w/compilation)))
+#+END_SRC
+* auto-complete
+#+BEGIN_SRC emacs-lisp
+  (add-to-list 'ac-modes 'enh-ruby-mode)
+#+END_SRC

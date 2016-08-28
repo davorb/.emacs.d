@@ -18,8 +18,6 @@
 (org-babel-load-file "~/.emacs.d/keybindings.org")
 (org-babel-load-file "~/.emacs.d/programming.org")
 (org-babel-load-file "~/.emacs.d/look.org")
-(org-babel-load-file "~/.emacs.d/git.org")
-(org-babel-load-file "~/.emacs.d/lisp.org")
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -28,7 +26,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (column-marker paredit dracula-theme magit yasnippet expand-region yaml-mode wc-mode undo-tree markdown-mode highlight-symbol highlight-sexp darkroom ack ace-jump-mode))))
+    (enh-ruby-mode auto-complete column-marker paredit dracula-theme magit yasnippet expand-region yaml-mode wc-mode undo-tree markdown-mode highlight-symbol highlight-sexp darkroom ack ace-jump-mode))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

@@ -1,5 +1,14 @@
 #+TITLE: Programming
 
+* Install packages
+#+BEGIN_SRC emacs-lisp
+  (install-packages '(auto-complete))
+#+END_SRC
+* Enable =auto-complete=
+#+BEGIN_SRC emacs-lisp
+  (ac-config-default)
+#+END_SRC
+
 * List of languages
 ** Lists of language hooks
 
@@ -81,4 +90,11 @@
 ** Indent buffer
 #+BEGIN_SRC emacs-lisp
   (global-set-key (kbd "C-c M-/") 'indent-buffer)
+#+END_SRC
+* Load other programming modes
+#+BEGIN_SRC emacs-lisp
+  (org-babel-load-file "~/.emacs.d/git.org")
+  (org-babel-load-file "~/.emacs.d/lisp.org")
+  (org-babel-load-file "~/.emacs.d/ruby.org")
+  (org-babel-load-file "~/.emacs.d/web.org")
 #+END_SRC

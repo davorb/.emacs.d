@@ -1,0 +1,6 @@
+#+TITLE: Web-mode
+
+* Enable auto-complete
+#+BEGIN_SRC emacs-lisp
+  (add-to-list 'ac-modes 'web-mode)
+#+END_SRC
