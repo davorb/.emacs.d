@@ -2,7 +2,8 @@
 
 * Install packages
 #+BEGIN_SRC emacs-lisp
-  (install-packages '(auto-complete))
+  (install-packages '(auto-complete
+                      paredit))
 #+END_SRC
 * Enable =auto-complete=
 #+BEGIN_SRC emacs-lisp
