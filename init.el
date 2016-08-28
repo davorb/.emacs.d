@@ -18,6 +18,7 @@
 (org-babel-load-file "~/.emacs.d/keybindings.org")
 (org-babel-load-file "~/.emacs.d/programming.org")
 (org-babel-load-file "~/.emacs.d/look.org")
+(load-host-specific-conf)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.

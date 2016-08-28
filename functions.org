@@ -41,3 +41,11 @@
                                (get-buffer buffer-or-string)
                              (current-buffer))))))
 #+END_SRC
+* load-host-specific-conf
+#+BEGIN_SRC emacs-lisp
+  (defun load-host-specific-conf ()
+    (cl-flet ((load-if-exists (name)
+                              (if (file-exists-p name)
+                                  (org-babel-load-file name))))
+      (load-if-exists (concat "~/.emacs.d/" system-name ".org"))))
+#+END_SRC
