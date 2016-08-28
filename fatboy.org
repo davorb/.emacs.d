@@ -69,7 +69,6 @@
   (enable-lui-track-bar)
 #+END_SRC
 
-
 * Custom functions
 ** open-notes-folder
 #+BEGIN_SRC emacs-lisp

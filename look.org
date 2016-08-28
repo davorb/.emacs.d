@@ -1,9 +1,20 @@
 #+TITLE: Look & Feel
 
+* Functions
+  Check if a font exists or not.
+#+BEGIN_SRC emacs-lisp
+  (defun font-existsp (font)
+    (if (null (x-list-fonts font))
+        nil t))
+#+END_SRC
+
 * Font
 #+BEGIN_SRC emacs-lisp
   (set-face-attribute 'default nil
-                      :font "Source Code Pro")
+                      :family "Source Code Pro"
+                      :height 110
+                      :weight 'normal
+                      :width 'normal)
 #+END_SRC
 
 * Theme

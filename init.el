@@ -9,21 +9,27 @@
 ;; You may delete these explanatory comments.
 (package-initialize)
 
-(require 'org)
-(require 'ob-tangle)
-(org-babel-load-file "~/.emacs.d/packages.org")
-(org-babel-load-file "~/.emacs.d/emacs.org")
-(org-babel-load-file "~/.emacs.d/functions.org")
-(org-babel-load-file "~/.emacs.d/misc.org")
-(org-babel-load-file "~/.emacs.d/keybindings.org")
-(org-babel-load-file "~/.emacs.d/programming.org")
-(org-babel-load-file "~/.emacs.d/look.org")
-(load-host-specific-conf)
-
+(add-hook 'after-init-hook
+	  '(lambda ()
+	  (require 'org)
+	  (require 'ob-tangle)
+	  (org-babel-load-file "~/.emacs.d/packages.org")
+	  (org-babel-load-file "~/.emacs.d/emacs.org")
+	  (org-babel-load-file "~/.emacs.d/functions.org")
+	  (org-babel-load-file "~/.emacs.d/misc.org")
+	  (org-babel-load-file "~/.emacs.d/keybindings.org")
+	  (org-babel-load-file "~/.emacs.d/programming.org")
+	  (org-babel-load-file "~/.emacs.d/look.org")
+	  (load-host-specific-conf)))
 (custom-set-variables
- '(package-selected-packages
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(custom-enabled-themes (quote (dracula)))
+ '(custom-safe-themes
    (quote
-    (enh-ruby-mode auto-complete column-marker paredit dracula-theme magit yasnippet expand-region yaml-mode wc-mode undo-tree markdown-mode highlight-symbol highlight-sexp darkroom ack ace-jump-mode))))
+    ("427fed191e7a766152e59ef0e2904283f436dbbe259b9ccc04989f3acde50a55" default))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
