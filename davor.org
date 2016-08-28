@@ -55,7 +55,6 @@ this will make sure that they are installed.
 
   (install-packages davorb-packages)
 #+end_src
-
 * Initialization
 #+begin_src emacs-lisp
   (require 'helm-config)
