@@ -6,7 +6,10 @@ this will make sure that they are installed.
   ;;; automatically install packages
   (require 'package)
   (setq davorb-packages
-        '(gnu-apl-mode
+        '(
+          gnu-apl-mode
+          hasky-extensions
+          intero
           ace-jump-mode
           ack
           afternoon-theme
@@ -36,7 +39,8 @@ this will make sure that they are installed.
           sass-mode
           undo-tree
           wc-mode
-          yaml-mode))
+          yaml-mode
+          ))
 
   (package-initialize)
 
@@ -331,11 +335,23 @@ Take a mode and add it to multiple hooks.
   (define-key c-mode-base-map (kbd "RET") 'newline-and-indent)
 #+END_SRC
 ** Haskell
-   =C-c h= will Hoogle the identifier at point.
+*** Hoogle
+	=C-c h= will Hoogle the identifier at point.
 
 #+BEGIN_SRC emacs-lisp
   (require 'haskell-mode)
   (define-key haskell-mode-map "\C-ch" 'haskell-hoogle)
+#+END_SRC
+*** Intero
+#+BEGIN_SRC emacs-lisp
+  (add-hook 'haskell-mode-hook 'intero-mode)
+#+END_SRC
+
+*** hasky-extensions
+	Add/remove Haskell language extensions with =C-c y=.
+
+#+BEGIN_SRC emacs-lisp
+  (global-set-key (kbd "C-c y") #'hasky-extensions)
 #+END_SRC
 ** APL
 *** gnu-apl-mode
