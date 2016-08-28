@@ -3,21 +3,25 @@
 * Enhanced ruby mode
 #+BEGIN_SRC emacs-lisp
   (package-install 'enh-ruby-mode)
-  (add-to-list 'auto-mode-alist
-               '("\\(?:\\.rb\\|ru\\|rake\\|thor\\|jbuilder\\|gemspec\\|podspec\\|/\\(?:Gem\\|Rake\\|Cap\\|Thor\\|Vagrant\\|Guard\\|Pod\\)file\\)\\'" . enh-ruby-mode))
+  (use-package enh-ruby-mode
+    :config
+   (add-to-list 'auto-mode-alist
+                '("\\(?:\\.rb\\|ru\\|rake\\|thor\\|jbuilder\\|gemspec\\|podspec\\|/\\(?:Gem\\|Rake\\|Cap\\|Thor\\|Vagrant\\|Guard\\|Pod\\)file\\)\\'" . enh-ruby-mode)))
 #+END_SRC
 
 * Keybindings
 #+BEGIN_SRC emacs-lisp
-  (eval-after-load 'ruby-mode
+  (use-package enh-ruby-mode
+    :config
     '(progn
-       (define-key ruby-mode-map (kbd "RET") 'reindent-then-newline-and-indent)
-       (define-key ruby-mode-map (kbd "C-M-h") 'backward-kill-word)))
+       (define-key enh-ruby-mode-map (kbd "RET")
+         'reindent-then-newline-and-indent)
+       (define-key enh-ruby-mode-map (kbd "C-M-h")
+         'backward-kill-word)))
 #+END_SRC
 
 * yaml-mode
 #+BEGIN_SRC emacs-lisp
-  (require 'yaml-mode)
   (add-to-list 'auto-mode-alist '("\\.ya?ml$" . yaml-mode))
 #+END_SRC
 
@@ -40,5 +44,7 @@
 #+END_SRC
 * auto-complete
 #+BEGIN_SRC emacs-lisp
-  (add-to-list 'ac-modes 'enh-ruby-mode)
+  (use-package auto-complete
+    :config
+    (add-to-list 'ac-modes 'enh-ruby-mode))
 #+END_SRC

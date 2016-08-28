@@ -47,6 +47,7 @@
 * Initialization
 ** General purpose
 #+begin_src emacs-lisp
+  (require 'use-package)
   (require 'ace-jump-mode)
   (require 'expand-region)
   (require 'highlight-symbol)
@@ -56,5 +57,5 @@
   (global-undo-tree-mode t)
 
   (require 'yasnippet)
-  (yas-global-mode t)
+  (yas-global-mode t)  
 #+end_src
