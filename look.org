@@ -7,7 +7,6 @@
     (if (null (x-list-fonts font))
         nil t))
 #+END_SRC
-
 * Font
 #+BEGIN_SRC emacs-lisp
   (set-face-attribute 'default nil
@@ -16,13 +15,11 @@
                       :weight 'normal
                       :width 'normal)
 #+END_SRC
-
 * Theme
 #+BEGIN_SRC emacs-lisp
-  (package-install 'dracula-theme)
-  (load-theme 'dracula t)
+  (package-install 'material-theme)
+  (load-theme 'material-light t)
 #+END_SRC
-
 * Hide the toolbar
 #+BEGIN_SRC emacs-lisp
   (tool-bar-mode -1)
@@ -30,4 +27,10 @@
 * org-mode
 #+BEGIN_SRC emacs-lisp
   (setq org-src-fontify-natively t)
+#+END_SRC
+* powerline
+#+BEGIN_SRC emacs-lisp
+  (package-install 'powerline)
+  (require 'powerline)
+  (powerline-default-theme)
 #+END_SRC
