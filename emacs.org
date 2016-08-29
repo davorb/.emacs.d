@@ -19,3 +19,8 @@
 #+BEGIN_SRC emacs-lisp
   (org-babel-load-file "~/.emacs.d/helm.org")
 #+END_SRC
+* delete-selection-mode
+  Replace highlighted text with what you type.
+#+BEGIN_SRC emacs-lisp
+  (delete-selection-mode t)
+#+END_SRC
