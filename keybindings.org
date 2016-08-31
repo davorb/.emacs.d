@@ -25,3 +25,8 @@
   (global-set-key (kbd "C-M-z")'undo-tree-visualize)
   (global-set-key (kbd "C-S-z") 'redo) ; mac style redo
 #+END_SRC
+* ispell-complete-word
+#+BEGIN_SRC emacs-lisp
+  (define-key org-mode-map (kbd "C-M-?")
+     'ispell-complete-word)
+#+END_SRC
