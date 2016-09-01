@@ -10,7 +10,6 @@
         version-control t)
   (setq backup-by-copying t) ; safest, but slowest
 #+END_SRC
-
 * Remove trailing whitespace
 #+BEGIN_SRC emacs-lisp
   (add-hook 'before-save-hook 'delete-trailing-whitespace)
@@ -22,4 +21,10 @@
 * Replace highlighted text with what you type.
 #+BEGIN_SRC emacs-lisp
   (delete-selection-mode t)
+#+END_SRC
+* yasnippet
+  Stop yasnippet from performing autoindentation.
+
+#+BEGIN_SRC emacs-lisp
+  (setq yas/indent-line nil)
 #+END_SRC
