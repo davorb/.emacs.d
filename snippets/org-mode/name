@@ -1,0 +1,4 @@
+#name : Name
+#contributor : Davor Babic <davor@davor.se>
+# --
+#+NAME: ${1:name}
