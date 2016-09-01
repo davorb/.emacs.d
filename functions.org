@@ -1,11 +1,18 @@
 #+TITLE: Custom functions
 
-* insert-current-date
+* date & time
+** insert-current-date
 #+BEGIN_SRC emacs-lisp
-  (defun insert-current-date () (interactive)
-         (insert (shell-command-to-string "echo -n $(date +%Y-%m-%d)")))
+  (defun insert-current-date ()
+    (interactive)
+    (insert (shell-command-to-string "echo -n $(date +%Y-%m-%d)")))
 #+END_SRC
-
+** date
+#+BEGIN_SRC emacs-lisp
+  (defun current-date ()
+    (interactive "P")
+    (format-time-string "%Y-%m-%d"))
+#+END_SRC
 * add-to-multiple-hooks
 #+BEGIN_SRC emacs-lisp
   (defun add-to-multiple-hooks (function hooks)
