@@ -1,4 +1,4 @@
 #name : Results
 #contributor : Davor Babic <davor@davor.se>
 # --
-#+RESULTS: ${1:name}
+#+RESULTS:
