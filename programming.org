@@ -98,4 +98,5 @@
   (org-babel-load-file "~/.emacs.d/lisp.org")
   (org-babel-load-file "~/.emacs.d/ruby.org")
   (org-babel-load-file "~/.emacs.d/web.org")
+  (org-babel-load-file "~/.emacs.d/babel.org")
 #+END_SRC

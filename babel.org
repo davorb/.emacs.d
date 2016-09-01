@@ -1,0 +1,8 @@
+#+TITLE: Babel
+
+* Tell it to load additional languages
+#+BEGIN_SRC emacs-lisp
+  (org-babel-do-load-languages 'org-babel-load-languages
+                               '((emacs-lisp . t)
+                                 (sh . t)))
+#+END_SRC
