@@ -4,3 +4,7 @@
   #+BEGIN_SRC emacs-lisp
     (add-hook 'org-mode-hook '(auto-complete-mode 0))
   #+END_SRC
+* Enable auto-fill-mode
+  #+BEGIN_SRC emacs-lisp
+    (add-hook 'org-mode-hook 'auto-fill-mode)
+  #+END_SRC
