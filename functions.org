@@ -1,17 +1,10 @@
 #+TITLE: Custom functions
 
-* date & time
-** insert-current-date
+* insert-current-date
 #+BEGIN_SRC emacs-lisp
   (defun insert-current-date ()
     (interactive)
-    (insert (shell-command-to-string "echo -n $(date +%Y-%m-%d)")))
-#+END_SRC
-** date
-#+BEGIN_SRC emacs-lisp
-  (defun current-date ()
-    (interactive "P")
-    (format-time-string "%Y-%m-%d"))
+    (insert (format-time-string "%Y-%m-%d")))
 #+END_SRC
 * add-to-multiple-hooks
 #+BEGIN_SRC emacs-lisp
@@ -55,4 +48,19 @@
                               (if (file-exists-p name)
                                   (org-babel-load-file name))))
       (load-if-exists (concat "~/.emacs.d/" system-name ".org"))))
+#+END_SRC
+* Emacs spreadsheet
+** ses-insert-date
+#+BEGIN_SRC emacs-lisp
+  (defun ses-insert-date ()
+    (interactive)
+    (let* ((date (format-time-string "%Y-%m-%d"))
+           (sym (ses-sym-rowcol ses--curcell))
+           (row (car sym))
+           (col (cdr sym)))
+      (ses-set-cell row col 'value date)
+      (ses-set-cell row col 'formula date)
+      (ses-set-cell row col 'printer nil)
+      (ses-print-cell row col)
+      (ses-write-cells)))
 #+END_SRC
