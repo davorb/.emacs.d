@@ -25,3 +25,7 @@
        (set-face-foreground 'diff-added "green4")
        (set-face-foreground 'diff-removed "red3")))
 #+END_SRC
+* Load other org files
+  #+BEGIN_SRC emacs-lisp
+    (org-babel-load-file "~/.emacs.d/org.org")
+  #+END_SRC

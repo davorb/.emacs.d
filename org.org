@@ -1,0 +1,6 @@
+#+TITLE: Org
+
+* Disable autocomplete in org-mode
+  #+BEGIN_SRC emacs-lisp
+    (add-hook 'org-mode-hook '(auto-complete-mode 0))
+  #+END_SRC
