@@ -5,11 +5,6 @@
   (install-packages '(auto-complete
                       paredit))
 #+END_SRC
-* Enable =auto-complete=
-#+BEGIN_SRC emacs-lisp
-  (ac-config-default)
-#+END_SRC
-
 * List of languages
 ** Lists of language hooks
 
