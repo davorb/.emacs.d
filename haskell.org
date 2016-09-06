@@ -1,0 +1,16 @@
+#+TITLE: Haskell
+
+* Hoogle
+  Let =C-c h= Hoogle the identifier at point
+
+  #+BEGIN_SRC emacs-lisp
+    (use-package haskell-mode
+      :config
+      (define-key haskell-mode-map "\C-ch" 'haskell-hoogle))
+  #+END_SRC
+
+* Intero
+  #+BEGIN_SRC emacs-lisp
+    (package-install 'intero)
+    (add-hook 'haskell-mode-hook 'intero-mode)
+  #+END_SRC

@@ -94,4 +94,5 @@
   (org-babel-load-file "~/.emacs.d/ruby.org")
   (org-babel-load-file "~/.emacs.d/web.org")
   (org-babel-load-file "~/.emacs.d/babel.org")
+  (org-babel-load-file "~/.emacs.d/haskell.org")
 #+END_SRC
