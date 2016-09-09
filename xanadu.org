@@ -1,6 +1,13 @@
 #+TITLE: System specific config for Xanadu
 
 * Font size
-#+BEGIN_SRC emacs-lisp
+  #+BEGIN_SRC emacs-lisp
   (set-face-attribute 'default nil :height 120)
-#+END_SRC
+  #+END_SRC
+
+* Change the frame title
+  #+BEGIN_SRC emacs-lisp
+    (setq frame-title-format
+      '((buffer-file-name "%f"
+        (dired-directory dired-directory "%b"))))
+  #+END_SRC
