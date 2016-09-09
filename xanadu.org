@@ -1,0 +1,6 @@
+#+TITLE: System specific config for Xanadu
+
+* Font size
+#+BEGIN_SRC emacs-lisp
+  (set-face-attribute 'default nil :height 120)
+#+END_SRC
