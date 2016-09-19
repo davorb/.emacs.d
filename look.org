@@ -17,8 +17,7 @@
 #+END_SRC
 * Theme
 #+BEGIN_SRC emacs-lisp
-  (package-install 'material-theme)
-  (load-theme 'material-light t)
+  (load-theme 'leuven t)
 #+END_SRC
 * Hide the toolbar
 #+BEGIN_SRC emacs-lisp
