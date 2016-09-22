@@ -1,0 +1,5 @@
+#name : caption
+#key : caption
+#contributor : Davor Babic <davor@davor.se>
+# --
+#+CAPTION: $0
