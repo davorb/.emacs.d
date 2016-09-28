@@ -2,7 +2,7 @@
 
 * Font size
   #+BEGIN_SRC emacs-lisp
-  (set-face-attribute 'default nil :height 120)
+    (set-face-attribute 'default nil :height 130)
   #+END_SRC
 
 * Change the frame title
