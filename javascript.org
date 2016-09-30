@@ -1,0 +1,37 @@
+#+TITLE: JavaScript
+
+* Install packages
+  #+BEGIN_SRC emacs-lisp
+    (package-install 'tern)
+  #+END_SRC
+* Tern
+  M-.
+  Jump to the definition of the thing under the cursor.
+
+  M-,
+  Brings you back to last place you were when you pressed M-..
+
+  C-c C-r
+  Rename the variable under the cursor.
+
+  C-c C-c
+  Find the type of the thing under the cursor.
+
+  C-c C-d
+  Find docs of the thing under the cursor. Press again to open the associated URL (if any).
+
+  #+BEGIN_SRC emacs-lisp
+    (add-hook 'js-mode-hook (lambda () (tern-mode t)))
+  #+END_SRC
+** Use autocomple.el
+   #+BEGIN_SRC emacs-lisp
+     (package-install 'tern-auto-complete)
+     (eval-after-load 'tern
+        '(progn
+           (require 'tern-auto-complete)
+           (tern-ac-setup)))
+   #+END_SRC
+* Set indentation
+  #+BEGIN_SRC emacs-lisp
+    (setq js-indent-level 2)
+  #+END_SRC
