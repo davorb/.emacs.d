@@ -96,5 +96,5 @@
   (org-babel-load-file "~/.emacs.d/javascript.org")
   (org-babel-load-file "~/.emacs.d/babel.org")
   (org-babel-load-file "~/.emacs.d/haskell.org")
-
+  (org-babel-load-file "~/.emacs.d/apl.org")
 #+END_SRC
