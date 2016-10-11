@@ -2,7 +2,9 @@
 
 * Install packages
   #+BEGIN_SRC emacs-lisp
-    (package-install 'tern)
+    (install-packages
+     '(tern
+       nodejs-repl))
   #+END_SRC
 * Tern
   M-.
