@@ -21,9 +21,13 @@
   (load-theme 'dracula t)
 #+END_SRC
 * Hide the toolbar
-#+BEGIN_SRC emacs-lisp
+  #+BEGIN_SRC emacs-lisp
   (tool-bar-mode -1)
-#+END_SRC
+  #+END_SRC
+* Hide the scrollbar
+  #+BEGIN_SRC emacs-lisp
+    (scroll-bar-mode -1)
+  #+END_SRC
 * org-mode
 #+BEGIN_SRC emacs-lisp
   (setq org-src-fontify-natively t)
