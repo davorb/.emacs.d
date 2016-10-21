@@ -29,3 +29,9 @@
   #+BEGIN_SRC emacs-lisp
     (org-babel-load-file "~/.emacs.d/org.org")
   #+END_SRC
+* NixOS
+  Enable support for =nix-mode=.
+
+  #+BEGIN_SRC emacs-lisp
+    (package-install 'nix-mode)
+  #+END_SRC
