@@ -15,11 +15,6 @@
                       :weight 'normal
                       :width 'normal)
 #+END_SRC
-* Theme
-#+BEGIN_SRC emacs-lisp
-  (package-install 'dracula-theme)
-  (load-theme 'dracula t)
-#+END_SRC
 * Hide the toolbar
   #+BEGIN_SRC emacs-lisp
   (tool-bar-mode -1)

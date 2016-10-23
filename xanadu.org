@@ -11,3 +11,8 @@
       '((buffer-file-name "%f"
         (dired-directory dired-directory "%b"))))
   #+END_SRC
+* Theme
+#+BEGIN_SRC emacs-lisp
+  (package-install 'dracula-theme)
+  (load-theme 'dracula t)
+#+END_SRC
