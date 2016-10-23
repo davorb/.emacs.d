@@ -27,9 +27,3 @@
 #+BEGIN_SRC emacs-lisp
   (setq org-src-fontify-natively t)
 #+END_SRC
-* powerline
-#+BEGIN_SRC emacs-lisp
-  (package-install 'powerline)
-  (require 'powerline)
-  (powerline-center-theme)
-#+END_SRC
