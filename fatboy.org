@@ -110,4 +110,7 @@
 
     (require 'atomic-chrome)
     (atomic-chrome-start-server)
+
+    (setq atomic-chrome-default-major-mode 'markdown-mode
+          atomic-chrome-buffer-open-style 'full)
   #+END_SRC

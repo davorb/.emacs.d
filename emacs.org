@@ -1,6 +1,16 @@
-#+TITLE Dawn Emacs Config
+#+TITLE: Dawn Emacs
 
-* Backups
+This is the first "real" file to be loaded.
+
+* Functions
+  This file defines a lot of important functions, like
+  =org-babel-load-files=.
+
+  #+BEGIN_SRC emacs-lisp
+    (org-babel-load-file "~/.emacs.d/functions.org")
+  #+END_SRC
+* Basic Editor Settings
+** Backups
 #+BEGIN_SRC emacs-lisp
   (setq backup-directory-alist
         '(("." . "~/.saves")))
@@ -10,28 +20,39 @@
         version-control t)
   (setq backup-by-copying t) ; safest, but slowest
 #+END_SRC
-* Remove trailing whitespace
+** Remove trailing whitespace
 #+BEGIN_SRC emacs-lisp
   (add-hook 'before-save-hook 'delete-trailing-whitespace)
 #+END_SRC
-* Load other generic configuration files
+** Load other generic configuration files
 #+BEGIN_SRC emacs-lisp
   (org-babel-load-file "~/.emacs.d/helm.org")
 #+END_SRC
-* Replace highlighted text with what you type.
+** Replace highlighted text with what you type.
 #+BEGIN_SRC emacs-lisp
   (delete-selection-mode t)
 #+END_SRC
-* yasnippet
+** yasnippet
   Stop yasnippet from performing autoindentation.
 
 #+BEGIN_SRC emacs-lisp
   (setq yas/indent-line nil)
 #+END_SRC
-* dired
+** dired
   Hide hidden files
 #+BEGIN_SRC emacs-lisp
   (require 'dired-x)
   (setq dired-omit-files "^\\...+$")
   (add-hook 'dired-mode-hook (lambda () (dired-omit-mode 1)))
 #+END_SRC
+* Load other configuration files
+  #+BEGIN_SRC emacs-lisp
+    (org-babel-load-files '("misc"
+                            "look"
+                            "programming"
+                            "keybindings"))
+  #+END_SRC
+* Load host-specific configuration file
+  #+BEGIN_SRC emacs-lisp
+    (load-host-specific-conf)
+  #+END_SRC

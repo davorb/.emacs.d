@@ -1,0 +1,14 @@
+#+TITLE: Rust
+
+* Packages
+  #+BEGIN_SRC emacs-lisp
+    (install-packages '(rust-mode
+                        cargo
+                        rustfmt))
+  #+END_SRC
+* rustfmt
+  #+BEGIN_SRC emacs-lisp
+    (use-package rust-mode
+      :config
+      (define-key rust-mode-map (kbd "C-c C-f") #'rustfmt-format-buffer))
+  #+END_SRC

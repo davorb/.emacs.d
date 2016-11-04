@@ -89,12 +89,13 @@
 #+END_SRC
 * Load other programming modes
 #+BEGIN_SRC emacs-lisp
-  (org-babel-load-file "~/.emacs.d/git.org")
-  (org-babel-load-file "~/.emacs.d/lisp.org")
-  (org-babel-load-file "~/.emacs.d/ruby.org")
-  (org-babel-load-file "~/.emacs.d/web.org")
-  (org-babel-load-file "~/.emacs.d/javascript.org")
-  (org-babel-load-file "~/.emacs.d/babel.org")
-  (org-babel-load-file "~/.emacs.d/haskell.org")
-  (org-babel-load-file "~/.emacs.d/apl.org")
+  (org-babel-load-files '("git"
+                          "lisp"
+                          "ruby"
+                          "web"
+                          "javascript"
+                          "babel"
+                          "haskell"
+                          "apl"
+                          "rust"))
 #+END_SRC

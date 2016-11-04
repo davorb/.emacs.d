@@ -27,7 +27,6 @@
   #+END_SRC
 ** Use autocomple.el
    #+BEGIN_SRC emacs-lisp
-     (package-install 'tern-auto-complete)
      (eval-after-load 'tern
         '(progn
            (require 'tern-auto-complete)
