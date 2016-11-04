@@ -1,5 +1,13 @@
 #+TITLE: Custom functions
 
+* org-babel-load-files
+  #+BEGIN_SRC emacs-lisp
+    (defun org-babel-load-files (files)
+        (let* ((path "~/.emacs.d/"))
+          (mapcar (lambda (file-name)
+                    (org-babel-load-file (concat path file-name ".org")))
+                  files)))
+  #+END_SRC
 * insert-current-date
 #+BEGIN_SRC emacs-lisp
   (defun insert-current-date ()
