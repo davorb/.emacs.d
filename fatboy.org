@@ -104,3 +104,10 @@
   (package-install 'hydandata-light-theme)
   (load-theme 'hydandata-light t)
 #+END_SRC
+* atomic-chrome
+  #+BEGIN_SRC emacs-lisp
+    (package-install 'atomic-chrome)
+
+    (require 'atomic-chrome)
+    (atomic-chrome-start-server)
+  #+END_SRC
