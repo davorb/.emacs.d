@@ -12,5 +12,7 @@
 * Intero
   #+BEGIN_SRC emacs-lisp
     (package-install 'intero)
-    (add-hook 'haskell-mode-hook 'intero-mode)
+    (use-package haskell-mode
+      :config
+      (add-hook 'haskell-mode-hook 'intero-mode))
   #+END_SRC

@@ -8,18 +8,13 @@
   Change the default input method.
 
   #+BEGIN_SRC emacs-lisp
-  (add-to-multiple-hooks
-   (lambda () (set-input-method "APL-Z"))
-   '(gnu-apl-interactive-mode-hook
-     gnu-apl-mode-hook))
-  #+END_SRC
-
-  Hide the keyboard on startup.
-  #+BEGIN_SRC emacs-lisp
-  (setf gnu-apl-show-keymap-on-startup nil)
-  #+END_SRC
-
-  Dont' show tips on start.
-  #+BEGIN_SRC emacs-lisp
-  (setq gnu-apl-show-tips-on-start nil)
+      (use-package gnu-apl-mode
+        :config
+        (progn
+          (add-to-multiple-hooks
+           (lambda () (set-input-method "APL-Z"))
+           '(gnu-apl-interactive-mode-hook
+             gnu-apl-mode-hook))
+          (setf gnu-apl-show-keymap-on-startup nil)
+          (setq gnu-apl-show-tips-on-start nil)))
   #+END_SRC
