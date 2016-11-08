@@ -10,6 +10,10 @@
         version-control t)
   (setq backup-by-copying t) ; safest, but slowest
 #+END_SRC
+* Disable tabs
+  #+BEGIN_SRC emacs-lisp
+    (setq-default indent-tabs-mode nil)
+  #+END_SRC
 * Remove trailing whitespace
 #+BEGIN_SRC emacs-lisp
   (add-hook 'before-save-hook 'delete-trailing-whitespace)
@@ -35,3 +39,7 @@
   (setq dired-omit-files "^\\...+$")
   (add-hook 'dired-mode-hook (lambda () (dired-omit-mode 1)))
 #+END_SRC
+* writeroom-mode
+  #+BEGIN_SRC emacs-lisp
+    (package-install 'writeroom-mode)
+  #+END_SRC
