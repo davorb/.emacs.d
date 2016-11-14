@@ -37,10 +37,9 @@ This is the first "real" file to be loaded.
      (delete-selection-mode t)
    #+END_SRC
 ** yasnippet
-   Stop yasnippet from performing autoindentation.
-
    #+BEGIN_SRC emacs-lisp
-     (setq yas/indent-line nil)
+     (setq yas-snippet-dirs '("~/.emacs.d/snippets")
+           yas/indent-line nil) ; Stop yasnippet from performing autoindentation.
    #+END_SRC
 ** dired
    Hide hidden files
