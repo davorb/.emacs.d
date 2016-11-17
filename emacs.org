@@ -53,6 +53,10 @@ This is the first "real" file to be loaded.
   #+BEGIN_SRC emacs-lisp
     (package-install 'writeroom-mode)
   #+END_SRC
+* evil-mode
+  #+BEGIN_SRC emacs-lisp
+    (package-install 'evil)
+  #+END_SRC
 * Load other configuration files
   #+BEGIN_SRC emacs-lisp
     (org-babel-load-files '("misc"
