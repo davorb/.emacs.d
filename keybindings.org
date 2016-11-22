@@ -51,3 +51,10 @@
     (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
     (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
   #+END_SRC
+* Delete char
+  Bind it to =C-S-h= and =C-h=.
+
+  #+BEGIN_SRC emacs-lisp
+    (global-set-key (kbd "C-h") 'delete-backward-char)
+    (global-set-key (kbd "C-S-h") 'delete-char)
+  #+END_SRC
