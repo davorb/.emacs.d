@@ -9,3 +9,7 @@
   #+BEGIN_SRC emacs-lisp
     (setq js-indent-level 2)
   #+END_SRC
+* sass
+  #+BEGIN_SRC emacs-lisp
+    (package-install 'sass-mode)
+  #+END_SRC
