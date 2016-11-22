@@ -56,6 +56,9 @@ This is the first "real" file to be loaded.
 * evil-mode
   #+BEGIN_SRC emacs-lisp
     (package-install 'evil)
+
+    ;;; Ctrl-u for scrolling up
+    (setq evil-want-C-u-scroll t)
   #+END_SRC
 * Load other configuration files
   #+BEGIN_SRC emacs-lisp
