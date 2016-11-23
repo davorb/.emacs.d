@@ -4,3 +4,9 @@
   #+BEGIN_SRC emacs-lisp
     (add-hook 'org-mode-hook 'auto-fill-mode)
   #+END_SRC
+* org-clock-today
+  Show the total clocked time of the current day in the mode line.
+  #+BEGIN_SRC emacs-lisp
+    (package-install 'org-clock-today)
+    (org-clock-today-mode t)
+  #+END_SRC
