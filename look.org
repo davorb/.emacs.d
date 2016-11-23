@@ -27,15 +27,3 @@
 #+BEGIN_SRC emacs-lisp
   (setq org-src-fontify-natively t)
 #+END_SRC
-* Center text
-  Activate this feature by pressing =C-c t v=.
-
-  #+BEGIN_SRC emacs-lisp
-    (package-install 'visual-fill-column)
-    (use-package visual-fill-column
-      :ensure t
-      :defer t
-      :bind (("C-c t v" . visual-fill-column-mode))
-      :config (setq-default visual-fill-column-center-text t
-                            visual-fill-column-fringes-outside-margins nil))
-  #+END_SRC
