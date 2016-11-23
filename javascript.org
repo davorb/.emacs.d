@@ -59,3 +59,7 @@
                            (lambda ()
                              (untabify (point-min) (point-max))))))
   #+END_SRC
+* sass
+  #+BEGIN_SRC emacs-lisp
+    (package-install 'sass-mode)
+  #+END_SRC
