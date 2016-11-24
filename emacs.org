@@ -54,11 +54,15 @@ This is the first "real" file to be loaded.
     (package-install 'writeroom-mode)
   #+END_SRC
 * evil-mode
+;;; Ctrl-u for scrolling up
   #+BEGIN_SRC emacs-lisp
     (package-install 'evil)
+    (require 'evil)
 
-    ;;; Ctrl-u for scrolling up
-    (setq evil-want-C-u-scroll t)
+    (use-package evil
+      :ensure t
+      :defer t
+      :config (setq evil-want-C-u-scroll t))
   #+END_SRC
 * Load other configuration files
   #+BEGIN_SRC emacs-lisp
