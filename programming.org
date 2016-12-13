@@ -7,7 +7,6 @@
 #+END_SRC
 * List of languages
 ** Lists of language hooks
-
 *** List of LISP hooks
 #+BEGIN_SRC emacs-lisp
   (defvar *lisp-hooks*
@@ -44,34 +43,6 @@
        java-mode-hook)))
 #+END_SRC
 
-** LISP
-   Enable paredit and eldoc.
-#+BEGIN_SRC emacs-lisp
-  (require 'paredit)
-  ;(autoload 'enable-paredit-mode "paredit" "Turn on pseudo-structural editing of Lisp code." t)
-  (add-hook 'emacs-lisp-mode-hook #'enable-paredit-mode)
-  (add-hook 'eval-expression-minibuffer-setup-hook #'enable-paredit-mode)
-  (add-hook 'ielm-mode-hook #'enable-paredit-mode)
-  (add-hook 'lisp-mode-hook #'enable-paredit-mode)
-  (add-hook 'lisp-interaction-mode-hook #'enable-paredit-mode)
-  (add-hook 'scheme-mode-hook #'enable-paredit-mod'e)
-  (setf geiser-repl-mode-hook '(enable-paredit-mode))
-  (setf geiser-mode-hook '(enable-paredit-mode))
-  ;; consider changing a few of these to a
-  ;(add-to-multiple-hooks 'highlight-sexp-mode *lisp-hooks*)
-
-  (require 'eldoc)
-  (eldoc-add-command 'paredit-backward-delete
-                     'paredit-close-round)
-#+END_SRC
-
-
-*** Scheme
-    Enable geiser-mode for Scheme.
-
-#+BEGIN_SRC emacs-lisp
-  (add-hook 'scheme-mode-hook #'geiser-mode)
-#+END_SRC
 * General programming settings
 ** Notify me of long lines
    Show a marker if a line is longer than 80 characters.

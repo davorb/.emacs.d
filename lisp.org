@@ -7,13 +7,6 @@
   (define-key lisp-mode-shared-map (kbd "C-\\") 'lisp-complete-symbol)
   (define-key lisp-mode-shared-map (kbd "C-c v") 'eval-buffer)
 #+END_SRC
-
-* Paredit
-#+BEGIN_SRC emacs-lisp
-  (package-install 'paredit)
-  (require 'paredit)
-#+END_SRC
-
 * Emacs Lisp
 #+BEGIN_SRC emacs-lisp
   (defun remove-elc-on-save ()
@@ -29,3 +22,35 @@
                                     (paredit-mode t)
                                     (remove-elc-on-save)))
 #+END_SRC
+* Geiser-mode
+  Enable =geiser-mode=.
+
+  #+BEGIN_SRC emacs-lisp
+    (package-install 'geiser)
+    ;(setf geiser-repl-mode-hook 'enable-paredit-mode)
+    ;(setf geiser-mode-hook 'enable-paredit-mode)
+    (add-hook 'scheme-mode-hook #'geiser-mode)
+  #+END_SRC
+* Paredit
+  Enable paredit and eldoc.
+
+  #+BEGIN_SRC emacs-lisp
+    (require 'paredit)
+    ;(autoload 'enable-paredit-mode "paredit" "Turn on pseudo-structural editing of Lisp code." t)
+    (add-hook 'emacs-lisp-mode-hook #'enable-paredit-mode)
+    (add-hook 'eval-expression-minibuffer-setup-hook #'enable-paredit-mode)
+    (add-hook 'ielm-mode-hook #'enable-paredit-mode)
+    (add-hook 'lisp-mode-hook #'enable-paredit-mode)
+    (add-hook 'lisp-interaction-mode-hook #'enable-paredit-mode)
+    (add-hook 'scheme-mode-hook #'enable-paredit-mode)
+    (setf geiser-repl-mode-hook '(enable-paredit-mode))
+    (setf geiser-mode-hook '(enable-paredit-mode))
+    ;; consider changing a few of these to a
+    ;(add-to-multiple-hooks 'highlight-sexp-mode *lisp-hooks*)
+  #+END_SRC
+* Eldoc
+  #+BEGIN_SRC emacs-lisp
+    (require 'eldoc)
+    (eldoc-add-command 'paredit-backward-delete
+                       'paredit-close-round)
+  #+END_SRC
