@@ -68,5 +68,6 @@
                           "babel"
                           "haskell"
                           "apl"
-                          "rust"))
+                          "rust"
+                          "go"))
 #+END_SRC

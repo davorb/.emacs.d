@@ -1,0 +1,13 @@
+#+TITLE: Go
+
+The language, not the game.
+
+* Packages
+  #+BEGIN_SRC emacs-lisp
+    (package-install 'go-mode)
+  #+END_SRC
+
+* Run =gofmt= on save
+  #+BEGIN_SRC emacs-lisp
+    ;(add-hook 'before-save-hook 'gofmt-before-save)
+  #+END_SRC
