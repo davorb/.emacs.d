@@ -1,0 +1,6 @@
+#+TITLE: Assembly language
+
+* Packages
+  #+BEGIN_SRC emacs-lisp
+    (package-install 'nasm-mode)
+  #+END_SRC

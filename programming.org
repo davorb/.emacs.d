@@ -60,7 +60,8 @@
 #+END_SRC
 * Load other programming modes
 #+BEGIN_SRC emacs-lisp
-  (org-babel-load-files '("git"
+  (org-babel-load-files '(
+                          "git"
                           "lisp"
                           "ruby"
                           "web"
@@ -69,5 +70,7 @@
                           "haskell"
                           "apl"
                           "rust"
-                          "go"))
+                          "go"
+                          "assembly"
+                          ))
 #+END_SRC
