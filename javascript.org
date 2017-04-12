@@ -3,8 +3,11 @@
 * Install packages
   #+BEGIN_SRC emacs-lisp
     (install-packages
-     '(js2-mode
-       nodejs-repl))
+     '(
+       js2-mode
+       nodejs-repl
+       typescript-mode
+       ))
   #+END_SRC
 * js2-mode
   #+BEGIN_SRC emacs-lisp
