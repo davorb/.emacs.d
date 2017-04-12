@@ -28,14 +28,25 @@ This is the first "real" file to be loaded.
   #+BEGIN_SRC emacs-lisp
     (add-hook 'before-save-hook 'delete-trailing-whitespace)
   #+END_SRC
-** Load other generic configuration files
+* ivy-mode
+  Install and initalize:
+
+  #+BEGIN_SRC emacs-lisp
+    (package-install 'ivy)
+    (package-install 'swiper)
+
+    (ivy-mode 1)
+    (setq ivy-use-virtual-buffers t
+          ivy-count-format "(%d/%d) ")
+  #+END_SRC
+** Keybindings
    #+BEGIN_SRC emacs-lisp
-     (org-babel-load-file "~/.emacs.d/helm.org")
-   #+END_SRC
-** Replace highlighted text with what you type.
-   #+BEGIN_SRC emacs-lisp
-     (delete-selection-mode t)
-   #+END_SRC
+     ;;; Ivy-based interface to standard commands
+  #+END_SRC
+* Replace highlighted text with what you type.
+  #+BEGIN_SRC emacs-lisp
+    (delete-selection-mode t)
+  #+END_SRC
 ** yasnippet
    #+BEGIN_SRC emacs-lisp
      (setq yas-snippet-dirs '("~/.emacs.d/snippets")
