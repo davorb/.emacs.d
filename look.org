@@ -15,6 +15,10 @@
                       :weight 'normal
                       :width 'normal)
 #+END_SRC
+* Hide the menubar
+  #+BEGIN_SRC emacs-lisp
+    (menu-bar-mode -1)
+  #+END_SRC
 * Hide the toolbar
   #+BEGIN_SRC emacs-lisp
   (tool-bar-mode -1)
