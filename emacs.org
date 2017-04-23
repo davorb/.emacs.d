@@ -9,17 +9,16 @@ This is the first "real" file to be loaded.
   #+BEGIN_SRC emacs-lisp
     (org-babel-load-file "~/.emacs.d/functions.org")
   #+END_SRC
-* Basic Editor Settings
-** Backups
-   #+BEGIN_SRC emacs-lisp
-     (setq backup-directory-alist
-           '(("." . "~/.saves")))
-     (setq delete-old-versions t
-           kept-new-versions 6
-           kept-old-versions 2
-           version-control t)
-     (setq backup-by-copying t) ; safest, but slowest
-   #+END_SRC
+* Backups
+  #+BEGIN_SRC emacs-lisp
+    (setq backup-directory-alist
+          '(("." . "~/.saves")))
+    (setq delete-old-versions t
+          kept-new-versions 6
+          kept-old-versions 2
+          version-control t)
+    (setq backup-by-copying t) ; safest, but slowest
+  #+END_SRC
 * Disable tabs
   #+BEGIN_SRC emacs-lisp
     (setq-default indent-tabs-mode nil)
