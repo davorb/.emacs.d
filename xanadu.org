@@ -13,6 +13,6 @@
   #+END_SRC
 * Theme
 #+BEGIN_SRC emacs-lisp
-  (package-install 'dracula-theme)
-  (load-theme 'dracula t)
+  (package-install 'hydandata-light-theme)
+  (load-theme 'hydandata-light t)
 #+END_SRC
