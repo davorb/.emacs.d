@@ -76,3 +76,7 @@
   #+BEGIN_SRC emacs-lisp
     (global-set-key (kbd "C-c w") 'whitespace-mode)
   #+END_SRC
+* enable windmove
+  #+BEGIN_SRC emacs-lisp
+    (windmove-default-keybindings)
+  #+END_SRC
