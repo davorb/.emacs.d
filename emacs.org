@@ -85,3 +85,7 @@ This is the first "real" file to be loaded.
   #+BEGIN_SRC emacs-lisp
     (load-host-specific-conf)
   #+END_SRC
+* projectile
+  #+BEGIN_SRC emacs-lisp
+    (package-install 'projectile)
+  #+END_SRC
