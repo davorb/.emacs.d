@@ -37,5 +37,13 @@
 #+BEGIN_SRC emacs-lisp
   (use-package auto-complete
     :config
+    (setq ac-ignore-case nil)
     (add-to-list 'ac-modes 'enh-ruby-mode))
 #+END_SRC
+* enh-ruby-mode
+  #+BEGIN_SRC emacs-lisp
+    (package-install 'enh-ruby-mode)
+    (autoload 'enh-ruby-mode "enh-ruby-mode" "Major mode for ruby files" t)
+    (add-to-list 'auto-mode-alist '("\\.rb$" . enh-ruby-mode))
+    (add-to-list 'interpreter-mode-alist '("ruby" . enh-ruby-mode))
+  #+END_SRC
