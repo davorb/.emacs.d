@@ -90,3 +90,7 @@
    #+BEGIN_SRC emacs-lisp
      (windmove-default-keybindings)
    #+END_SRC
+* highlight symbol
+  #+BEGIN_SRC emacs-lisp
+    (global-set-key (kbd "C-c h") 'highlight-symbol)
+  #+END_SRC
