@@ -13,6 +13,6 @@
   #+END_SRC
 * Theme
 #+BEGIN_SRC emacs-lisp
-  (package-install 'hydandata-light-theme)
-  (load-theme 'hydandata-light t)
+  (package-install 'material-theme)
+  (load-theme 'material t)
 #+END_SRC
