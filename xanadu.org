@@ -13,6 +13,6 @@
   #+END_SRC
 * Theme
 #+BEGIN_SRC emacs-lisp
-  (package-install 'material-theme)
-  (load-theme 'material t)
+  (package-install 'github-theme)
+  (load-theme 'github t)
 #+END_SRC
