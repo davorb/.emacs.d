@@ -89,3 +89,10 @@ This is the first "real" file to be loaded.
   #+BEGIN_SRC emacs-lisp
     (package-install 'projectile)
   #+END_SRC
+* neotree
+  Bound to =F8=.
+
+  #+BEGIN_SRC emacs-lisp
+    (package-install 'neotree)
+    (global-set-key [f8] 'neotree-toggle)
+  #+END_SRC
