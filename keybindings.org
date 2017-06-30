@@ -30,27 +30,6 @@
   (define-key org-mode-map (kbd "C-M-?")
      'ispell-complete-word)
 #+END_SRC
-* multiple cursors
-  Install and initialize the package
-#+BEGIN_SRC emacs-lisp
-  (package-install 'multiple-cursors)
-  (require 'multiple-cursors)
-#+END_SRC
-
-  When you have an active region that spans multiple lines, the
-  following will add a cursor to each line:
-
-  #+BEGIN_SRC emacs-lisp
-    (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
-  #+END_SRC
-
-  When you want to add multiple cursors not based on continuous lines,
-  but based on keywords in the buffer, use:
-  #+BEGIN_SRC emacs-lisp
-    (global-set-key (kbd "C->") 'mc/mark-next-like-this)
-    (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
-    (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
-  #+END_SRC
 * Delete char
   Bind it to =C-S-h= and =C-h=.
 
