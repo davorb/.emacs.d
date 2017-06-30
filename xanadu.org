@@ -14,5 +14,5 @@
 * Theme
 #+BEGIN_SRC emacs-lisp
   (package-install 'material-theme)
-  (load-theme 'material t)
+  (load-theme 'material-light t)
 #+END_SRC
