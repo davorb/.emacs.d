@@ -4,3 +4,7 @@
 #+BEGIN_SRC emacs-lisp
   (add-to-list 'ac-modes 'web-mode)
 #+END_SRC
+* CSS
+  #+BEGIN_SRC emacs-lisp
+    (setq css-indent-offset 2)
+  #+END_SRC
