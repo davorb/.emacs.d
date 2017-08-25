@@ -69,7 +69,6 @@
                           "babel"
                           "haskell"
                           "apl"
-                          "rust"
                           "go"
                           "assembly"
                           ))
