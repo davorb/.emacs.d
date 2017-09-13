@@ -4,49 +4,25 @@
   #+BEGIN_SRC emacs-lisp
     (install-packages
      '(
-       js2-mode
        nodejs-repl
        typescript-mode
        ))
   #+END_SRC
-* js2-mode
+* jsx-mode
   #+BEGIN_SRC emacs-lisp
+        (add-to-list 'auto-mode-alist '("\\.js\\'" . jsx-mode))
+        (add-to-list 'auto-mode-alist '("\\.jsx\\'" . jsx-mode))
 
-    (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
-    (add-to-list 'auto-mode-alist '("\\.jsx\\'" . js2-jsx-mode))
-    (eval-after-load "js2-mode"
-      '(progn
-         (setq js2-missing-semi-one-line-override t)
-         (setq-default js2-basic-offset 2)))
-    (setq js2-highlight-level 3)
-
-    ;(add-hook 'js2-mode-hook #'js2-refactor-mode)
-    (add-hook 'js2-mode-hook #'electric-indent-mode)
-    (add-hook 'js2-mode-hook #'electric-pair-mode)
-
-    ;; After js2 has parsed a js file, we look for jslint globals decl comment ("/* global Fred, _, Harry */") and
-    ;; add any symbols to a buffer-local var of acceptable global vars
-    ;; Note that we also support the "symbol: true" way of specifying names via a hack (remove any ":true"
-    ;; to make it look like a plain decl, and any ':false' are left behind so they'll effectively be ignored as
-    ;; you can;t have a symbol called "someName:false"
-    (add-hook 'js2-post-parse-callbacks
-              (lambda ()
-                (when (> (buffer-size) 0)
-                  (let ((btext (replace-regexp-in-string
-                                ": *true" " "
-                                (replace-regexp-in-string "[\n\t ]+" " " (buffer-substring-no-properties 1 (buffer-size)) t t))))
-                    (mapc (apply-partially 'add-to-list 'js2-additional-externs)
-                          (split-string
-                           (if (string-match "/\\* *global *\\(.*?\\) *\\*/" btext) (match-string-no-properties 1 btext) "")
-                           " *, *" t))
-                    ))))
-
+        (add-hook 'jsx-mode-hook #'electric-indent-mode)
+        (add-hook 'jsx-mode-hook #'electric-pair-mode)
   #+END_SRC
 * Set indentation
   #+BEGIN_SRC emacs-lisp
-    (let ((val 2))
-      (setq js-indent-level val
-            typescript-indent-level val))
+        (let ((val 2))
+          (setq js-indent-level val
+                typescript-indent-level val
+                js-indent-level val
+                jsx-indent-level))
   #+END_SRC
 * Highlight keywords
   #+BEGIN_SRC emacs-lisp
@@ -62,7 +38,7 @@
                            (lambda ()
                              (untabify (point-min) (point-max))))))
   #+END_SRC
-* sass
+* SASS
   #+BEGIN_SRC emacs-lisp
     (package-install 'sass-mode)
   #+END_SRC
