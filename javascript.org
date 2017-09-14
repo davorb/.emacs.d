@@ -18,11 +18,11 @@
   #+END_SRC
 * Set indentation
   #+BEGIN_SRC emacs-lisp
-        (let ((val 2))
-          (setq js-indent-level val
-                typescript-indent-level val
-                js-indent-level val
-                jsx-indent-level))
+    (let ((val 2))
+      (setq js-indent-level val
+            typescript-indent-level val
+            js-indent-level val
+            jsx-indent-level val))
   #+END_SRC
 * Highlight keywords
   #+BEGIN_SRC emacs-lisp
