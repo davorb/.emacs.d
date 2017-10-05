@@ -10,8 +10,8 @@
   #+END_SRC
 * jsx-mode
   #+BEGIN_SRC emacs-lisp
-        (add-to-list 'auto-mode-alist '("\\.js\\'" . jsx-mode))
-        (add-to-list 'auto-mode-alist '("\\.jsx\\'" . jsx-mode))
+        (add-to-list 'auto-mode-alist '("\\.js\\'" . rjsx-mode))
+        (add-to-list 'auto-mode-alist '("\\.jsx\\'" . rjsx-mode))
 
         (add-hook 'jsx-mode-hook #'electric-indent-mode)
         (add-hook 'jsx-mode-hook #'electric-pair-mode)
