@@ -42,3 +42,7 @@
   #+BEGIN_SRC emacs-lisp
     (package-install 'sass-mode)
   #+END_SRC
+* Disable syntax highlighting
+  #+BEGIN_SRC emacs-lisp
+    (setq js2-mode-show-strict-warnings nil)
+  #+END_SRC
