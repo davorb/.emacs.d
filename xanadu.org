@@ -13,6 +13,6 @@
   #+END_SRC
 * Theme
 #+BEGIN_SRC emacs-lisp
-  (package-install 'material-theme)
-  (load-theme 'material-light t)
+  (package-install 'spacemacs-theme)
+  (load-theme 'spacemacs-dark t)
 #+END_SRC
