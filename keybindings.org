@@ -47,7 +47,8 @@
       :defer t
       :bind (("C-c t v" . visual-fill-column-mode))
       :config (setq-default visual-fill-column-center-text t
-                            visual-fill-column-fringes-outside-margins nil))
+                            visual-fill-column-fringes-outside-margins nil
+                            visual-fill-column-width 100))
   #+END_SRC
 * whitespace-mode
   =C-c w=.
