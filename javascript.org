@@ -6,6 +6,7 @@
      '(
        nodejs-repl
        typescript-mode
+       rjsx-mode
        ))
   #+END_SRC
 * jsx-mode
