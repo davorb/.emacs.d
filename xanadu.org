@@ -14,5 +14,5 @@
 * Theme
 #+BEGIN_SRC emacs-lisp
   (package-install 'spacemacs-theme)
-  (load-theme 'spacemacs-light t)
+  (load-theme 'spacemacs-dark t)
 #+END_SRC
