@@ -40,10 +40,9 @@
     (setq ac-ignore-case nil)
     (add-to-list 'ac-modes 'enh-ruby-mode))
 #+END_SRC
-* enh-ruby-mode
+* UTF
+  Prevent ruby from adding utf-8 to the first line.
+
   #+BEGIN_SRC emacs-lisp
-    (package-install 'enh-ruby-mode)
-    (autoload 'enh-ruby-mode "enh-ruby-mode" "Major mode for ruby files" t)
-    ;(add-to-list 'auto-mode-alist '("\\.rb$" . enh-ruby-mode))
-    ;(add-to-list 'interpreter-mode-alist '("ruby" . enh-ruby-mode))
+    (setq ruby-insert-encoding-magic-comment nil)
   #+END_SRC
