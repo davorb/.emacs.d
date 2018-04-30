@@ -6,24 +6,31 @@
      '(
        nodejs-repl
        typescript-mode
-       rjsx-mode
+       web-mode
        ))
   #+END_SRC
-* jsx-mode
+* web-mode
   #+BEGIN_SRC emacs-lisp
-        (add-to-list 'auto-mode-alist '("\\.js\\'" . rjsx-mode))
-        (add-to-list 'auto-mode-alist '("\\.jsx\\'" . rjsx-mode))
+    (add-to-list 'auto-mode-alist '("\\.js\\'" . web-mode))
+    (add-to-list 'auto-mode-alist '("\\.jsx\\'" . web-mode))
 
-        (add-hook 'jsx-mode-hook #'electric-indent-mode)
-        (add-hook 'jsx-mode-hook #'electric-pair-mode)
+    (add-hook 'web-mode-hook #'electric-indent-mode)
+    (add-hook 'web-mode-hook #'electric-pair-mode)
+
+    (add-hook 'web-mode-hook
+              (lambda ()
+                (if (equal web-mode-content-type "javascript")
+                    (web-mode-set-content-type "jsx")
+                  (message "now set to: %s" web-mode-content-type))))
   #+END_SRC
 * Set indentation
   #+BEGIN_SRC emacs-lisp
-    (let ((val 2))
-      (setq js-indent-level val
-            typescript-indent-level val
-            js-indent-level val
-            jsx-indent-level val))
+        (let ((val 2))
+          (setq js-indent-level val
+                typescript-indent-level val
+                js-indent-level val
+                jsx-indent-level val
+                web-mode-markup-indent-offset val))
   #+END_SRC
 * Highlight keywords
   #+BEGIN_SRC emacs-lisp
