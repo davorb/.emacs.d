@@ -88,4 +88,5 @@ This is the first "real" file to be loaded.
 * projectile
   #+BEGIN_SRC emacs-lisp
     (package-install 'projectile)
+    (projectile-mode)
   #+END_SRC
