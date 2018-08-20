@@ -3,6 +3,5 @@
 * Tell it to load additional languages
 #+BEGIN_SRC emacs-lisp
   (org-babel-do-load-languages 'org-babel-load-languages
-                               '((emacs-lisp . t)
-                                 (sh . t)))
+                               '((emacs-lisp . t)))
 #+END_SRC

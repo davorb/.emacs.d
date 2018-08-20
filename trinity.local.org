@@ -1,0 +1,27 @@
+#+TITLE: System specific conf for Trinity
+
+* Font size
+#+BEGIN_SRC emacs-lisp
+  (set-face-attribute 'default nil :height 140)
+#+END_SRC
+* Paths
+#+BEGIN_SRC emacs-lisp
+  (setenv "PATH"
+          (concat "/home/davor/bin/bin:"
+                  (getenv "PATH")))
+
+  (setq exec-path (append exec-path '("~/bin/bin")))
+#+END_SRC
+
+  Use the libraries in my home directory
+#+BEGIN_SRC emacs-lisp
+  (setenv "LD_LIBRARY_PATH"
+          (concat "/home/davor/bin/lib"
+                  (getenv "LD_LIBRARY_PATH")))
+#+END_SRC
+
+* Theme
+#+BEGIN_SRC emacs-lisp
+  (package-install 'hydandata-light-theme)
+  (load-theme 'hydandata-light t)
+#+END_SRC

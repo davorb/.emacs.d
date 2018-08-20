@@ -3,10 +3,9 @@
 * Package archives
 #+begin_src emacs-lisp
   (setq package-archives
-        '(("gnu"         . "http://elpa.gnu.org/packages/")
-          ("org"         . "http://orgmode.org/elpa/")
-          ("melpa"       . "http://melpa.org/packages/")
-          ("marmalade"   . "http://marmalade-repo.org/packages/")))
+	'(("gnu"         . "http://elpa.gnu.org/packages/")
+	  ("org"         . "http://orgmode.org/elpa/")
+	  ("melpa"       . "http://melpa.org/packages/")))
   (package-initialize)
 #+end_src
 
@@ -28,21 +27,19 @@
 ** General purpose packages
 #+begin_src emacs-lisp
   (install-packages '(
-                      ace-jump-mode
-                      ack
-                      column-marker
-                      darkroom
-                      expand-region
-                      helm
-                      highlight-sexp
-                      highlight-symbol
-                      markdown-mode
-                      undo-tree
-                      use-package
-                      wc-mode
-                      yaml-mode
-                      yasnippet
-                      ))
+		      ace-jump-mode
+		      ack
+		      darkroom
+		      expand-region
+		      helm
+		      highlight-symbol
+		      markdown-mode
+		      undo-tree
+		      use-package
+		      wc-mode
+		      yaml-mode
+		      yasnippet
+		      ))
 #+end_src
 * Initialization
 ** General purpose

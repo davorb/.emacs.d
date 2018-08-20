@@ -43,16 +43,6 @@
        java-mode-hook)))
 #+END_SRC
 
-* General programming settings
-** Notify me of long lines
-   Show a marker if a line is longer than 80 characters.
-#+BEGIN_SRC emacs-lisp
-  (add-to-multiple-hooks #'(lambda ()
-                             (interactive)
-                             (column-marker-1 80))
-                         ,*programming-hooks*)
-#+END_SRC
-
 * Keybindings
 ** Indent buffer
 #+BEGIN_SRC emacs-lisp
@@ -72,4 +62,8 @@
                           "go"
                           "assembly"
                           ))
+#+END_SRC
+* Use tab to indent or complete
+#+BEGIN_SRC emacs-lisp
+  (setq tab-always-indent 'complete)
 #+END_SRC
