@@ -1,9 +1,5 @@
 #+TITLE: System specific conf for Trinity
 
-* Font size
-#+BEGIN_SRC emacs-lisp
-  (set-face-attribute 'default nil :height 140)
-#+END_SRC
 * Paths
 #+BEGIN_SRC emacs-lisp
   (setenv "PATH"
@@ -25,3 +21,11 @@
   (package-install 'hydandata-light-theme)
   (load-theme 'hydandata-light t)
 #+END_SRC
+* Font
+  #+BEGIN_SRC elisp
+    (set-face-attribute 'default nil
+                        :family "Source Code Pro"
+                        :height 140
+                        :weight 'normal
+                        :width 'normal)
+  #+END_SRC
