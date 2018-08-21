@@ -89,4 +89,5 @@ This is the first "real" file to be loaded.
   #+BEGIN_SRC emacs-lisp
     (package-install 'projectile)
     (projectile-mode)
+    (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
   #+END_SRC
