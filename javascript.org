@@ -32,7 +32,17 @@
             jsx-indent-level val
             web-mode-markup-indent-offset val
             web-mode-css-indent-offset val
-            web-mode-code-indent-offset val))
+            web-mode-script-padding val
+            web-mode-code-indent-offset val
+            web-mode-attr-indent-offset val))
+
+    (setq web-mode-indentation-params '())
+    (add-to-list 'web-mode-indentation-params '("lineup-args" . nil))
+    (add-to-list 'web-mode-indentation-params '("lineup-calls" . nil))
+    (add-to-list 'web-mode-indentation-params '("lineup-concats" . nil))
+    (add-to-list 'web-mode-indentation-params '("lineup-quotes" . nil))
+    (add-to-list 'web-mode-indentation-params '("lineup-ternary" . nil))
+    (add-to-list 'web-mode-indentation-params '("case-extra-offset" . nil))
   #+END_SRC
 * Highlight keywords
   #+BEGIN_SRC emacs-lisp

@@ -6,7 +6,7 @@
           (concat "/home/davor/bin/bin:"
                   (getenv "PATH")))
 
-  (setq exec-path (append exec-path '("~/bin/bin")))
+  (setq exec-path (append exec-path '("~/bin/bin" "/usr/local/bin")))
 #+END_SRC
 
   Use the libraries in my home directory
@@ -25,7 +25,17 @@
   #+BEGIN_SRC elisp
     (set-face-attribute 'default nil
                         :family "Source Code Pro"
-                        :height 140
+                        :height 150
                         :weight 'normal
                         :width 'normal)
+  #+END_SRC
+
+* Disable tabs
+  #+BEGIN_SRC elisp
+    (mac-toggle-tab-bar)
+  #+END_SRC
+* Map alt key to meta
+  #+BEGIN_SRC emacs-lisp
+    (setq mac-option-modifier 'alt)
+    (setq mac-command-modifier 'meta)
   #+END_SRC

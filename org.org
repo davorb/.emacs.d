@@ -10,3 +10,7 @@
     (package-install 'org-clock-today)
     (org-clock-today-mode t)
   #+END_SRC
+* enable export of man files in org mode
+  #+BEGIN_SRC emacs-lisp
+    (require 'ox-man)
+  #+END_SRC

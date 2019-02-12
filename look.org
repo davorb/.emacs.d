@@ -7,14 +7,6 @@
     (if (null (x-list-fonts font))
         nil t))
 #+END_SRC
-* Font
-#+BEGIN_SRC emacs-lisp
-  (set-face-attribute 'default nil
-                      :family "Source Code Pro"
-                      :height 110
-                      :weight 'normal
-                      :width 'normal)
-#+END_SRC
 * Hide the menubar
   #+BEGIN_SRC emacs-lisp
     (menu-bar-mode -1)
