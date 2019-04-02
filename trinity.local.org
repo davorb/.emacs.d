@@ -18,8 +18,8 @@
 
 * Theme
 #+BEGIN_SRC emacs-lisp
-  (package-install 'heroku-theme)
-  (load-theme 'heroku t)
+  (package-install 'zenburn-theme)
+  (load-theme 'zenburn t)
 #+END_SRC
 * Font
   #+BEGIN_SRC elisp
