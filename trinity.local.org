@@ -18,8 +18,8 @@
 
 * Theme
 #+BEGIN_SRC emacs-lisp
-  (package-install 'hydandata-light-theme)
-  (load-theme 'hydandata-light t)
+  (package-install 'heroku-theme)
+  (load-theme 'heroku t)
 #+END_SRC
 * Font
   #+BEGIN_SRC elisp
