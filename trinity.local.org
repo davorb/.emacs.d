@@ -18,8 +18,8 @@
 
 * Theme
 #+BEGIN_SRC emacs-lisp
-  (package-install 'zenburn-theme)
-  (load-theme 'zenburn t)
+  (package-install 'afternoon-theme)
+  (load-theme 'afternoon t)
 #+END_SRC
 * Font
   #+BEGIN_SRC elisp
