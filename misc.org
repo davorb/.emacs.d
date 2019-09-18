@@ -49,3 +49,15 @@
     (global-set-key [(control shift up)]  'move-line-up)
     (global-set-key [(control shift down)]  'move-line-down)
   #+END_SRC
+* Reddit
+  #+BEGIN_SRC emacs-lisp
+    (setq md4rd-subs-active
+          '(
+            programming
+            worldnews
+            europe
+            emacs
+            android
+            ))
+
+  #+END_SRC
