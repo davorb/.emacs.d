@@ -70,10 +70,3 @@
   #+BEGIN_SRC emacs-lisp
     (setq js2-mode-show-strict-warnings nil)
   #+END_SRC
-* jshint
-  #+BEGIN_SRC emacs-lisp
-    (package-install 'flymake-jshint)
-    (require 'flymake-jshint)
-    (add-hook 'javascript-mode-hook
-         (lambda () (flymake-mode t)))
-  #+END_SRC
