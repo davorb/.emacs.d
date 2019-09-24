@@ -3,10 +3,14 @@
 * Paths
 #+BEGIN_SRC emacs-lisp
   (setenv "PATH"
-          (concat "/home/davor/bin/bin:"
-                  (getenv "PATH")))
+          (concat
+           "/Users/davor/.nvm/versions/node/v10.16.3bin"
+           (getenv "PATH")))
 
   (setq exec-path (append exec-path '("~/bin/bin" "/usr/local/bin")))
+
+  (package-install 'exec-path-from-shell)
+  (exec-path-from-shell-initialize)
 #+END_SRC
 
   Use the libraries in my home directory
