@@ -28,7 +28,7 @@
 * Font
   #+BEGIN_SRC elisp
     (set-face-attribute 'default nil
-                        :family "Source Code Pro"
+                        :family "Hack"
                         :height 150
                         :weight 'normal
                         :width 'normal)
