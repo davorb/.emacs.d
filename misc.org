@@ -58,6 +58,7 @@
             europe
             emacs
             android
+            askhistorians
+            askreddit
             ))
-
   #+END_SRC
