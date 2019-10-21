@@ -29,7 +29,7 @@
   #+BEGIN_SRC elisp
     (set-face-attribute 'default nil
                         :family "Hack"
-                        :height 150
+                        :height 120
                         :weight 'normal
                         :width 'normal)
   #+END_SRC
