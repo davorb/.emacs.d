@@ -60,5 +60,7 @@
             android
             askhistorians
             askreddit
+            fitness
+            hongkong
             ))
   #+END_SRC
