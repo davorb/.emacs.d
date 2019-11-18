@@ -91,3 +91,12 @@ This is the first "real" file to be loaded.
     (projectile-mode)
     (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
   #+END_SRC
+* Daashboard
+  #+BEGIN_SRC emacs-lisp
+    (package-install 'dashboard)
+    (require 'dashboard)
+    (use-package dashboard
+                  :ensure t
+                  :config
+                  (dashboard-setup-startup-hook))
+  #+END_SRC
