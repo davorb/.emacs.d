@@ -62,5 +62,6 @@
             askreddit
             fitness
             hongkong
+            djimavic
             ))
   #+END_SRC
