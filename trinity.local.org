@@ -22,8 +22,10 @@
 
 * Theme
 #+BEGIN_SRC emacs-lisp
-  (package-install 'afternoon-theme)
-  (load-theme 'afternoon t)
+  ;; (package-install 'afternoon-theme)
+  ;; (load-theme 'afternoon t)
+  (package-install 'leuven-theme)
+  (load-theme 'leuven t)
 #+END_SRC
 * Font
   #+BEGIN_SRC elisp
