@@ -13,6 +13,8 @@ ido.last
 projectile-bookmarks.eld
 
 ## directories
+straight/*
+quelpa/*
 backups/*
 thumbs/*
 oddmuse/*

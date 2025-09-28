@@ -52,10 +52,10 @@
 * load-host-specific-conf
 #+BEGIN_SRC emacs-lisp
   (defun load-host-specific-conf ()
-    (cl-flet ((load-if-exists (name)
-                              (if (file-exists-p name)
-                                  (org-babel-load-file name))))
-      (load-if-exists (concat "~/.emacs.d/" system-name ".org"))))
+    (let ((load-if-exists (lambda (name)
+                            (if (file-exists-p name)
+                                (org-babel-load-file name)))))
+      (funcall load-if-exists (concat "~/.emacs.d/" system-name ".org"))))
 #+END_SRC
 * Emacs spreadsheet
 ** ses-insert-date

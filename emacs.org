@@ -3,69 +3,70 @@
 This is the first "real" file to be loaded.
 
 * Functions
-  This file defines a lot of important functions, like
-  =org-babel-load-files=.
+This file defines a lot of important functions, like
+=org-babel-load-files=.
 
-  #+BEGIN_SRC emacs-lisp
-    (org-babel-load-file "~/.emacs.d/functions.org")
-  #+END_SRC
+#+BEGIN_SRC emacs-lisp
+  (org-babel-load-file "~/.emacs.d/functions.org")
+#+END_SRC
 * Backups
-  #+BEGIN_SRC emacs-lisp
-    (setq backup-directory-alist
-          '(("." . "~/.saves")))
-    (setq delete-old-versions t
-          kept-new-versions 6
-          kept-old-versions 2
-          version-control t)
-    (setq backup-by-copying t) ; safest, but slowest
-  #+END_SRC
+#+BEGIN_SRC emacs-lisp
+  (setq backup-directory-alist
+        '(("." . "~/.saves")))
+  (setq delete-old-versions t
+        kept-new-versions 6
+        kept-old-versions 2
+        version-control t)
+  (setq backup-by-copying t) ; safest, but slowest
+#+END_SRC
 * Disable tabs
-  #+BEGIN_SRC emacs-lisp
-    (setq-default indent-tabs-mode nil)
-  #+END_SRC
+#+BEGIN_SRC emacs-lisp
+  (setq-default indent-tabs-mode nil)
+#+END_SRC
 * Remove trailing whitespace
-  #+BEGIN_SRC emacs-lisp
-    (add-hook 'before-save-hook 'delete-trailing-whitespace)
-  #+END_SRC
+#+BEGIN_SRC emacs-lisp
+  (add-hook 'before-save-hook 'delete-trailing-whitespace)
+#+END_SRC
 * ivy-mode
-  Install and initalize:
+Install and initalize:
 
-  #+BEGIN_SRC emacs-lisp
-    (package-install 'ivy)
-    (package-install 'swiper)
+#+BEGIN_SRC emacs-lisp
+  (package-install 'ivy)
+  (package-install 'swiper)
 
-    (ivy-mode 1)
-    (setq ivy-use-virtual-buffers t
-          ivy-count-format "(%d/%d) ")
-  #+END_SRC
+  (ivy-mode 1)
+  (setq ivy-use-virtual-buffers t
+        ivy-count-format "(%d/%d) ")
+#+END_SRC
 ** Keybindings
-   #+BEGIN_SRC emacs-lisp
-     ;;; Ivy-based interface to standard commands
-  #+END_SRC
+ #+BEGIN_SRC emacs-lisp
+   ;;; Ivy-based interface to standard commands
+#+END_SRC
 * Replace highlighted text with what you type.
-  #+BEGIN_SRC emacs-lisp
-    (delete-selection-mode t)
-  #+END_SRC
+#+BEGIN_SRC emacs-lisp
+  (delete-selection-mode t)
+#+END_SRC
 ** yasnippet
-   #+BEGIN_SRC emacs-lisp
-     (setq yas-snippet-dirs '("~/.emacs.d/snippets")
-           yas/indent-line nil) ; Stop yasnippet from performing autoindentation.
-   #+END_SRC
+#+BEGIN_SRC emacs-lisp
+  (setq yas-snippet-dirs '("~/.emacs.d/snippets")
+        yas/indent-line nil) ; Stop yasnippet from performing autoindentation.
+#+END_SRC
 ** dired
-   Hide hidden files
+Hide hidden files
 
-   #+BEGIN_SRC emacs-lisp
-     (require 'dired-x)
-     (setq dired-omit-files "^\\...+$")
-     (add-hook 'dired-mode-hook (lambda () (dired-omit-mode 1)))
-   #+END_SRC
+#+BEGIN_SRC emacs-lisp
+  (require 'dired-x)
+  (setq dired-omit-files "^\\...+$")
+  (add-hook 'dired-mode-hook (lambda () (dired-omit-mode 1)))
+#+END_SRC
 * writeroom-mode
-  #+BEGIN_SRC emacs-lisp
-    (package-install 'writeroom-mode)
-  #+END_SRC
+#+BEGIN_SRC emacs-lisp
+  (package-install 'writeroom-mode)
+#+END_SRC
 * evil-mode
-;;; Ctrl-u for scrolling up
-  #+BEGIN_SRC emacs-lisp
+Ctrl-u for scrolling up
+
+#+BEGIN_SRC emacs-lisp
     (package-install 'evil)
     (require 'evil)
 
@@ -75,28 +76,28 @@ This is the first "real" file to be loaded.
       :config (setq evil-want-C-u-scroll t))
   #+END_SRC
 * Load other configuration files
-  #+BEGIN_SRC emacs-lisp
-    (org-babel-load-files '("misc"
-                            "look"
-                            "programming"
-                            "keybindings"))
-  #+END_SRC
+#+BEGIN_SRC emacs-lisp
+  (org-babel-load-files '("misc"
+                          "look"
+                          "programming"
+                          "keybindings"))
+#+END_SRC
 * Load host-specific configuration file
-  #+BEGIN_SRC emacs-lisp
-    (load-host-specific-conf)
-  #+END_SRC
+#+BEGIN_SRC emacs-lisp
+  (load-host-specific-conf)
+#+END_SRC
 * projectile
-  #+BEGIN_SRC emacs-lisp
-    (package-install 'projectile)
-    (projectile-mode)
-    (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
-  #+END_SRC
+#+BEGIN_SRC emacs-lisp
+  (package-install 'projectile)
+  (projectile-mode)
+  (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
+#+END_SRC
 * Daashboard
-  #+BEGIN_SRC emacs-lisp
-    (package-install 'dashboard)
-    (require 'dashboard)
-    (use-package dashboard
-                  :ensure t
-                  :config
-                  (dashboard-setup-startup-hook))
-  #+END_SRC
+#+BEGIN_SRC emacs-lisp
+  (package-install 'dashboard)
+  (require 'dashboard)
+  (use-package dashboard
+                :ensure t
+                :config
+                (dashboard-setup-startup-hook))
+#+END_SRC

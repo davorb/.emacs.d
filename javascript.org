@@ -1,108 +1,141 @@
 #+TITLE: JavaScript
 
 * Install packages
-  #+BEGIN_SRC emacs-lisp
-    (install-packages
-     '(
-       nodejs-repl
-       typescript-mode
-       web-mode
-       ))
-  #+END_SRC
-* web-mode
-  #+BEGIN_SRC emacs-lisp
-    (add-to-list 'auto-mode-alist '("\\.js\\'" . web-mode))
-    (add-to-list 'auto-mode-alist '("\\.jsx\\'" . web-mode))
-    (add-to-list 'auto-mode-alist '("\\.mjs\\'" . web-mode))
-
-    (setq web-mode-content-types-alist
-              '(("jsx" . "\\.[c|m]js[x]?\\'")))
-
-    (add-hook 'web-mode-hook #'electric-indent-mode)
-    (add-hook 'web-mode-hook #'electric-pair-mode)
-
-    (add-hook 'web-mode-hook
-              (lambda ()
-                (if (equal web-mode-content-type "javascript")
-                    (web-mode-set-content-type "jsx")
-                  (message "now set to: %s" web-mode-content-type))))
-  #+END_SRC
+#+BEGIN_SRC emacs-lisp
+  (install-packages
+   '(
+     nodejs-repl
+     typescript-mode
+     ))
+#+END_SRC
 * Set indentation
-  #+BEGIN_SRC emacs-lisp
-    (let ((val 2))
-      (setq js-indent-level val
-            typescript-indent-level val
-            js-indent-level val
-            jsx-indent-level val
-            web-mode-markup-indent-offset val
-            web-mode-css-indent-offset val
-            web-mode-script-padding val
-            web-mode-code-indent-offset val
-            web-mode-attr-indent-offset val))
+#+BEGIN_SRC emacs-lisp
+  (let ((val 2))
+    (setq js-indent-level val
+          typescript-indent-level val
+          js-indent-level val
+          jsx-indent-level val
+          web-mode-markup-indent-offset val
+          web-mode-css-indent-offset val
+          web-mode-script-padding val
+          web-mode-code-indent-offset val
+          web-mode-attr-indent-offset val))
 
-    (setq web-mode-indentation-params '())
-    (add-to-list 'web-mode-indentation-params '("lineup-args" . nil))
-    (add-to-list 'web-mode-indentation-params '("lineup-calls" . nil))
-    (add-to-list 'web-mode-indentation-params '("lineup-concats" . nil))
-    (add-to-list 'web-mode-indentation-params '("lineup-quotes" . nil))
-    (add-to-list 'web-mode-indentation-params '("lineup-ternary" . nil))
-    (add-to-list 'web-mode-indentation-params '("case-extra-offset" . nil))
-  #+END_SRC
+  (setq web-mode-indentation-params '())
+  (add-to-list 'web-mode-indentation-params '("lineup-args" . nil))
+  (add-to-list 'web-mode-indentation-params '("lineup-calls" . nil))
+  (add-to-list 'web-mode-indentation-params '("lineup-concats" . nil))
+  (add-to-list 'web-mode-indentation-params '("lineup-quotes" . nil))
+  (add-to-list 'web-mode-indentation-params '("lineup-ternary" . nil))
+  (add-to-list 'web-mode-indentation-params '("case-extra-offset" . nil))
+#+END_SRC
 * Highlight keywords
-  #+BEGIN_SRC emacs-lisp
-    (font-lock-add-keywords 'espresso-mode
-                            '(("\\<\\(FIX\\|TODO\\|FIXME\\|HACK\\|REFACTOR\\):"
-                               1 font-lock-warning-face t)))
-  #+END_SRC
+#+BEGIN_SRC emacs-lisp
+  (font-lock-add-keywords 'espresso-mode
+                          '(("\\<\\(FIX\\|TODO\\|FIXME\\|HACK\\|REFACTOR\\):"
+                             1 font-lock-warning-face t)))
+#+END_SRC
 * Tabs are the devil's spaces
-  #+BEGIN_SRC emacs-lisp
-    (add-hook 'javascript-mode-hook
-              '(lambda ()
-                 (add-hook 'before-save-hook
-                           (lambda ()
-                             (untabify (point-min) (point-max))))))
-  #+END_SRC
+#+BEGIN_SRC emacs-lisp
+  (add-hook 'javascript-mode-hook
+            '(lambda ()
+               (add-hook 'before-save-hook
+                         (lambda ()
+                           (untabify (point-min) (point-max))))))
+#+END_SRC
 * SASS
-  #+BEGIN_SRC emacs-lisp
-    (package-install 'sass-mode)
+#+BEGIN_SRC emacs-lisp
+  (package-install 'sass-mode)
+#+END_SRC
+* tree sitter
+#+BEGIN_SRC emacs-lisp
+  (use-package tree-sitter
+    :ensure t
+    :config
+    ;; activate tree-sitter on any buffer containing code for which it has a parser available
+    (global-tree-sitter-mode)
+    ;; you can easily see the difference tree-sitter-hl-mode makes for python, ts or tsx
+    ;; by switching on and off
+    (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode))
+
+  (use-package tree-sitter-langs
+    :ensure t
+    :after tree-sitter)
+
+  (use-package typescript-mode
+    :after tree-sitter
+    :config
+    ;; we choose this instead of tsx-mode so that eglot can automatically figure out language for server
+    ;; see https://github.com/joaotavora/eglot/issues/624 and https://github.com/joaotavora/eglot#handling-quirky-servers
+    (define-derived-mode typescriptreact-mode typescript-mode
+      "TypeScript TSX")
+
+    ;; use our derived mode for tsx files
+    (add-to-list 'auto-mode-alist '("\\.tsx?\\'" . typescriptreact-mode))
+    ;; by default, typescript-mode is mapped to the treesitter typescript parser
+    ;; use our derived mode to map both .tsx AND .ts to typescriptreact-mode to treesitter tsx
+    (add-to-list 'tree-sitter-major-mode-language-alist '(typescriptreact-mode . tsx)))
+
+  ;; https://github.com/orzechowskid/tsi.el/
+  ;; great tree-sitter-based indentation for typescript/tsx, css, json
+  (unless (package-installed-p 'quelpa)
+    (with-temp-buffer
+      (url-insert-file-contents "https://raw.githubusercontent.com/quelpa/quelpa/master/quelpa.el")
+      (eval-buffer)
+      (quelpa-self-upgrade)))
+  (quelpa
+   '(quelpa-use-package
+     :fetcher git
+     :url "https://github.com/quelpa/quelpa-use-package.git"))
+  (require 'quelpa-use-package)
+
+  (defvar bootstrap-version)
+  (let ((bootstrap-file
+         (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
+        (bootstrap-version 5))
+    (unless (file-exists-p bootstrap-file)
+      (with-current-buffer
+          (url-retrieve-synchronously
+           "https://raw.githubusercontent.com/raxod502/straight.el/develop/install.el"
+           'silent 'inhibit-cookies)
+        (goto-char (point-max))
+        (eval-print-last-sexp)))
+    (load bootstrap-file nil 'nomessage))
+  (setq straight-use-package-by-default t)
+
+  (use-package tsi
+    :straight '(tsi :type git :protocol ssh :host github :repo "orzechowskid/tsi.el")
+    :after tree-sitter
+    ;; define autoload definitions which when actually invoked will cause package to be loaded
+    :commands (tsi-typescript-mode tsi-json-mode tsi-css-mode)
+    :init
+    (add-hook 'typescript-mode-hook (lambda () (tsi-typescript-mode 1)))
+    (add-hook 'json-mode-hook (lambda () (tsi-json-mode 1)))
+    (add-hook 'css-mode-hook (lambda () (tsi-css-mode 1)))
+    (add-hook 'scss-mode-hook (lambda () (tsi-scss-mode 1))))
   #+END_SRC
-* Disable syntax highlighting
-  #+BEGIN_SRC emacs-lisp
-    (setq js2-mode-show-strict-warnings nil)
-  #+END_SRC
-* COMMENT TypeScript
-  #+BEGIN_SRC emacs-lisp
-    (install-packages '(tide))
 
-    (defun setup-tide-mode ()
-      (interactive)
-      (tide-setup)
-      (flycheck-mode +1)
-      (setq flycheck-check-syntax-automatically '(save mode-enabled))
-      (eldoc-mode +1)
-      (tide-hl-identifier-mode +1)
-      ;; company is an optional dependency. You have to
-      ;; install it separately via package-install
-      ;; `M-x package-install [ret] company`
-      (company-mode +1))
+* auto format all the things
+#+BEGIN_SRC emacs-lisp
+;; auto-format different source code files extremely intelligently
+;; https://github.com/radian-software/apheleia
+(use-package apheleia
+  :ensure t
+  :config
+  (apheleia-global-mode +1))
+#+END_SRC
 
-    ;; aligns annotation to the right hand side
-    (setq company-tooltip-align-annotations t)
-
-    ;; formats the buffer before saving
-    (add-hook 'before-save-hook 'tide-format-before-save)
-
-    (add-hook 'typescript-mode-hook #'setup-tide-mode)
-
-    (require 'web-mode)
-    (add-to-list 'auto-mode-alist '("\\.tsx\\'" . web-mode))
-    (add-hook 'web-mode-hook
-              (lambda ()
-                (when (string-equal "tsx" (file-name-extension buffer-file-name))
-                  (setup-tide-mode))))
-    ;; enable typescript-tslint checker
-    ;(flycheck-add-mode 'typescript-tslint 'web-mode)
-
-  #+END_SRC
-* notes
-ci to kh sig
+* typescript-language-server with eslint, LSP and eglot for code intelligence
+#+BEGIN_SRC emacs-lisp
+(use-package eglot
+  :ensure t)
+#+END_SRC
+* nvm
+#+BEGIN_SRC emacs-lisp
+(let ((nvm-dir (expand-file-name "~/.nvm"))
+      (node-version (string-trim (shell-command-to-string "nvm current"))))
+  (setenv "NVM_DIR" nvm-dir)
+  (setenv "PATH" (concat (format "%s/versions/node/%s/bin:" nvm-dir node-version)
+                         (getenv "PATH")))
+  (add-to-list 'exec-path (format "%s/versions/node/%s/bin" nvm-dir node-version)))
+#+END_SRC

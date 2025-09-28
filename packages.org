@@ -13,15 +13,17 @@
 ** Define function =install-packages=
   Simplify the installation of lists of packages.
 #+begin_src emacs-lisp
-  (require 'cl)
+  (require 'seq) ; Ensure the seq library is loaded
   (defun install-packages (packages)
-    (let ((not-installed (remove-if 'package-installed-p packages)))
-      (if not-installed
-          (if (y-or-n-p (format "there are %d packages to be installed. install them? "
-                                (length not-installed)))
-              (progn (package-refresh-contents)
-                     (dolist (package not-installed)
-                       (package-install package)))))))
+      (let ((not-installed (seq-filter (lambda (package) 
+					  (not (package-installed-p package)))
+					packages)))
+	(if not-installed
+	    (if (y-or-n-p (format "there are %d packages to be installed. install them? "
+				  (length not-installed)))
+		(progn (package-refresh-contents)
+		       (dolist (package not-installed)
+			 (package-install package)))))))
 #+end_src
 
 ** General purpose packages

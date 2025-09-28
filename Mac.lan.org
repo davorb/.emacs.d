@@ -1,0 +1,36 @@
+#+TITLE: System specific config for Xanadu
+
+* Font size
+  #+BEGIN_SRC emacs-lisp
+    (set-face-attribute 'default nil :height 170)
+  #+END_SRC
+
+* Change font
+#+BEGIN_SRC emacs-lisp
+  (set-face-attribute 'default nil
+                 :family "Hack" :height 145 :weight 'normal)
+#+END_SRC
+
+* Change the frame title
+  #+BEGIN_SRC emacs-lisp
+    (setq frame-title-format
+      '((buffer-file-name "%f"
+        (dired-directory dired-directory "%b"))))
+  #+END_SRC
+* Theme
+#+BEGIN_SRC emacs-lisp
+  (package-install 'spacemacs-theme)
+  (load-theme 'spacemacs-dark t)
+#+END_SRC
+
+* Change frame size
+
+#+BEGIN_SRC emacs-lisp
+  (set-frame-height (selected-frame) 60)
+  (set-frame-width (selected-frame) 180)
+#+END_SRC
+* run this to be able to find node using nvm
+#+BEGIN_SRC emacs-lisp
+  (install-packages '(exec-path-from-shell))
+  (exec-path-from-shell-initialize)
+#+END_SRC
