@@ -1,0 +1,29 @@
+#+TITLE: Haskell
+
+* Install packages
+#+BEGIN_SRC emacs-lisp
+    ;; built-ins only
+  ;  (unload-feature 'eglot t)
+   ; (unload-feature 'jsonrpc t)
+  ;  (require 'eglot)
+  ;  (dolist (p '(eglot jsonrpc project xref eldoc flymake external-completion))
+  ;    (eval `(use-package ,p :ensure nil :straight nil)))
+
+    (use-package eglot
+      :ensure nil                           ;; use built-in
+      :hook (haskell-mode . eglot-ensure)
+      :custom
+      (eglot-autoshutdown t)
+      (eglot-confirm-server-initiated-edits nil)
+      :config
+      (add-to-list 'eglot-server-programs
+                   '(haskell-mode . ("haskell-language-server-wrapper" "--lsp")))
+      (setq eglot-workspace-configuration
+            '(:haskell
+              (:formattingProvider "fourmolu"
+                                   :plugin (:stan (:globalOn :json-false))))))
+
+  (with-eval-after-load 'eglot
+  (add-to-list 'eglot-server-programs
+               '(haskell-mode . ("haskell-language-server-wrapper" "--lsp"))))
+#+END_SRC
