@@ -55,11 +55,10 @@
                           "lisp"
                           "ruby"
                           "web"
-                          "javascript"
                           "babel"
-                          "apl"
                           "go"
                           "assembly"
+                          "haskell"
                           ))
 #+END_SRC
 * Use tab to indent or complete

@@ -20,7 +20,7 @@
 * Theme
 #+BEGIN_SRC emacs-lisp
   (package-install 'spacemacs-theme)
-  (load-theme 'spacemacs-dark t)
+  (load-theme 'spacemacs-light t)
 #+END_SRC
 
 * Change frame size
