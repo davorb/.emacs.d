@@ -1,4 +1,4 @@
-;;; init.el -- and then there was light
+;;; init.el --- and then there was light -*- lexical-binding: t -*-
 ;;
 ;; this is the first thing to get loaded
 (require 'package)
@@ -10,7 +10,7 @@
 (package-initialize)
 
 (add-hook 'after-init-hook
-	  '(lambda ()
+	  (lambda ()
 	  (require 'org)
 	  (require 'ob-tangle)
 	  (org-babel-load-file "~/.emacs.d/packages.org")

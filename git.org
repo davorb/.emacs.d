@@ -1,4 +1,5 @@
 #+TITLE: Git
+#+PROPERTY: header-args:emacs-lisp :shebang ";; -*- lexical-binding: t -*-" :tangle-mode (identity #o644)
 
 * Install and load packages
 #+BEGIN_SRC emacs-lisp

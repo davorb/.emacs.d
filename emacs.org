@@ -1,4 +1,5 @@
 #+TITLE: Dawn Emacs
+#+PROPERTY: header-args:emacs-lisp :shebang ";; -*- lexical-binding: t -*-" :tangle-mode (identity #o644)
 
 This is the first "real" file to be loaded.
 

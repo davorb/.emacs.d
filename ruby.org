@@ -1,4 +1,5 @@
 #+TITLE: Ruby
+#+PROPERTY: header-args:emacs-lisp :shebang ";; -*- lexical-binding: t -*-" :tangle-mode (identity #o644)
 
 * yaml-mode
 #+BEGIN_SRC emacs-lisp

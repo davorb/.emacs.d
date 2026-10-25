@@ -1,4 +1,5 @@
 #+TITLE: System specific config for Xanadu
+#+PROPERTY: header-args:emacs-lisp :shebang ";; -*- lexical-binding: t -*-" :tangle-mode (identity #o644)
 
 * Font size
   #+BEGIN_SRC emacs-lisp
