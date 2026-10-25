@@ -5,7 +5,7 @@ The language, not the game.
 
 * Packages
   #+BEGIN_SRC emacs-lisp
-    (package-install 'go-mode)
+    (install-packages '(go-mode))
   #+END_SRC
 
 * Run =gofmt= on save

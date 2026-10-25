@@ -27,7 +27,7 @@
   Enable =geiser-mode=.
 
   #+BEGIN_SRC emacs-lisp
-    (package-install 'geiser)
+    (install-packages '(geiser))
     ;(setf geiser-repl-mode-hook 'enable-paredit-mode)
     ;(setf geiser-mode-hook 'enable-paredit-mode)
     (add-hook 'scheme-mode-hook #'geiser-mode)

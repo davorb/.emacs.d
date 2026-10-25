@@ -42,7 +42,7 @@
   Activate this feature by pressing =C-c t v=.
 
   #+BEGIN_SRC emacs-lisp
-    (package-install 'visual-fill-column)
+    (install-packages '(visual-fill-column))
     (use-package visual-fill-column
       :ensure t
       :defer t

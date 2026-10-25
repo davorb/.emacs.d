@@ -21,7 +21,21 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(quelpa-use-package quelpa tree-sitter-langs tree-sitter dashboard spacemacs-theme haskell-mode htmlize projectile visual-fill-column nasm-mode go-mode sass-mode web-mode typescript-mode geiser auto-complete org-clock-today evil swiper ivy rustfmt cargo rust-mode yasnippet yaml-mode writeroom-mode wc-mode use-package undo-tree tide tern-auto-complete stylus-mode powerline paredit nodejs-repl nix-mode multiple-cursors material-theme markdown-mode magit js2-mode intero hydandata-light-theme highlight-symbol highlight-sexp helm gnu-apl-mode flymake-jshint expand-region enh-ruby-mode dracula-theme darkroom column-marker ack ace-jump-mode)))
+   '(ace-jump-mode ack auto-complete cargo circe column-marker darkroom
+                   dashboard doric-dark doric-themes dracula-theme
+                   easy-theme-preview enh-ruby-mode evil expand-region
+                   flymake-jshint geiser gnu-apl-mode go-mode
+                   haskell-mode helm highlight-sexp highlight-symbol
+                   htmlize hydandata-light-theme intero ivy js2-mode
+                   magit markdown-mode material-theme multiple-cursors
+                   nasm-mode nix-mode nodejs-repl org-clock-today
+                   paredit powerline projectile quelpa
+                   quelpa-use-package rust-mode rustfmt sass-mode
+                   spacemacs-theme stylus-mode swiper
+                   tern-auto-complete tide tree-sitter
+                   tree-sitter-langs typescript-mode undo-tree
+                   use-package visual-fill-column wc-mode web-mode
+                   writeroom-mode yaml-mode yasnippet)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

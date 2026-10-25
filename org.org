@@ -8,7 +8,7 @@
 * org-clock-today
   Show the total clocked time of the current day in the mode line.
   #+BEGIN_SRC emacs-lisp
-    (package-install 'org-clock-today)
+    (install-packages '(org-clock-today))
     (org-clock-today-mode t)
   #+END_SRC
 * enable export of man files in org mode

@@ -32,8 +32,8 @@ This file defines a lot of important functions, like
 Install and initalize:
 
 #+BEGIN_SRC emacs-lisp
-  (package-install 'ivy)
-  (package-install 'swiper)
+  (install-packages '(ivy))
+  (install-packages '(swiper))
 
   (ivy-mode 1)
   (setq ivy-use-virtual-buffers t
@@ -62,13 +62,13 @@ Hide hidden files
 #+END_SRC
 * writeroom-mode
 #+BEGIN_SRC emacs-lisp
-  (package-install 'writeroom-mode)
+  (install-packages '(writeroom-mode))
 #+END_SRC
 * evil-mode
 Ctrl-u for scrolling up
 
 #+BEGIN_SRC emacs-lisp
-    (package-install 'evil)
+    (install-packages '(evil))
     (require 'evil)
 
     (use-package evil
@@ -89,13 +89,13 @@ Ctrl-u for scrolling up
 #+END_SRC
 * projectile
 #+BEGIN_SRC emacs-lisp
-  (package-install 'projectile)
+  (install-packages '(projectile))
   (projectile-mode)
   (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
 #+END_SRC
 * Daashboard
 #+BEGIN_SRC emacs-lisp
-  (package-install 'dashboard)
+  (install-packages '(dashboard))
   (require 'dashboard)
   (use-package dashboard
                 :ensure t

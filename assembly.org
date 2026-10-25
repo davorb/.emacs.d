@@ -3,5 +3,5 @@
 
 * Packages
   #+BEGIN_SRC emacs-lisp
-    (package-install 'nasm-mode)
+    (install-packages '(nasm-mode))
   #+END_SRC
