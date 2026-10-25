@@ -172,6 +172,19 @@
   :bind ("C-x g" . magit-status)
   :custom (git-commit-summary-max-length 50))
 
+;; Syntax-highlighted diffs in Magit; needs the `delta' binary.
+(use-package dash)   ; magit-delta uses it without declaring the dependency
+(use-package magit-delta
+  :if (executable-find "delta")
+  :hook (magit-mode . magit-delta-mode))
+
+;; Change markers in the fringe, kept current while Magit refreshes.
+(use-package diff-hl
+  :hook ((prog-mode . diff-hl-mode)
+         (magit-pre-refresh . diff-hl-magit-pre-refresh)
+         (magit-post-refresh . diff-hl-magit-post-refresh)
+         (dired-mode . diff-hl-dired-mode)))
+
 ;;; Org
 
 (use-package org
@@ -179,6 +192,10 @@
   :hook (org-mode . auto-fill-mode)
   :custom (org-src-fontify-natively t)
   :config (require 'ox-man))
+
+(use-package org-modern
+  :hook ((org-mode . org-modern-mode)
+         (org-agenda-finalize . org-modern-agenda)))
 
 (use-package htmlize)
 
