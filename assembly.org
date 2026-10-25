@@ -1,7 +1,0 @@
-#+TITLE: Assembly language
-#+PROPERTY: header-args:emacs-lisp :shebang ";; -*- lexical-binding: t -*-" :tangle-mode (identity #o644)
-
-* Packages
-  #+BEGIN_SRC emacs-lisp
-    (install-packages '(nasm-mode))
-  #+END_SRC

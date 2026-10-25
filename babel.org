@@ -1,8 +1,0 @@
-#+TITLE: Babel
-#+PROPERTY: header-args:emacs-lisp :shebang ";; -*- lexical-binding: t -*-" :tangle-mode (identity #o644)
-
-* Tell it to load additional languages
-#+BEGIN_SRC emacs-lisp
-  (org-babel-do-load-languages 'org-babel-load-languages
-                               '((emacs-lisp . t)))
-#+END_SRC

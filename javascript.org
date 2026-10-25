@@ -1,4 +1,0 @@
-#+TITLE: JavaScript
-
-this file has been disabled because it conflicts with haskell. will
-fix in the future.
