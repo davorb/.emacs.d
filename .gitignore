@@ -1,78 +1,22 @@
-## misc
-recentf
-loaddefs.el*
-auto-save-list
+## generated state
+elpa/
+eln-cache/
+auto-save-list/
+tramp
 custom.el
 places
-.svn
-.DS_Store
-tramp
-.smex-items
-ac-comphist.dat
-ido.last
-projectile-bookmarks.eld
-
-## directories
-straight/*
-quelpa/*
-backups/*
-thumbs/*
-oddmuse/*
-eshell/*
-image-dired/*
-elim/*
-doc/*
-elpa/*
-src/*
-themes/*
-url/*
-
-## exported and encrypted files
-*gpg
-*el
-*elc
-*html
-*tex
-*pdf
-*txt
-
-## org stuff
-.org-id-locations
-
-## ignore mail/gnus cruft for those who keep mail in this directory
-drafts
-Mail
-mail
-.newsrc-dribble
-.nnmail-cache
-#.newsrc-dribble#
-*.SCORE
-marks
-.session
-abbrev_defs
-scratch
-secret.org
-.emacs.desktop*
-.*~
-agent/*
-session.*
-
-## package directory
-!literate-starter-kit-pkg.el
-literate-starter-kit/
-literate-starter-kit.tar
-
+*.eld
 bookmarks
-helm-adaptive-history
-ido.last
-
-games/*
-/.apl.history
-
-## undo-tree history
+abbrev_defs
+.org-id-locations
+.emacs.desktop*
+*.elc
+*~
+.#*
 *.~undo-tree~
-
-## tangled from .org files
-*.el
-!init.el
-undo/*
+transient/
+tree-sitter/
+eshell/
+url/
+.cache/
+history
