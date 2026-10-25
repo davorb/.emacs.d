@@ -68,3 +68,11 @@ ido.last
 
 games/*
 /.apl.history
+
+## undo-tree history
+*.~undo-tree~
+
+## tangled from .org files
+*.el
+!init.el
+undo/*
