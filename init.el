@@ -7,6 +7,12 @@
         ("melpa"  . "https://melpa.org/packages/")))
 (package-initialize)
 
+;; Stale archive caches 404 on MELPA's versioned tarballs; refresh when old.
+(let ((cache (expand-file-name "archives/melpa/archive-contents" package-user-dir)))
+  (when (or (not (file-exists-p cache))
+            (> (float-time (time-since (nth 5 (file-attributes cache)))) 86400))
+    (package-refresh-contents)))
+
 (require 'use-package)
 (setq use-package-always-ensure t)
 

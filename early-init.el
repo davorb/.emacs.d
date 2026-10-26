@@ -12,3 +12,8 @@
 (menu-bar-mode -1)
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
+
+;; libgccjit derives -mmacosx-version-min from the OS version and clang
+;; rejects the result ("18.0"); pin a valid deployment target.
+(when (eq system-type 'darwin)
+  (setq native-comp-driver-options '("-mmacosx-version-min=15.0")))
