@@ -1,4 +1,4 @@
-;;; Mac.lan.el --- host-specific settings -*- lexical-binding: t -*-
+;;; xanadu.local.el --- host-specific settings -*- lexical-binding: t -*-
 
 (set-face-attribute 'default nil :family "Hack" :height 145 :weight 'normal)
 
@@ -10,3 +10,8 @@
 
 (set-frame-height (selected-frame) 60)
 (set-frame-width (selected-frame) 180)
+
+(defun open-notes-folder ()
+  "Dired the folder that I keep notes in."
+  (interactive)
+  (dired "~/Documents/text/notes/"))
