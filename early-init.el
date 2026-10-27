@@ -17,3 +17,8 @@
 ;; rejects the result ("18.0"); pin a valid deployment target.
 (when (eq system-type 'darwin)
   (setq native-comp-driver-options '("-mmacosx-version-min=15.0")))
+
+;; Third-party packages (e.g. expand-region's unguarded treesit calls) emit
+;; "function not known to be defined" warnings during async native
+;; compilation; they're harmless, so log them instead of popping a buffer.
+(setq native-comp-async-report-warnings-errors 'silent)
