@@ -5,8 +5,10 @@
 (setq frame-title-format
       '((buffer-file-name "%f" (dired-directory dired-directory "%b"))))
 
-(use-package spacemacs-theme
-  :config (load-theme 'spacemacs-light t))
+;; (use-package spacemacs-theme
+;;   :config (load-theme 'spacemacs-dark t))
+(use-package doric-themes
+  :config (load-theme 'doric-dark t))
 
 (set-frame-height (selected-frame) 60)
 (set-frame-width (selected-frame) 180)
